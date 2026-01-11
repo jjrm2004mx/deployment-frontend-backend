@@ -1,0 +1,16 @@
+body {
+  font-family: system-ui, sans-serif;
+  background: #f8fafc;
+  color: #222;
+  margin: 0;
+  padding: 2rem;
+}
+
+main {
+  max-width: 600px;
+  margin: 3rem auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  padding: 2rem;
+}
