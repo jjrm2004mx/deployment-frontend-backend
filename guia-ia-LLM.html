@@ -594,40 +594,456 @@
     <nav class="index-nav">
       <h2 class="index-main-title">ÍNDICE DE CONTENIDOS</h2>
       <div class="index-grid">
+        <a href="#seccion-00" class="index-link">
+          <span class="index-number">00</span>
+          <span class="index-title">Conceptos básicos: Tokens y Solicitudes</span>
+        </a>
         <a href="#seccion-01" class="index-link">
           <span class="index-number">01</span>
-          <span class="index-title">Fundamentos de entrenamiento (Autosupervisado + SFT + RLHF)</span>
+          <span class="index-title">LLMs para procesamiento de texto</span>
         </a>
         <a href="#seccion-02" class="index-link">
           <span class="index-number">02</span>
-          <span class="index-title">Glosario corto (conceptos clave)</span>
+          <span class="index-title">LLMs para desarrollo de software</span>
         </a>
         <a href="#seccion-03" class="index-link">
           <span class="index-number">03</span>
-          <span class="index-title">Resumen visual del pipeline</span>
+          <span class="index-title">LLMs para procesamiento de imágenes</span>
         </a>
         <a href="#seccion-04" class="index-link">
           <span class="index-number">04</span>
-          <span class="index-title">Métricas de evaluación</span>
+          <span class="index-title">Cuándo usar (y cuándo NO usar) LLMs</span>
         </a>
         <a href="#seccion-05" class="index-link">
           <span class="index-number">05</span>
-          <span class="index-title">Herramientas y frameworks</span>
+          <span class="index-title">Fundamentos de entrenamiento (Autosupervisado + SFT + RLHF)</span>
         </a>
         <a href="#seccion-06" class="index-link">
           <span class="index-number">06</span>
-          <span class="index-title">Riesgos y mitigaciones</span>
+          <span class="index-title">Glosario corto (conceptos clave)</span>
         </a>
         <a href="#seccion-07" class="index-link">
           <span class="index-number">07</span>
+          <span class="index-title">Resumen visual del pipeline</span>
+        </a>
+        <a href="#seccion-08" class="index-link">
+          <span class="index-number">08</span>
+          <span class="index-title">Métricas de evaluación</span>
+        </a>
+        <a href="#seccion-09" class="index-link">
+          <span class="index-number">09</span>
+          <span class="index-title">Herramientas y frameworks</span>
+        </a>
+        <a href="#seccion-10" class="index-link">
+          <span class="index-number">10</span>
+          <span class="index-title">Riesgos y mitigaciones</span>
+        </a>
+        <a href="#seccion-11" class="index-link">
+          <span class="index-number">11</span>
+          <span class="index-title">Matices críticos sobre capacidades del LLM</span>
+        </a>
+        <a href="#seccion-12" class="index-link">
+          <span class="index-number">12</span>
           <span class="index-title">Ejemplo práctico: fine-tune en dominio médico</span>
         </a>
       </div>
     </nav>
 
-    <!-- SECCIÓN 1: FUNDAMENTOS DEL ENTRENAMIENTO LLM -->
+    <!-- SECCIÓN 0: CONCEPTOS BÁSICOS -->
+    <section id="seccion-00" class="card">
+      <h2><span>00 · Fundamentos</span>Conceptos básicos: Tokens y Solicitudes</h2>
+
+      <p>
+        Antes de entrar en el entrenamiento de LLMs, es esencial comprender dos conceptos fundamentales
+        que rigen cómo funcionan estos modelos: los <strong>tokens</strong> y las <strong>solicitudes</strong>.
+      </p>
+
+      <h3>¿Qué es un Token?</h3>
+      <p>
+        Un <strong>token</strong> es la unidad más pequeña en la que se divide el texto para que el modelo pueda procesarlo.
+        A diferencia de lo que pueda parecer, un token <strong>no es necesariamente una palabra</strong>.
+      </p>
+
+      <div class="table-card">
+        <h3>Ejemplos de tokenización</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Texto</th>
+                <th>Tokens</th>
+                <th>Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Hello</td>
+                <td>"Hello"</td>
+                <td>1 token</td>
+              </tr>
+              <tr>
+                <td>uncommon</td>
+                <td>"un", "common"</td>
+                <td>2 tokens</td>
+              </tr>
+              <tr>
+                <td>🚀 emoji</td>
+                <td>"🚀", " ", "emoji"</td>
+                <td>3 tokens</td>
+              </tr>
+              <tr>
+                <td>The quick brown fox</td>
+                <td>"The", " quick", " brown", " fox"</td>
+                <td>4 tokens</td>
+              </tr>
+              <tr>
+                <td>Información</td>
+                <td>"Infor", "mación"</td>
+                <td>2 tokens (a menudo más en idiomas no inglés)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">💡</div>
+        <div>
+          <strong>Regla práctica:</strong> En inglés, 1 token ≈ 4 caracteres. Palabras comunes = 1 token,
+          palabras raras o caracteres especiales = 2-3 tokens. En otros idiomas (español, chino, etc.) es más.
+        </div>
+      </div>
+
+      <h3>¿Qué es una Solicitud (Prompt)?</h3>
+      <p>
+        Una <strong>solicitud</strong> (o <strong>prompt</strong>) es el texto que le envías al LLM para indicarle
+        qué queremos que haga. La forma en que la escribas determina completamente la calidad y el tipo de respuesta.
+      </p>
+
+      <h3>Ejemplos de solicitudes</h3>
+      <ul>
+        <li><strong>Pobre:</strong> "escribe un cuento" → Respuesta vaga y sin estructura</li>
+        <li><strong>Mejor:</strong> "escribe un cuento de fantasía para niños de 8 años, con un protagonista llamado Elena y un dragón amistoso, en 300 palabras" → Respuesta coherente y dirigida</li>
+        <li><strong>Óptima:</strong> [instrucción clara] + [contexto] + [formato esperado] + [restricciones] → Respuesta profesional</li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>Principio:</strong> Los LLMs responden mejor a solicitudes específicas y estructuradas.
+          <br><br>
+          Cuanto más detalle, contexto y claridad des, mejor será la respuesta.
+        </div>
+      </div>
+
+      <h3>Relación Tokens ↔ Costo y Velocidad</h3>
+      <p>
+        Los LLMs modernos (como GPT-4, Claude) cobran por <strong>número de tokens</strong> procesados,
+        no por número de palabras. Por eso comprender tokens es esencial:
+      </p>
+      <ul>
+        <li><strong>Entrada (Prompt):</strong> Costo por tokens en tu solicitud</li>
+        <li><strong>Salida (Respuesta):</strong> Costo por tokens que genera el modelo</li>
+        <li><strong>Velocidad:</strong> Más tokens = más tiempo de procesamiento</li>
+      </ul>
+
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div>
+          <strong>Ventana de contexto:</strong> Cada modelo tiene un límite máximo de tokens que puede procesar
+          en una solicitud (ej: GPT-4 = 128k tokens, Claude 3 = 200k tokens). Exceder este límite causa error.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 1: LLMs PARA PROCESAMIENTO DE TEXTO -->
     <section id="seccion-01" class="card">
-      <h2><span>01 · Fundamentos</span>Entrenamiento de LLM: Autosupervisado → SFT → RLHF</h2>
+      <h2><span>01 · Texto</span>LLMs para procesamiento de texto</h2>
+
+      <p>
+        Una de las aplicaciones más poderosas de los LLMs es el procesamiento y generación de texto.
+        Desde resumir documentos hasta traducir idiomas, los LLMs ofrecen soluciones robustas para tareas textuales complejas.
+      </p>
+
+      <h3>Casos de uso principales</h3>
+
+      <div class="table-card">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Tarea</th>
+                <th>Descripción</th>
+                <th>Casos prácticos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Generación de contenido</strong></td>
+                <td>Crear texto nuevo coherente y relevante a partir de instrucciones</td>
+                <td>Copywriting, emails, artículos de blog, descripciones de productos</td>
+              </tr>
+              <tr>
+                <td><strong>Summarización</strong></td>
+                <td>Extraer lo más importante de un documento largo</td>
+                <td>Resúmenes de reportes, abstracts de papers, resumen de reuniones</td>
+              </tr>
+              <tr>
+                <td><strong>Traducción</strong></td>
+                <td>Convertir texto de un idioma a otro manteniendo sentido</td>
+                <td>Localización de software, documentos multiidioma, subtítulos</td>
+              </tr>
+              <tr>
+                <td><strong>Clasificación de texto</strong></td>
+                <td>Categorizar texto según criterios (sentimiento, tema, spam, etc.)</td>
+                <td>Análisis de sentimiento, detección de spam, categorización automática</td>
+              </tr>
+              <tr>
+                <td><strong>Extracción de información</strong></td>
+                <td>Obtener datos estructurados de texto no estructurado</td>
+                <td>Extracción de entidades, relaciones, información de documentos</td>
+              </tr>
+              <tr>
+                <td><strong>Reescritura y mejora</strong></td>
+                <td>Editar texto para mejorar claridad, tono, longitud</td>
+                <td>Corrección de estilo, simplificación de texto técnico, expansión/compresión</td>
+              </tr>
+              <tr>
+                <td><strong>Análisis y búsqueda semántica</strong></td>
+                <td>Entender significado profundo y encontrar texto similar</td>
+                <td>Búsqueda por similitud, clustering de documentos, detección de duplicados</td>
+              </tr>
+              <tr>
+                <td><strong>Pregunta-respuesta (Q&A)</strong></td>
+                <td>Responder preguntas basadas en un contexto o conocimiento previo</td>
+                <td>Chatbots de soporte, FAQ automatizado, búsqueda de respuestas en documentos</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>Herramientas y modelos recomendados</h3>
+
+      <ul>
+        <li><strong>GPT-4 / GPT-4o (OpenAI):</strong> Mejor en calidad; caro pero versátil</li>
+        <li><strong>Claude 3.5 Sonnet (Anthropic):</strong> Excelente relación calidad-precio; bueno en análisis largo</li>
+        <li><strong>Llama 3 (Meta):</strong> Open-source; ejecutable localmente, buen rendimiento</li>
+        <li><strong>Mistral 8x22B (Mistral AI):</strong> Modelo mixto de expertos; rápido y eficiente</li>
+        <li><strong>Google Gemini:</strong> Bueno en multimodalidad e integración con Google Workspace</li>
+      </ul>
+
+      <h3>Trade-offs clave</h3>
+
+      <div class="phase-box">
+        <h4>Calidad vs Costo</h4>
+        <p>Modelos grandes (GPT-4) ofrecen mejor calidad pero cuestan 10-30x más que modelos medianos.
+        Para tareas simples, modelos más pequeños pueden ser suficientes y ahorrar mucho.</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>Contexto vs Privacidad</h4>
+        <p>APIs cloud ofrecen acceso fácil pero envían tus datos a servidores remotos.
+        Modelos locales garantizan privacidad pero requieren infraestructura.</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>Velocidad vs Precisión</h4>
+        <p>Modelos rápidos (Mistral 7B) son ideales para aplicaciones con latencia crítica.
+        Modelos lentos (GPT-4, Claude 3 Opus) ofrecen mejor precisión pero con mayor latencia.</p>
+      </div>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">💡</div>
+        <div>
+          <strong>Consejo práctico:</strong> Para tareas de texto en producción, considera una estrategia híbrida:
+          usa modelos rápidos pequeños por defecto (Llama 3.2 7B) y escala a modelos mayores solo cuando sea necesario.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: LLMs PARA DESARROLLO DE SOFTWARE -->
+    <section id="seccion-02" class="card">
+      <h2><span>02 · Código</span>LLMs para desarrollo de software</h2>
+
+      <p>
+        Los LLMs son expertos en más de una docena de lenguajes de programación.
+        Pueden ayudarte a compilar nuevas aplicaciones, mantener código existente y mejorar la calidad del código.
+      </p>
+
+      <h3>Tres áreas principales</h3>
+
+      <div class="table-card">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Área</th>
+                <th>Descripción</th>
+                <th>Ejemplos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Compilación de aplicaciones</strong></td>
+                <td>Generar código nuevo a partir de especificaciones o bocetos</td>
+                <td>Scaffolding de APIs, generación de boilerplate, creación de funciones completas</td>
+              </tr>
+              <tr>
+                <td><strong>Mantenimiento de código</strong></td>
+                <td>Actualizar, refactorizar o debuggear código existente</td>
+                <td>Migración de versiones, refactorización, eliminación de deuda técnica, debugging</td>
+              </tr>
+              <tr>
+                <td><strong>Mejora de código</strong></td>
+                <td>Optimizar código según métricas específicas</td>
+                <td>Aumento de seguridad, mejor logging, optimización de rendimiento, documentación</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>Lenguajes soportados</h3>
+      <p>
+        Los LLMs modernos soportan la mayoría de lenguajes populares:
+        Python, JavaScript/TypeScript, Java, C#, C++, Go, Rust, SQL, PHP, Kotlin, Scala, y más.
+      </p>
+
+      <h3>Herramientas especializadas en código</h3>
+
+      <ul>
+        <li><strong>GitHub Copilot (ChatGPT/Codex):</strong> Integración IDE, autocomplete en tiempo real</li>
+        <li><strong>Claude Code (Anthropic):</strong> CLI local, acceso a filesystem y shell</li>
+        <li><strong>GPT-4o (OpenAI):</strong> Conversacional, bueno para refactorings complejos</li>
+        <li><strong>Codeium / Tabnine:</strong> Alternativas open-source a Copilot</li>
+        <li><strong>Continue / Aider:</strong> Agentes de código locales con soporte de herramientas</li>
+      </ul>
+
+      <h3>Casos de uso reales</h3>
+
+      <div class="phase-box">
+        <h4>API Web desde cero</h4>
+        <p>Prompt: "Genera una API REST en FastAPI con endpoints para CRUD de usuarios con autenticación JWT"
+        → Resultado: código funcional listo para usar (estructura, validaciones, errores)</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>Migración de tecnología</h4>
+        <p>Prompt: "Convierte este código Node.js a Python FastAPI manteniendo la lógica"
+        → Resultado: código equivalente en el nuevo stack, con matices idiosomáticos</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>Generación de tests</h4>
+        <p>Prompt: "Genera tests unitarios con pytest para la clase UserService"
+        → Resultado: suite de tests que cubre casos principales y edge cases</p>
+      </div>
+
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div>
+          <strong>Advertencia importante:</strong> El código generado por LLMs puede tener:
+          <br>• Errores lógicos o de sintaxis (revisa siempre)
+          <br>• Vulnerabilidades de seguridad (valida con herramientas de análisis)
+          <br>• Dependencias subóptimas (verifica licencias y compatibilidad)
+          <br><br>
+          <strong>Regla de oro:</strong> Usa LLMs para acelerar, pero revisa siempre con un humano experto.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: LLMs PARA PROCESAMIENTO DE IMÁGENES -->
+    <section id="seccion-03" class="card">
+      <h2><span>03 · Imágenes</span>LLMs para procesamiento de imágenes</h2>
+
+      <p>
+        Los LLMs modernos pueden crear, editar y modificar imágenes de alta calidad.
+        Desde generación artística hasta edición precisa, estos modelos abren nuevas posibilidades creativas.
+      </p>
+
+      <h3>Tres capacidades principales</h3>
+
+      <div class="table-card">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Capacidad</th>
+                <th>Descripción</th>
+                <th>Ejemplos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Generación de imágenes</strong></td>
+                <td>Crear imágenes originales a partir de descripciones textuales detalladas</td>
+                <td>Diseño de productos, ilustraciones, arte conceptual, marketing visual</td>
+              </tr>
+              <tr>
+                <td><strong>Edición de imágenes</strong></td>
+                <td>Modificar imágenes existentes: cambiar estilo, agregar/remover elementos, cambiar fondo</td>
+                <td>Retoque de fotografía, cambio de escena, ajuste de atributos, reemplazo de objetos</td>
+              </tr>
+              <tr>
+                <td><strong>Variaciones de imágenes</strong></td>
+                <td>Generar múltiples versiones de una imagen con cambios controlados</td>
+                <td>A/B testing visual, exploración de diseños, generación de thumbnails en diferentes estilos</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>Modelos principales</h3>
+
+      <ul>
+        <li><strong>DALL-E 3 (OpenAI):</strong> Mejor en seguimiento de instrucciones, muy fotorealista</li>
+        <li><strong>Midjourney:</strong> Excelente para arte, estilo único y coherencia visual</li>
+        <li><strong>Stable Diffusion (open-source):</strong> Ejecutable localmente, bajo costo, comunidad activa</li>
+        <li><strong>Flux (Black Forest Labs):</strong> Nueva generación, mejor calidad y velocidad</li>
+        <li><strong>Google DeepDream / PaLM:</strong> Integración con ecosistema Google</li>
+      </ul>
+
+      <h3>Workflow típico</h3>
+
+      <div class="phase-box">
+        <h4>1. Generación con detalle extremo</h4>
+        <p>Cuanto más específico sea tu prompt, mejor resultado. Incluye: estilo, iluminación, composición, atributos.</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>2. Iteración y refinamiento</h4>
+        <p>Genera variaciones, selecciona la mejor, pide ajustes puntuales (agregar elemento, cambiar color, etc.)</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>3. Post-procesamiento humano</h4>
+        <p>Usa Photoshop, Figma o herramientas de edición para los últimos toques de refinamiento.</p>
+      </div>
+
+      <h3>Trade-offs clave</h3>
+
+      <ul>
+        <li><strong>Costo:</strong> DALL-E y Midjourney cuestan $0.02-0.30 USD por imagen; Stable Diffusion local es gratis</li>
+        <li><strong>Velocidad:</strong> Midjourney es lento (minutos); Stable Diffusion es rápido (segundos)</li>
+        <li><strong>Control vs creatividad:</strong> DALL-E bueno para control preciso; Midjourney para libertad creativa</li>
+        <li><strong>Derechos:</strong> Verifica licencias; algunos modelos exigen atribución, otros no</li>
+      </ul>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🎨</div>
+        <div>
+          <strong>Tip práctico:</strong> Para proyectos comerciales, comienza con DALL-E 3 (buena calidad, API simple).
+          Si necesitas más control o bajo costo, usa Stable Diffusion localmente.
+          Para arte puro y creatividad sin límites, Midjourney sigue siendo el rey.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: FUNDAMENTOS DEL ENTRENAMIENTO LLM -->
+    <section id="seccion-05" class="card">
+      <h2><span>05 · Fundamentos</span>Entrenamiento de LLM: Autosupervisado → SFT → RLHF</h2>
 
       <h3>Visión de 3 etapas</h3>
       <ol>
@@ -662,9 +1078,9 @@
       </ul>
     </section>
 
-    <!-- SECCIÓN 2: GLOSARIO CORTO -->
-    <section id="seccion-02" class="card">
-      <h2><span>02 · Glosario</span>Glosario corto (reutilizable)</h2>
+    <!-- SECCIÓN 6: GLOSARIO CORTO -->
+    <section id="seccion-06" class="card">
+      <h2><span>06 · Glosario</span>Glosario corto (reutilizable)</h2>
 
       <div class="table-card">
         <h3>Conceptos clave</h3>
@@ -779,9 +1195,9 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 3: RESUMEN VISUAL DEL PIPELINE -->
-    <section id="seccion-03" class="card">
-      <h2><span>03 · Resumen</span>Resumen visual del pipeline</h2>
+    <!-- SECCIÓN 7: RESUMEN VISUAL DEL PIPELINE -->
+    <section id="seccion-07" class="card">
+      <h2><span>07 · Resumen</span>Resumen visual del pipeline</h2>
 
       <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
 Datos en bruto
@@ -816,9 +1232,9 @@ Despliegue y operación
       </div>
     </section>
 
-    <!-- SECCIÓN 4: MÉTRICAS DE EVALUACIÓN -->
-    <section id="seccion-04" class="card">
-      <h2><span>04 · Métricas</span>Métricas de evaluación</h2>
+    <!-- SECCIÓN 8: MÉTRICAS DE EVALUACIÓN -->
+    <section id="seccion-08" class="card">
+      <h2><span>08 · Métricas</span>Métricas de evaluación</h2>
 
       <h3>Métricas automáticas</h3>
       <ul>
@@ -877,9 +1293,9 @@ Despliegue y operación
       </div>
     </section>
 
-    <!-- SECCIÓN 5: HERRAMIENTAS Y FRAMEWORKS -->
-    <section id="seccion-05" class="card">
-      <h2><span>05 · Herramientas</span>Herramientas y frameworks</h2>
+    <!-- SECCIÓN 9: HERRAMIENTAS Y FRAMEWORKS -->
+    <section id="seccion-09" class="card">
+      <h2><span>09 · Herramientas</span>Herramientas y frameworks</h2>
 
       <h3>Entrenamiento y fine-tuning</h3>
       <ul>
@@ -913,9 +1329,9 @@ Despliegue y operación
       </ul>
     </section>
 
-    <!-- SECCIÓN 6: RIESGOS Y MITIGACIONES -->
-    <section id="seccion-06" class="card">
-      <h2><span>06 · Riesgos</span>Riesgos y mitigaciones</h2>
+    <!-- SECCIÓN 10: RIESGOS Y MITIGACIONES -->
+    <section id="seccion-10" class="card">
+      <h2><span>10 · Riesgos</span>Riesgos y mitigaciones</h2>
 
       <div class="table-card">
         <h3>Matriz de riesgos</h3>
@@ -975,11 +1391,157 @@ Despliegue y operación
           <strong>Defensa en profundidad:</strong> ningún control único es suficiente. Combina RLHF + guardrails de entrada + filtros de salida + monitoreo + red-teaming.
         </div>
       </div>
+      </div>
     </section>
 
-    <!-- SECCIÓN 7: EJEMPLO PRÁCTICO -->
+    <!-- SECCIÓN 7: MATICES CRÍTICOS SOBRE CAPACIDADES DEL LLM -->
     <section id="seccion-07" class="card">
-      <h2><span>07 · Ejemplo</span>Ejemplo práctico: fine-tune en dominio médico</h2>
+      <h2><span>07 · Matices</span>Matices críticos sobre capacidades del LLM</h2>
+
+      <p>
+        A menudo escuchamos afirmaciones tajantes sobre lo que los LLMs "pueden" o "no pueden" hacer.
+        Aquí matizamos tres de las más comunes para comprender mejor cómo funcionan realmente.
+      </p>
+
+      <h3>1. Comprensión del lenguaje y matemáticas</h3>
+
+      <div class="phase-box">
+        <h4>❌ Declaración original (incompleta)</h4>
+        <p>"Un LLM no entiende el lenguaje ni las matemáticas."</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>✅ Matización correcta</h4>
+        <p>
+          <strong>Un LLM no entiende el lenguaje ni las matemáticas como un humano,
+          pero sí aprende patrones muy profundos que le permiten comportarse como si entendiera
+          en muchos contextos.</strong>
+        </p>
+      </div>
+
+      <div class="callout">
+        <div class="callout-icon">💡</div>
+        <div>
+          <strong>Por qué importa:</strong> Es cierto que a nivel de arquitectura, un LLM es un modelo
+          de probabilidad sobre tokens sin "comprensión" semántica verdadera. Pero internamente aprende
+          representaciones matemáticas tan sofisticadas de sintaxis, semántica y estructura que puede resolver
+          problemas de matemáticas, escribir código, razonar lógicamente, etc. No es "verdadera" comprensión,
+          pero es funcionalmente equivalente en muchos casos.
+        </div>
+      </div>
+
+      <h3>2. Modos de recuperación y escritura creativa</h3>
+
+      <div class="phase-box">
+        <h4>❌ Declaración original (incompleta)</h4>
+        <p>"Un LLM no tiene modos independientes para la recuperación de información y la escritura creativa;
+        simplemente predice el siguiente token más probable."</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>✅ Matización correcta</h4>
+        <p>
+          <strong>El LLM solo predice texto; los modos 'buscar información' vs 'ser creativo'
+          son efectos de cómo lo condicionamos (prompting + herramientas externas).</strong>
+        </p>
+      </div>
+
+      <div class="callout">
+        <div class="callout-icon">💡</div>
+        <div>
+          <strong>Por qué importa:</strong> Es correcto que el modelo base no distingue entre "buscar"
+          y "crear"; solo predice tokens. Pero en sistemas modernos, esa separación sí emerge:
+          <br><br>
+          • <strong>Recuperación:</strong> la proporcionas vía RAG (le das contexto relevante)<br>
+          • <strong>Creatividad:</strong> la controlas vía temperature y prompting<br><br>
+          Así que aunque el modelo no tiene "modos", la arquitectura externa sí los implementa.
+        </div>
+      </div>
+
+      <h3>3. Antropomorfismo, emociones y ética</h3>
+
+      <div class="phase-box">
+        <h4>❌ Declaración original (incompleta)</h4>
+        <p>"Un LLM no puede mostrar antropomorfismo ni comprender la ética.
+        La salida del modelo es una combinación de datos de entrenamiento y prompts."</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>✅ Matización correcta</h4>
+        <p>
+          <strong>No tiene emociones ni ética propias; solo imita patrones lingüísticos de cortesía,
+          emoción y razonamiento moral aprendidos de los datos y de su ajuste fino (RLHF).</strong>
+        </p>
+      </div>
+
+      <div class="callout">
+        <div class="callout-icon">💡</div>
+        <div>
+          <strong>Por qué importa:</strong> Es crucial distinguir entre:<br><br>
+          • <strong>Simulación:</strong> el modelo puede generar un texto que suena empático, respetuoso o ético<br>
+          • <strong>Verdadero entendimiento:</strong> no tiene conciencia, intención ni valores propios<br><br>
+          Esto no significa que los outputs sean "falsos"; significa que son artefactos de estadísticas
+          de entrenamiento + RLHF, no expresiones de una mente sintética.
+        </div>
+      </div>
+
+      <h3>Síntesis</h3>
+      <div class="table-card">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Capacidad</th>
+                <th>¿Realmente?</th>
+                <th>Matiz</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Comprende lenguaje</strong></td>
+                <td>No / Sí*</td>
+                <td>Aprende patrones muy profundos, pero sin semanticidad real</td>
+              </tr>
+              <tr>
+                <td><strong>Hace matemáticas</strong></td>
+                <td>Limitado</td>
+                <td>Mejor con prompting de cadena de pensamiento (chain-of-thought)</td>
+              </tr>
+              <tr>
+                <td><strong>Distingue modos</strong></td>
+                <td>No internamente</td>
+                <td>Pero la arquitectura externa (RAG, prompting) sí los implementa</td>
+              </tr>
+              <tr>
+                <td><strong>Tiene emociones</strong></td>
+                <td>No</td>
+                <td>Solo simula patrones de cortesía/empatía vistos en entrenamiento</td>
+              </tr>
+              <tr>
+                <td><strong>Tiene ética</strong></td>
+                <td>No inherente</td>
+                <td>La ética viene de RLHF y guardrails, no de creencias genuinas</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>Conclusión:</strong> Los LLMs son herramientas extraordinariamente potentes,
+          pero es crucial entender sus límites y no proyectar agencia o consciencia donde solo hay estadística.
+          <br><br>
+          Usa el contexto de RAG, diseña prompts claros y aplica RLHF para moldear comportamiento,
+          pero siempre recuerda que el modelo no "entiende" en el sentido humano.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 8: EJEMPLO PRÁCTICO -->
+    <section id="seccion-08" class="card">
+      <h2><span>08 · Ejemplo</span>Ejemplo práctico: fine-tune en dominio médico</h2>
 
       <h3>Contexto</h3>
       <p>
@@ -1007,6 +1569,715 @@ Despliegue y operación
         <div class="callout-icon">📋</div>
         <div>
           <strong>Lección:</strong> en dominios regulados, la calidad del dataset y los guardrails importan más que el tamaño del modelo.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: CUÁNDO USAR Y CUÁNDO NO USAR LLMs -->
+    <section id="seccion-04" class="card">
+      <h2><span>04 · Decisión</span>Cuándo usar (y cuándo NO usar) LLMs</h2>
+
+      <p>
+        Los LLMs son herramientas poderosas, pero no son la solución para todo problema.
+        Esta sección te ayuda a decidir cuándo es una buena idea usarlos y cuándo es mejor buscar alternativas.
+      </p>
+
+      <h3>✅ Casos ideales para LLMs</h3>
+      <div class="table-card">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Caso de uso</th>
+                <th>Por qué funciona bien</th>
+                <th>Ejemplo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Generación de texto</strong></td>
+                <td>Es lo que los LLMs hacen mejor: predecir secuencias coherentes</td>
+                <td>Copywriting, emails, artículos, summaries</td>
+              </tr>
+              <tr>
+                <td><strong>Clasificación y análisis de sentimiento</strong></td>
+                <td>Pueden entender contexto complejo mejor que modelos simples</td>
+                <td>Detección de spam, análisis de feedback de clientes</td>
+              </tr>
+              <tr>
+                <td><strong>Traducción de idiomas</strong></td>
+                <td>Capturan semántica, no solo palabras clave</td>
+                <td>Localización de productos, documentos multiidioma</td>
+              </tr>
+              <tr>
+                <td><strong>Code generation y refactoring</strong></td>
+                <td>Entienden patrones de código y best practices</td>
+                <td>Autocomplete, generación de tests, conversión de lenguajes</td>
+              </tr>
+              <tr>
+                <td><strong>RAG (Retrieval + Generation)</strong></td>
+                <td>Combina recuperación precisa + generación fluida</td>
+                <td>Chatbots sobre docs internos, Q&A técnico</td>
+              </tr>
+              <tr>
+                <td><strong>Extracción de información</strong></td>
+                <td>Puede parsear documentos no estructurados</td>
+                <td>Extracción de datos de facturas, contratos, reportes</td>
+              </tr>
+              <tr>
+                <td><strong>Explicación y educación</strong></td>
+                <td>Adapta el nivel de detalle y simplicidad al usuario</td>
+                <td>Tutoriales personalizados, explicación de conceptos complejos</td>
+              </tr>
+              <tr>
+                <td><strong>Brainstorming y ideación</strong></td>
+                <td>Genera múltiples perspectivas rápidamente</td>
+                <td>Nombres de productos, estrategias de marketing, temas de contenido</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>❌ Casos donde NO deberías usar LLMs</h3>
+      <div class="table-card">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Caso problemático</th>
+                <th>Por qué es riesgoso</th>
+                <th>Alternativa recomendada</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Aritmética y cálculos precisos</strong></td>
+                <td>Los LLMs no entienden matemáticas, solo simulan; cometen errores sistemáticos</td>
+                <td>APIs de cálculo, Python, Excel</td>
+              </tr>
+              <tr>
+                <td><strong>Decisiones críticas sin validación</strong></td>
+                <td>Pueden alucinar; riesgo de daño si se actúa sin verificar</td>
+                <td>Procesos de aprobación humana, auditoría</td>
+              </tr>
+              <tr>
+                <td><strong>Datos sensibles sin compliance</strong></td>
+                <td>Riesgo de data leakage; memorización de PII; regulaciones (GDPR, HIPAA)</td>
+                <td>Modelos locales, on-prem, o APIs con garantías de privacidad</td>
+              </tr>
+              <tr>
+                <td><strong>Tareas que exigen exactitud 100%</strong></td>
+                <td>Los LLMs tienen tasa de error inherente (hallucinations)</td>
+                <td>Búsqueda de bases de datos, consultas SQL</td>
+              </tr>
+              <tr>
+                <td><strong>Sistemas en tiempo real ultra-bajo latency</strong></td>
+                <td>Los LLMs son lentos (cientos de ms); no apto para trading HFT, juegos, etc.</td>
+                <td>Modelos más pequeños, reglas heurísticas, búsqueda indexada</td>
+              </tr>
+              <tr>
+                <td><strong>Tareas que solo requieren buscar hechos</strong></td>
+                <td>Usa un buscador (Google, Elastic); es más rápido y preciso que LLM</td>
+                <td>Motores de búsqueda, bases de datos vectoriales (si es por similitud)</td>
+              </tr>
+              <tr>
+                <td><strong>Información muy reciente (últimas horas)</strong></td>
+                <td>El conocimiento del LLM es estático; no actualiza en tiempo real</td>
+                <td>APIs de noticias, web scraping, bases de datos en vivo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>Matriz de decisión: ¿Qué modelo elegir?</h3>
+
+      <div class="table-card">
+        <h3>Guía por escenario</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Escenario</th>
+                <th>Prioridad</th>
+                <th>Opción recomendada</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Máxima capacidad + presupuesto ilimitado</strong></td>
+                <td>Calidad &gt; costo</td>
+                <td>GPT-4 / Claude 3 Opus (cloud)</td>
+              </tr>
+              <tr>
+                <td><strong>Buen balance calidad/costo</strong></td>
+                <td>Equilibrio</td>
+                <td>GPT-4 Mini / Claude 3.5 Sonnet / Llama 3.1</td>
+              </tr>
+              <tr>
+                <td><strong>Costo mínimo (presupuesto ajustado)</strong></td>
+                <td>Costo &lt; calidad</td>
+                <td>Llama 2 / Mistral 7B (local) o Grok (acceso gratuito)</td>
+              </tr>
+              <tr>
+                <td><strong>Privacidad máxima (datos sensibles)</strong></td>
+                <td>Privacidad &gt; todo</td>
+                <td>Llama 3 / Mistral en servidor propio (on-prem)</td>
+              </tr>
+              <tr>
+                <td><strong>Baja latencia (aplicaciones en tiempo real)</strong></td>
+                <td>Velocidad &gt; capacidad</td>
+                <td>Modelos pequeños (Phi 3, TinyLlama) locales, o destillación</td>
+              </tr>
+              <tr>
+                <td><strong>Dominio especializado (medicina, ley, finanzas)</strong></td>
+                <td>Exactitud en dominio</td>
+                <td>Modelo base fine-tuneado + RAG + guardrails</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>Trade-offs clave</h3>
+
+      <div class="phase-box">
+        <h4>🎯 Costo vs Capacidad</h4>
+        <p>
+          Modelos grandes (GPT-4, Claude Opus) son mejores pero 10-100x más caros.
+          Para tareas sencillas, modelos pequeños baratos pueden ser suficientes.
+          <br><br>
+          <strong>Regla:</strong> Comienza con modelo pequeño; escala si no cumple.
+        </p>
+      </div>
+
+      <div class="phase-box">
+        <h4>⚡ Latencia vs Precisión</h4>
+        <p>
+          Modelos locales = baja latencia (50-200 ms) pero menor capacidad.
+          Modelos cloud = latencia media (500 ms-2 s) pero mejor precisión.
+          <br><br>
+          <strong>Regla:</strong> Si necesitas respuesta en &lt;100 ms, usa modelo local o reglas heurísticas.
+        </p>
+      </div>
+
+      <div class="phase-box">
+        <h4>🔒 Privacidad vs Rendimiento</h4>
+        <p>
+          Cloud APIs (OpenAI, Anthropic) son convenientes pero tus datos van a sus servidores.
+          Modelos on-prem garantizan privacidad pero requieren infraestructura.
+          <br><br>
+          <strong>Regla:</strong> Para datos PII/sensibles, usa on-prem o proveedor con garantías legales.
+        </p>
+      </div>
+
+      <h3>Tres categorías de modelos generativos (ampliadas)</h3>
+
+      <div class="table-card">
+        <h3>Clasificación por tipo de tarea</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Categoría</th>
+                <th>Descripción</th>
+                <th>Ejemplos</th>
+                <th>Casos de uso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Modelos de lenguaje natural (LLMs)</strong></td>
+                <td>Toman texto y generan respuestas textuales coherentes</td>
+                <td>GPT-4, Claude, Llama, Mistral</td>
+                <td>Chat, generación de contenido, traducción, código</td>
+              </tr>
+              <tr>
+                <td><strong>Modelos de transformador generativos (GPT-style)</strong></td>
+                <td>Toman fragmentos de código o lenguaje natural y generan código</td>
+                <td>GitHub Copilot, GPT-4 Code, CodeGen</td>
+                <td>Code completion, refactoring, debug, generación de tests</td>
+              </tr>
+              <tr>
+                <td><strong>Modelos de generación de imágenes</strong></td>
+                <td>Toman indicaciones textuales, imágenes base o ambas; crean imágenes nuevas</td>
+                <td>DALL-E, Midjourney, Stable Diffusion, Flux</td>
+                <td>Diseño, marketing, ilustración, edición de imágenes</td>
+              </tr>
+              <tr>
+                <td><strong>Modelos multimodales</strong></td>
+                <td>Combinan texto, imagen, video y audio en un modelo único</td>
+                <td>GPT-4o, Claude 3.5 Vision, Gemini 2.0</td>
+                <td>Análisis de documentos escaneados, asistente visual, video QA</td>
+              </tr>
+              <tr>
+                <td><strong>Modelos de embeddings</strong></td>
+                <td>Convierten texto a vectores numéricos; no generan, clasifican por similitud</td>
+                <td>text-embedding-3, ada, BGE</td>
+                <td>RAG, búsqueda semántica, clustering, recomendaciones</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>Resumen de decisión:</strong><br><br>
+          1. ¿Es tarea de texto/generación? → LLM<br>
+          2. ¿Necesitas código? → LLM code-optimizado<br>
+          3. ¿Necesitas imagen? → Modelo de imagen<br>
+          4. ¿Requiere exactitud 100%? → No uses LLM, usa búsqueda/cálculo directo<br>
+          5. ¿Datos sensibles? → On-prem o garantías legales<br>
+          6. ¿Tiempo real (&lt;100 ms)? → Modelo local pequeño
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 10: LLMs PARA DESARROLLO DE SOFTWARE -->
+    <section id="seccion-10" class="card">
+      <h2><span>10 · Código</span>LLMs para desarrollo de software</h2>
+
+      <p>
+        Los LLMs modernos son expertos en más de una docena de lenguajes de programación:
+        <strong>Python, JavaScript, TypeScript, C#, Java, Go, Rust, PHP, Perl, C++, SQL, Bash</strong> y más.
+        Son especialmente útiles para tareas de desarrollo porque pueden entender contexto, patrones
+        y mejores prácticas del código.
+      </p>
+
+      <h3>1. Compilación de aplicaciones (desde cero)</h3>
+
+      <div class="phase-box">
+        <h4>📝 Generación de código a partir de especificaciones</h4>
+        <p>
+          Puedes describir qué quieres construir y el LLM genera código de calidad listos para usar.
+        </p>
+      </div>
+
+      <div class="table-card">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Caso</th>
+                <th>Descripción</th>
+                <th>Ventaja</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>API web desde cero</strong></td>
+                <td>Describe endpoints, modelos de datos, autenticación</td>
+                <td>Genera scaffolding completo (Express, FastAPI, Django, etc.)</td>
+              </tr>
+              <tr>
+                <td><strong>CRUD applications</strong></td>
+                <td>Especifica entidades y relaciones</td>
+                <td>Frontend + backend + DB migrations automáticos</td>
+              </tr>
+              <tr>
+                <td><strong>Scripts de automatización</strong></td>
+                <td>Describe la tarea (procesar CSVs, hacer backup, etc.)</td>
+                <td>Código Python/Bash listo para ejecutar</td>
+              </tr>
+              <tr>
+                <td><strong>Configuration files</strong></td>
+                <td>Especifica requisitos (Docker, K8s, Terraform)</td>
+                <td>Genera archivos con best practices</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>2. Mantenimiento de aplicaciones</h3>
+
+      <div class="phase-box">
+        <h4>🔧 Actualización y mejora de código existente</h4>
+        <p>
+          Si trabajas en una base de código existente, los LLMs pueden ayudarte a:
+        </p>
+      </div>
+
+      <ul>
+        <li><strong>Refactoring:</strong> Mejorar legibilidad, eliminar duplicación, aplicar design patterns</li>
+        <li><strong>Actualización de dependencias:</strong> Migrar de librerías antiguas a nuevas (ej. React 16 → 18)</li>
+        <li><strong>Debugging:</strong> Analizar errores y sugerir fixes</li>
+        <li><strong>Documentación:</strong> Generar docstrings, README, API docs</li>
+        <li><strong>Tests:</strong> Crear unit tests, integration tests, casos edge</li>
+        <li><strong>Performance:</strong> Identificar cuellos de botella y optimizar</li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-icon">💡</div>
+        <div>
+          <strong>Mejor práctica:</strong> Proporciona contexto (archivos adjacentes, tests existentes, error logs).
+          Cuanto más contexto, más preciso es el LLM.
+        </div>
+      </div>
+
+      <h3>3. Mejora de aplicaciones (por métrica)</h3>
+
+      <div class="table-card">
+        <h3>Mejoras específicas que puedes pedir</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Métrica</th>
+                <th>Qué mejorar</th>
+                <th>Ejemplo de prompt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Seguridad</strong></td>
+                <td>SQL injection, XSS, CSRF, manejo de secrets</td>
+                <td>"Revisa este código por vulnerabilidades de seguridad"</td>
+              </tr>
+              <tr>
+                <td><strong>Logging / Observabilidad</strong></td>
+                <td>Agregar logs estructurados, tracing, metrics</td>
+                <td>"Agrega logging completo para debugging"</td>
+              </tr>
+              <tr>
+                <td><strong>Error handling</strong></td>
+                <td>Manejo de excepciones más robusto</td>
+                <td>"Mejora los try-catch para mayor resiliencia"</td>
+              </tr>
+              <tr>
+                <td><strong>Performance</strong></td>
+                <td>Caching, async/await, índices en DB</td>
+                <td>"Optimiza este código para reducir latencia"</td>
+              </tr>
+              <tr>
+                <td><strong>Accessibility</strong></td>
+                <td>ARIA labels, keyboard navigation, contraste</td>
+                <td>"Mejora la accesibilidad para usuarios con discapacidades"</td>
+              </tr>
+              <tr>
+                <td><strong>Tipo estático</strong></td>
+                <td>Agregar type hints (Python), TypeScript, interfaces</td>
+                <td>"Agrega type hints para mayor seguridad"</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>Herramientas recomendadas para desarrollo</h3>
+
+      <div class="table-card">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Herramienta</th>
+                <th>Modelo</th>
+                <th>Caso de uso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>GitHub Copilot</strong></td>
+                <td>GPT-4 / Codex</td>
+                <td>Autocompletar en IDE; genera líneas/funciones completas</td>
+              </tr>
+              <tr>
+                <td><strong>Claude Code</strong></td>
+                <td>Claude 3.5 Sonnet</td>
+                <td>Refactoring profundo, file editing, CLI agent con acceso a repo</td>
+              </tr>
+              <tr>
+                <td><strong>GPT-4 / ChatGPT+</strong></td>
+                <td>GPT-4o</td>
+                <td>Análisis detallado, generación de código, debugging interactivo</td>
+              </tr>
+              <tr>
+                <td><strong>Cursor IDE</strong></td>
+                <td>GPT-4 / Claude</td>
+                <td>IDE con LLM integrado; edición en contexto de todo el proyecto</td>
+              </tr>
+              <tr>
+                <td><strong>Amazon CodeWhisperer</strong></td>
+                <td>Modelo propietario</td>
+                <td>Similar a Copilot; enfoque en AWS services</td>
+              </tr>
+              <tr>
+                <td><strong>Tabnine</strong></td>
+                <td>Modelos varios</td>
+                <td>Autocompletar local/cloud; opción on-prem para privacidad</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🚀</div>
+        <div>
+          <strong>Impacto en productividad:</strong> Estudios muestran que los desarrolladores que usan LLMs
+          completam tareas 35-55% más rápido, con similar calidad de código (validado con tests).
+        </div>
+      </div>
+
+      <h3>⚠️ Riesgos y limitaciones</h3>
+      <ul>
+        <li><strong>Hallucinations:</strong> Puede generar código que "se ve" correcto pero no funciona</li>
+        <li><strong>Dependencias desactualizadas:</strong> Puede sugerir versiones viejas o inseguras</li>
+        <li><strong>Código boilerplate innecesario:</strong> A veces genera más código del necesario</li>
+        <li><strong>Sin entendimiento profundo de arquitectura:</strong> No entiende sistemas muy grandes; necesita mucho contexto</li>
+      </ul>
+
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div>
+          <strong>Siempre revisa el código generado.</strong> LLMs son ayudantes, no escritores finales.
+          Valida con tests, revisión de pares, y análisis de seguridad.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 11: LLMs PARA PROCESAMIENTO DE IMÁGENES -->
+    <section id="seccion-11" class="card">
+      <h2><span>11 · Imágenes</span>LLMs para procesamiento de imágenes</h2>
+
+      <p>
+        Los modelos generativos de imágenes pueden crear imágenes realistas, editar existentes
+        y generar variaciones. Aunque técnicamente no son "LLMs" (son modelos de difusión o GANs),
+        funcionan con prompts textuales similares a los LLMs y son herramientas complementarias.
+      </p>
+
+      <h3>1. Generación de imágenes desde cero</h3>
+
+      <div class="phase-box">
+        <h4>🎨 Crear imágenes originales a partir de descripciones</h4>
+        <p>
+          Proporcionas una descripción textual detallada y el modelo genera una imagen coherente.
+        </p>
+      </div>
+
+      <div class="table-card">
+        <h3>Ejemplos de uso</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Caso</th>
+                <th>Descripción</th>
+                <th>Beneficio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Diseño gráfico</strong></td>
+                <td>Crear ilustraciones, fondos, banners personalizados</td>
+                <td>Prototipado rápido, no necesitas diseñador gráfico</td>
+              </tr>
+              <tr>
+                <td><strong>Marketing y publicidad</strong></td>
+                <td>Generar imágenes para campañas, posts, anuncios</td>
+                <td>Variaciones ilimitadas sin costo de fotografía</td>
+              </tr>
+              <tr>
+                <td><strong>Desarrollo de juegos/apps</strong></td>
+                <td>Assets, sprites, fondos, personajes</td>
+                <td>Acelera prototipado de indie games</td>
+              </tr>
+              <tr>
+                <td><strong>Contenido educativo</strong></td>
+                <td>Diagramas, infografías, ilustraciones de conceptos</td>
+                <td>Visualización rápida de ideas complejas</td>
+              </tr>
+              <tr>
+                <td><strong>E-commerce</strong></td>
+                <td>Mockups de productos, variaciones de color/estilo</td>
+                <td>Sin fotografía costosa</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-icon">💡</div>
+        <div>
+          <strong>Regla de oro:</strong> Cuanto más detallado sea el prompt, mejor la imagen.
+          <br><br>
+          ❌ Malo: "Un gato"<br>
+          ✅ Bueno: "Un gato naranja con ojos azules, sentado en una ventana soleada, estilo pintura al óleo, colores cálidos"
+        </div>
+      </div>
+
+      <h3>2. Edición de imágenes (inpainting / outpainting)</h3>
+
+      <div class="phase-box">
+        <h4>✏️ Modificar imágenes existentes con instrucciones textuales</h4>
+        <p>
+          Proporcionas una imagen y un prompt describiendo qué cambiar. El modelo edita solo esa región
+          manteniendo coherencia con el resto.
+        </p>
+      </div>
+
+      <ul>
+        <li><strong>Cambio de estilo:</strong> Convertir foto a pintura, manga, cartoon, etc.</li>
+        <li><strong>Agregar elementos:</strong> "Añade un gato a la derecha de la imagen"</li>
+        <li><strong>Remover elementos:</strong> "Elimina el objeto de la esquina superior izquierda"</li>
+        <li><strong>Reposicionamiento:</strong> "Mueve el objeto al centro"</li>
+        <li><strong>Cambio de background:</strong> "Reemplaza el fondo con un bosque"</li>
+        <li><strong>Extensión (outpainting):</strong> "Expande la imagen hacia arriba con más cielo"</li>
+      </ul>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🎬</div>
+        <div>
+          <strong>Casos de uso:</strong> Marketing rápido, ajuste de mockups, corrección de errores de diseño,
+          variaciones de campaña publicitaria sin refotos.
+        </div>
+      </div>
+
+      <h3>3. Variaciones de imágenes</h3>
+
+      <div class="phase-box">
+        <h4>🔄 Generar múltiples versiones a partir de una imagen original</h4>
+        <p>
+          Proporcionas una imagen y parámetros (cantidad de variaciones, grado de cambio).
+          El modelo mantiene la composición/objeto principal pero varía:
+        </p>
+      </div>
+
+      <ul>
+        <li><strong>Color:</strong> Mismo objeto, diferentes paletas de color</li>
+        <li><strong>Estilo:</strong> Versiones en diferentes estilos artísticos</li>
+        <li><strong>Background:</strong> Mismo sujeto en diferentes contextos</li>
+        <li><strong>Pose/posición:</strong> Objeto en diferentes ángulos/posiciones</li>
+        <li><strong>Detalles:</strong> Expresiones faciales, accesorios, variaciones menores</li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-icon">💡</div>
+        <div>
+          <strong>Ventaja:</strong> La imagen original actúa como "referencia de marca".
+          Todas las variaciones mantienen coherencia visual.
+        </div>
+      </div>
+
+      <h3>Herramientas recomendadas para imágenes</h3>
+
+      <div class="table-card">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Herramienta</th>
+                <th>Tecnología</th>
+                <th>Casos de uso</th>
+                <th>Precio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>DALL-E 3</strong></td>
+                <td>Diffusion + LLM</td>
+                <td>Generación de alta calidad, edición, variaciones</td>
+                <td>$0.04-0.20 por imagen</td>
+              </tr>
+              <tr>
+                <td><strong>Midjourney</strong></td>
+                <td>Modelo propietario</td>
+                <td>Arte de alta calidad, estilo consistente, comunidad</td>
+                <td>$10-120/mes (suscripción)</td>
+              </tr>
+              <tr>
+                <td><strong>Stable Diffusion</strong></td>
+                <td>Modelo open-source</td>
+                <td>On-prem, sin costo marginal, máxima privacidad</td>
+                <td>Gratis (solo costo GPU)</td>
+              </tr>
+              <tr>
+                <td><strong>Flux</strong></td>
+                <td>Última generación (2024)</td>
+                <td>Mejor calidad que Stable Diffusion, más rápido</td>
+                <td>API pagada (BoltAI)</td>
+              </tr>
+              <tr>
+                <td><strong>Adobe Firefly</strong></td>
+                <td>Diffusion + integración Adobe</td>
+                <td>Generación + edición dentro de Photoshop/Illustrator</td>
+                <td>Incluido en Creative Cloud</td>
+              </tr>
+              <tr>
+                <td><strong>Canva AI</strong></td>
+                <td>Diffusion integrado</td>
+                <td>Generación rápida en plataforma de diseño</td>
+                <td>$120/año (Canva Pro)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>⚠️ Consideraciones clave</h3>
+
+      <div class="table-card">
+        <h3>Trade-offs en generación de imágenes</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Aspecto</th>
+                <th>Consideración</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Derechos de autor</strong></td>
+                <td>Verifica licencia: DALL-E (tuya), Midjourney (tuya con suscripción), Stable Diffusion (abierto)</td>
+              </tr>
+              <tr>
+                <td><strong>Sesgo y representación</strong></td>
+                <td>Los modelos pueden reproducir sesgos de datos de entrenamiento</td>
+              </tr>
+              <tr>
+                <td><strong>Calidad vs velocidad</strong></td>
+                <td>Modelos más grandes = mejor calidad pero más lentos/caros</td>
+              </tr>
+              <tr>
+                <td><strong>Privacidad</strong></td>
+                <td>APIs cloud guardan datos; usa on-prem (Stable Diffusion local) para máxima privacidad</td>
+              </tr>
+              <tr>
+                <td><strong>Consistencia visual</strong></td>
+                <td>Si necesitas mismo personaje/objeto en múltiples imágenes, requiere prompts muy detallados</td>
+              </tr>
+              <tr>
+                <td><strong>Costo acumulativo</strong></td>
+                <td>Generar 100 imágenes puede costar $2-20 dependiendo del modelo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div>
+          <strong>Ética y legalidad:</strong> No uses para crear contenido fraudulento, deepfakes, o violar derechos.
+          Algunos jurisdicciones requieren disclosure si usas imágenes generadas por IA.
+        </div>
+      </div>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>Recomendación práctica:</strong><br><br>
+          • Prototipos rápidos / brainstorming → DALL-E o Canva<br>
+          • Arte de alta calidad / campaña profesional → Midjourney<br>
+          • Máximo control / on-prem → Stable Diffusion local<br>
+          • Integración Adobe → Firefly<br>
+          • Presupuesto limitado → Stable Diffusion (gratis)
         </div>
       </div>
     </section>
