@@ -522,6 +522,44 @@
         min-width: 520px;
       }
     }
+
+    /* Botón flotante para regresar al menú */
+    .back-to-menu {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.9), rgba(37, 99, 235, 0.9));
+      border: 2px solid rgba(56, 189, 248, 0.6);
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      text-decoration: none;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    .back-to-menu:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(56, 189, 248, 0.6);
+      background: linear-gradient(135deg, rgba(56, 189, 248, 1), rgba(37, 99, 235, 1));
+    }
+
+    @media (max-width: 720px) {
+      .back-to-menu {
+        width: 48px;
+        height: 48px;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        font-size: 1.3rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -600,6 +638,10 @@
         <a href="#seccion-10" class="index-link">
           <span class="index-number">10</span>
           <span class="index-title">Diccionario IA v4 - Gobierno y Operación</span>
+        </a>
+        <a href="#seccion-11" class="index-link">
+          <span class="index-number">11</span>
+          <span class="index-title">Diccionario IA v5 - Conceptos clave en entrenamiento de LLM</span>
         </a>
       </div>
     </nav>
@@ -1536,6 +1578,153 @@ Aplicación / chatbot / sistema</pre>
       </div>
     </section>
 
+    <!-- SECCIÓN 11: DICCIONARIO IA V5 - ENTRENAMIENTO DE LLM -->
+    <section id="seccion-11" class="card">
+      <h2><span>11 · Entrenamiento</span>Diccionario IA v5 — conceptos clave en entrenamiento de LLM</h2>
+
+      <h3>🔹 Pre-entrenamiento (Pretraining)</h3>
+      <p>
+        Fase inicial en la que un modelo de lenguaje aprende patrones generales del lenguaje 
+        a partir de grandes volúmenes de datos. Normalmente se basa en la predicción del 
+        siguiente token y permite adquirir gramática, semántica y conocimiento general.
+      </p>
+
+      <h3>🔹 Entrenamiento autosupervisado (Self-Supervised Learning)</h3>
+      <p>
+        Tipo de entrenamiento donde las etiquetas se derivan automáticamente de los propios 
+        datos, sin intervención humana explícita.
+      </p>
+      <p><strong>📌 En LLM:</strong></p>
+      <ul>
+        <li>El texto actúa como entrada y como "etiqueta"</li>
+        <li>Ejemplo: predecir la siguiente palabra de una secuencia</li>
+      </ul>
+      <p>
+        <strong>👉 Es el fundamento real del pre-entrenamiento de los LLM modernos.</strong>
+      </p>
+
+      <h3>🔹 Entrenamiento no supervisado (Unsupervised Learning)</h3>
+      <p>
+        Paradigma clásico de aprendizaje donde no existe una función objetivo explícita ni 
+        etiquetas, como:
+      </p>
+      <ul>
+        <li>Clustering</li>
+        <li>PCA</li>
+        <li>Topic Modeling</li>
+      </ul>
+      <p><strong>📌 Nota importante:</strong></p>
+      <p>
+        Los LLM no se entrenan principalmente con aprendizaje no supervisado puro, aunque 
+        históricamente se haya usado el término de forma imprecisa.
+      </p>
+
+      <h3>🔹 SFT – Supervised Fine-Tuning</h3>
+      <p><strong>(Ajuste fino supervisado)</strong></p>
+      <p>
+        Fase posterior al pre-entrenamiento en la que el modelo se entrena con pares 
+        entrada–salida etiquetados por humanos.
+      </p>
+      <p><strong>Ejemplos:</strong></p>
+      <ul>
+        <li>Pregunta → respuesta correcta</li>
+        <li>Instrucción → salida esperada</li>
+        <li>Código → resultado esperado</li>
+      </ul>
+      <p><strong>📌 Objetivo:</strong></p>
+      <ul>
+        <li>Mejorar seguimiento de instrucciones</li>
+        <li>Reducir respuestas erróneas</li>
+        <li>Especializar el modelo</li>
+      </ul>
+
+      <h3>🔹 Instrucción tuning (Instruction Tuning)</h3>
+      <p>
+        Variante de SFT enfocada específicamente en entrenar al modelo para seguir 
+        instrucciones en lenguaje natural.
+      </p>
+      <p><strong>Ejemplo:</strong></p>
+      <ul>
+        <li>"Instrucción: resume el texto"</li>
+        <li>"Salida esperada: resumen correcto"</li>
+      </ul>
+      <p>
+        <strong>📌 Es una de las razones por las que los LLM modernos "parecen asistentes".</strong>
+      </p>
+
+      <h3>🔹 RLHF – Reinforcement Learning from Human Feedback</h3>
+      <p><strong>(Aprendizaje por refuerzo con retroalimentación humana)</strong></p>
+      <p>Proceso de alineación donde:</p>
+      <ul>
+        <li>Humanos evalúan o comparan respuestas del modelo</li>
+        <li>Se entrena un modelo de recompensa</li>
+        <li>El LLM se optimiza para maximizar dicha recompensa</li>
+      </ul>
+      <p><strong>📌 Mejora:</strong></p>
+      <ul>
+        <li>Calidad</li>
+        <li>Utilidad</li>
+        <li>Seguridad</li>
+        <li>Estilo conversacional</li>
+      </ul>
+
+      <h3>🔹 Modelo de recompensa (Reward Model)</h3>
+      <p>
+        Modelo auxiliar entrenado para asignar una puntuación a las respuestas del LLM 
+        según preferencias humanas.
+      </p>
+      <p><strong>📌 Se usa como función objetivo durante RLHF.</strong></p>
+
+      <h3>🔹 Alineación (Alignment)</h3>
+      <p>Conjunto de técnicas cuyo objetivo es que el modelo:</p>
+      <ul>
+        <li>Responda de forma útil</li>
+        <li>Sea seguro</li>
+        <li>Se alinee con valores y expectativas humanas</li>
+      </ul>
+      <p><strong>Incluye:</strong></p>
+      <ul>
+        <li>SFT</li>
+        <li>RLHF</li>
+        <li>Filtros de seguridad</li>
+        <li>Evaluaciones humanas</li>
+      </ul>
+
+      <h3>🔹 Fine-Tuning</h3>
+      <p>
+        Término general que engloba cualquier ajuste posterior al pre-entrenamiento, 
+        incluyendo:
+      </p>
+      <ul>
+        <li>SFT</li>
+        <li>Instruction tuning</li>
+        <li>Ajustes con RLHF</li>
+        <li>Adaptaciones a dominios específicos</li>
+      </ul>
+
+      <h3>🔹 Preferencias humanas</h3>
+      <p>
+        Juicios realizados por personas sobre qué respuesta es "mejor" entre varias opciones, 
+        considerando:
+      </p>
+      <ul>
+        <li>Exactitud</li>
+        <li>Claridad</li>
+        <li>Seguridad</li>
+        <li>Estilo</li>
+      </ul>
+      <p><strong>📌 Son la base de RLHF.</strong></p>
+
+      <h3>🔹 Pipeline de entrenamiento de un LLM</h3>
+      <p>Secuencia típica de entrenamiento en modelos modernos:</p>
+      <ol>
+        <li>Pre-entrenamiento autosupervisado</li>
+        <li>Supervised Fine-Tuning (SFT)</li>
+        <li>Instruction tuning</li>
+        <li>RLHF / alineación</li>
+      </ol>
+    </section>
+
     <p class="footer-note">
       <strong>Nota final:</strong> Esta guía representa una visión actualizada (2026) 
       del estado del arte en adopción de nube, gobierno de datos e implementación de 
@@ -1544,5 +1733,8 @@ Aplicación / chatbot / sistema</pre>
       requisitos específicos de tu organización.
     </p>
   </main>
+
+  <!-- Botón flotante para regresar al menú -->
+  <a href="#" class="back-to-menu" title="Regresar al índice">↑</a>
 </body>
 </html>
