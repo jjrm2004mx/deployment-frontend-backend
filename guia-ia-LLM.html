@@ -606,6 +606,22 @@
           <span class="index-number">03</span>
           <span class="index-title">Resumen visual del pipeline</span>
         </a>
+        <a href="#seccion-04" class="index-link">
+          <span class="index-number">04</span>
+          <span class="index-title">Métricas de evaluación</span>
+        </a>
+        <a href="#seccion-05" class="index-link">
+          <span class="index-number">05</span>
+          <span class="index-title">Herramientas y frameworks</span>
+        </a>
+        <a href="#seccion-06" class="index-link">
+          <span class="index-number">06</span>
+          <span class="index-title">Riesgos y mitigaciones</span>
+        </a>
+        <a href="#seccion-07" class="index-link">
+          <span class="index-number">07</span>
+          <span class="index-title">Ejemplo práctico: fine-tune en dominio médico</span>
+        </a>
       </div>
     </nav>
 
@@ -796,6 +812,201 @@ Despliegue y operación
         <div class="callout-icon">🎯</div>
         <div>
           <strong>North Star:</strong> Pretraining = conocimiento · SFT = formato · RLHF = conducta.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: MÉTRICAS DE EVALUACIÓN -->
+    <section id="seccion-04" class="card">
+      <h2><span>04 · Métricas</span>Métricas de evaluación</h2>
+
+      <h3>Métricas automáticas</h3>
+      <ul>
+        <li><strong>Perplexity:</strong> mide qué tan "sorprendido" está el modelo ante texto real; menor = mejor fluidez.</li>
+        <li><strong>BLEU / ROUGE:</strong> similitud n-gram con referencias; útil en traducción y resumen.</li>
+        <li><strong>Exact Match / F1:</strong> para QA y extracción de entidades.</li>
+        <li><strong>Pass@k:</strong> tasa de éxito en generación de código (ej. HumanEval).</li>
+        <li><strong>Toxicity score:</strong> clasifica contenido dañino (Perspective API, Detoxify).</li>
+        <li><strong>Bias benchmarks:</strong> WinoBias, BBQ, RealToxicityPrompts.</li>
+      </ul>
+
+      <h3>Métricas humanas</h3>
+      <ul>
+        <li><strong>Win-rate:</strong> % de veces que evaluadores prefieren respuesta A vs B.</li>
+        <li><strong>Likert scale:</strong> puntuación 1-5 en utilidad, coherencia, seguridad.</li>
+        <li><strong>Red-teaming:</strong> adversarios intentan romper políticas; mide robustez.</li>
+      </ul>
+
+      <h3>Escala típica (orden de magnitud)</h3>
+      <div class="table-card">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Fase</th>
+                <th>Tokens</th>
+                <th>GPU-hours (A100)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Pretraining (7B)</td>
+                <td>1-2 T</td>
+                <td>~50 k</td>
+              </tr>
+              <tr>
+                <td>SFT</td>
+                <td>10-100 M</td>
+                <td>~500-2 k</td>
+              </tr>
+              <tr>
+                <td>RLHF</td>
+                <td>1-10 M comparaciones</td>
+                <td>~1-5 k</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-icon">💡</div>
+        <div>
+          <strong>Regla:</strong> combina métricas automáticas (velocidad) con evaluación humana (calidad real). Ninguna métrica sola es suficiente.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: HERRAMIENTAS Y FRAMEWORKS -->
+    <section id="seccion-05" class="card">
+      <h2><span>05 · Herramientas</span>Herramientas y frameworks</h2>
+
+      <h3>Entrenamiento y fine-tuning</h3>
+      <ul>
+        <li><strong>Hugging Face Transformers + TRL:</strong> SFT, RLHF/DPO out-of-the-box.</li>
+        <li><strong>DeepSpeed / FSDP:</strong> paralelismo eficiente para modelos grandes.</li>
+        <li><strong>Axolotl:</strong> wrapper para fine-tuning con LoRA/QLoRA.</li>
+        <li><strong>LLaMA-Factory:</strong> framework unificado para SFT y RLHF.</li>
+      </ul>
+
+      <h3>Serving e inferencia</h3>
+      <ul>
+        <li><strong>vLLM:</strong> alto throughput con PagedAttention.</li>
+        <li><strong>TGI (Text Generation Inference):</strong> Hugging Face, optimizado para producción.</li>
+        <li><strong>Ollama / LM Studio:</strong> ejecución local fácil.</li>
+        <li><strong>TensorRT-LLM:</strong> NVIDIA, máxima optimización en GPUs.</li>
+      </ul>
+
+      <h3>Evaluación y observabilidad</h3>
+      <ul>
+        <li><strong>LangSmith / LangFuse:</strong> trazabilidad de prompts y respuestas.</li>
+        <li><strong>Weights & Biases:</strong> logging de experimentos y métricas.</li>
+        <li><strong>Promptfoo:</strong> evals automatizados con aserciones.</li>
+        <li><strong>Inspect AI (UK AISI):</strong> framework open-source para evals de seguridad.</li>
+      </ul>
+
+      <h3>RAG y orquestación</h3>
+      <ul>
+        <li><strong>LangChain / LlamaIndex:</strong> pipelines de retrieval y agentes.</li>
+        <li><strong>Pinecone / Weaviate / Qdrant:</strong> vector stores gestionados.</li>
+        <li><strong>Chroma:</strong> vector store ligero para desarrollo.</li>
+      </ul>
+    </section>
+
+    <!-- SECCIÓN 6: RIESGOS Y MITIGACIONES -->
+    <section id="seccion-06" class="card">
+      <h2><span>06 · Riesgos</span>Riesgos y mitigaciones</h2>
+
+      <div class="table-card">
+        <h3>Matriz de riesgos</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Riesgo</th>
+                <th>Descripción</th>
+                <th>Mitigación</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Hallucination</strong></td>
+                <td>Genera información plausible pero falsa</td>
+                <td>RAG con fuentes verificadas, temperatura baja, chain-of-thought, citas</td>
+              </tr>
+              <tr>
+                <td><strong>Prompt injection</strong></td>
+                <td>Usuario malicioso manipula el prompt para cambiar comportamiento</td>
+                <td>Separación de sistema/usuario, sanitización, guardrails de entrada</td>
+              </tr>
+              <tr>
+                <td><strong>Jailbreak</strong></td>
+                <td>Evadir políticas de seguridad mediante prompts creativos</td>
+                <td>RLHF robusto, Constitutional AI, red-teaming continuo, filtros de salida</td>
+              </tr>
+              <tr>
+                <td><strong>Data leakage</strong></td>
+                <td>Modelo memoriza y filtra datos privados del entrenamiento</td>
+                <td>Deduplicación, differential privacy, PII scrubbing, auditoría de outputs</td>
+              </tr>
+              <tr>
+                <td><strong>Bias / toxicidad</strong></td>
+                <td>Respuestas sesgadas o dañinas hacia grupos</td>
+                <td>Curación de datos, RLHF con criterios de equidad, benchmarks de sesgo</td>
+              </tr>
+              <tr>
+                <td><strong>Drift de calidad</strong></td>
+                <td>Degradación con el tiempo o cambios de distribución</td>
+                <td>Monitoreo continuo, evals periódicos, reentrenamiento planificado</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>Constitutional AI (variante reciente)</h3>
+      <p>
+        Enfoque de Anthropic donde el modelo se auto-critica y revisa sus respuestas según un conjunto de <strong>principios</strong> (constitución). Reduce dependencia de etiquetado humano masivo y mejora alineamiento con valores explícitos.
+      </p>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🛡️</div>
+        <div>
+          <strong>Defensa en profundidad:</strong> ningún control único es suficiente. Combina RLHF + guardrails de entrada + filtros de salida + monitoreo + red-teaming.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 7: EJEMPLO PRÁCTICO -->
+    <section id="seccion-07" class="card">
+      <h2><span>07 · Ejemplo</span>Ejemplo práctico: fine-tune en dominio médico</h2>
+
+      <h3>Contexto</h3>
+      <p>
+        Una organización de salud quiere un asistente que responda preguntas sobre guías clínicas internas. El modelo base es <strong>Llama 3 8B</strong>.
+      </p>
+
+      <h3>Pipeline aplicado</h3>
+      <ol>
+        <li><strong>Curación de datos:</strong> 50 k pares pregunta→respuesta extraídos de documentación clínica aprobada; revisión de médicos.</li>
+        <li><strong>SFT con LoRA:</strong> 3 épocas, lr=2e-4, rank=64. Entrenamiento: ~8 h en 2×A100.</li>
+        <li><strong>Evaluación interna:</strong> 500 preguntas de prueba; BLEU, F1 y revisión humana (3 médicos).</li>
+        <li><strong>RLHF ligero:</strong> 2 k comparaciones A/B con DPO para mejorar claridad y evitar respuestas fuera de alcance.</li>
+        <li><strong>Guardrails:</strong> el modelo rechaza preguntas de diagnóstico definitivo; siempre sugiere consultar profesional.</li>
+        <li><strong>Despliegue:</strong> vLLM detrás de API interna; logging con LangFuse; dashboard de toxicidad y drift.</li>
+      </ol>
+
+      <h3>Resultados</h3>
+      <ul>
+        <li>Win-rate vs modelo base: <strong>78 %</strong> (evaluadores médicos).</li>
+        <li>Reducción de alucinaciones clínicas: <strong>–62 %</strong> (RAG + guardrails).</li>
+        <li>Latencia P95: <strong>1.2 s</strong> (contexto 4 k tokens).</li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-icon">📋</div>
+        <div>
+          <strong>Lección:</strong> en dominios regulados, la calidad del dataset y los guardrails importan más que el tamaño del modelo.
         </div>
       </div>
     </section>
