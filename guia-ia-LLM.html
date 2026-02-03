@@ -646,6 +646,10 @@
           <span class="index-number">12</span>
           <span class="index-title">Ejemplo práctico: fine-tune en dominio médico</span>
         </a>
+        <a href="#seccion-13" class="index-link">
+          <span class="index-number">13</span>
+          <span class="index-title">Equivalentes modernos (2025-2026)</span>
+        </a>
       </div>
     </nav>
 
@@ -1041,6 +1045,268 @@
       </div>
     </section>
 
+    <!-- SECCIÓN 4: CUÁNDO USAR Y CUÁNDO NO USAR LLMs -->
+    <section id="seccion-04" class="card">
+      <h2><span>04 · Decisión</span>Cuándo usar (y cuándo NO usar) LLMs</h2>
+
+      <p>
+        Los LLMs son herramientas poderosas, pero no son la solución para todo problema.
+        Esta sección te ayuda a decidir cuándo es una buena idea usarlos y cuándo es mejor buscar alternativas.
+      </p>
+
+      <h3>✅ Casos ideales para LLMs</h3>
+      <div class="table-card">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Caso de uso</th>
+                <th>Por qué funciona bien</th>
+                <th>Ejemplo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Generación de texto</strong></td>
+                <td>Es lo que los LLMs hacen mejor: predecir secuencias coherentes</td>
+                <td>Copywriting, emails, artículos, summaries</td>
+              </tr>
+              <tr>
+                <td><strong>Clasificación y análisis de sentimiento</strong></td>
+                <td>Pueden entender contexto complejo mejor que modelos simples</td>
+                <td>Detección de spam, análisis de feedback de clientes</td>
+              </tr>
+              <tr>
+                <td><strong>Traducción de idiomas</strong></td>
+                <td>Capturan semántica, no solo palabras clave</td>
+                <td>Localización de productos, documentos multiidioma</td>
+              </tr>
+              <tr>
+                <td><strong>Code generation y refactoring</strong></td>
+                <td>Entienden patrones de código y best practices</td>
+                <td>Autocomplete, generación de tests, conversión de lenguajes</td>
+              </tr>
+              <tr>
+                <td><strong>RAG (Retrieval + Generation)</strong></td>
+                <td>Combina recuperación precisa + generación fluida</td>
+                <td>Chatbots sobre docs internos, Q&A técnico</td>
+              </tr>
+              <tr>
+                <td><strong>Extracción de información</strong></td>
+                <td>Puede parsear documentos no estructurados</td>
+                <td>Extracción de datos de facturas, contratos, reportes</td>
+              </tr>
+              <tr>
+                <td><strong>Explicación y educación</strong></td>
+                <td>Adapta el nivel de detalle y simplicidad al usuario</td>
+                <td>Tutoriales personalizados, explicación de conceptos complejos</td>
+              </tr>
+              <tr>
+                <td><strong>Brainstorming y ideación</strong></td>
+                <td>Genera múltiples perspectivas rápidamente</td>
+                <td>Nombres de productos, estrategias de marketing, temas de contenido</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>❌ Casos donde NO deberías usar LLMs</h3>
+      <div class="table-card">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Caso problemático</th>
+                <th>Por qué es riesgoso</th>
+                <th>Alternativa recomendada</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Aritmética y cálculos precisos</strong></td>
+                <td>Los LLMs no entienden matemáticas, solo simulan; cometen errores sistemáticos</td>
+                <td>APIs de cálculo, Python, Excel</td>
+              </tr>
+              <tr>
+                <td><strong>Decisiones críticas sin validación</strong></td>
+                <td>Pueden alucinar; riesgo de daño si se actúa sin verificar</td>
+                <td>Procesos de aprobación humana, auditoría</td>
+              </tr>
+              <tr>
+                <td><strong>Datos sensibles sin compliance</strong></td>
+                <td>Riesgo de data leakage; memorización de PII; regulaciones (GDPR, HIPAA)</td>
+                <td>Modelos locales, on-prem, o APIs con garantías de privacidad</td>
+              </tr>
+              <tr>
+                <td><strong>Tareas que exigen exactitud 100%</strong></td>
+                <td>Los LLMs tienen tasa de error inherente (hallucinations)</td>
+                <td>Búsqueda de bases de datos, consultas SQL</td>
+              </tr>
+              <tr>
+                <td><strong>Sistemas en tiempo real ultra-bajo latency</strong></td>
+                <td>Los LLMs son lentos (cientos de ms); no apto para trading HFT, juegos, etc.</td>
+                <td>Modelos más pequeños, reglas heurísticas, búsqueda indexada</td>
+              </tr>
+              <tr>
+                <td><strong>Tareas que solo requieren buscar hechos</strong></td>
+                <td>Usa un buscador (Google, Elastic); es más rápido y preciso que LLM</td>
+                <td>Motores de búsqueda, bases de datos vectoriales (si es por similitud)</td>
+              </tr>
+              <tr>
+                <td><strong>Información muy reciente (últimas horas)</strong></td>
+                <td>El conocimiento del LLM es estático; no actualiza en tiempo real</td>
+                <td>APIs de noticias, web scraping, bases de datos en vivo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>Matriz de decisión: ¿Qué modelo elegir?</h3>
+
+      <div class="table-card">
+        <h3>Guía por escenario</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Escenario</th>
+                <th>Prioridad</th>
+                <th>Opción recomendada</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Máxima capacidad + presupuesto ilimitado</strong></td>
+                <td>Calidad &gt; costo</td>
+                <td>GPT-4 / Claude 3 Opus (cloud)</td>
+              </tr>
+              <tr>
+                <td><strong>Buen balance calidad/costo</strong></td>
+                <td>Equilibrio</td>
+                <td>GPT-4 Mini / Claude 3.5 Sonnet / Llama 3.1</td>
+              </tr>
+              <tr>
+                <td><strong>Costo mínimo (presupuesto ajustado)</strong></td>
+                <td>Costo &lt; calidad</td>
+                <td>Llama 2 / Mistral 7B (local) o Grok (acceso gratuito)</td>
+              </tr>
+              <tr>
+                <td><strong>Privacidad máxima (datos sensibles)</strong></td>
+                <td>Privacidad &gt; todo</td>
+                <td>Llama 3 / Mistral en servidor propio (on-prem)</td>
+              </tr>
+              <tr>
+                <td><strong>Baja latencia (aplicaciones en tiempo real)</strong></td>
+                <td>Velocidad &gt; capacidad</td>
+                <td>Modelos pequeños (Phi 3, TinyLlama) locales, o destillación</td>
+              </tr>
+              <tr>
+                <td><strong>Dominio especializado (medicina, ley, finanzas)</strong></td>
+                <td>Exactitud en dominio</td>
+                <td>Modelo base fine-tuneado + RAG + guardrails</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>Trade-offs clave</h3>
+
+      <div class="phase-box">
+        <h4>🎯 Costo vs Capacidad</h4>
+        <p>
+          Modelos grandes (GPT-4, Claude Opus) son mejores pero 10-100x más caros.
+          Para tareas sencillas, modelos pequeños baratos pueden ser suficientes.
+          <br><br>
+          <strong>Regla:</strong> Comienza con modelo pequeño; escala si no cumple.
+        </p>
+      </div>
+
+      <div class="phase-box">
+        <h4>⚡ Latencia vs Precisión</h4>
+        <p>
+          Modelos locales = baja latencia (50-200 ms) pero menor capacidad.
+          Modelos cloud = latencia media (500 ms-2 s) pero mejor precisión.
+          <br><br>
+          <strong>Regla:</strong> Si necesitas respuesta en &lt;100 ms, usa modelo local o reglas heurísticas.
+        </p>
+      </div>
+
+      <div class="phase-box">
+        <h4>🔒 Privacidad vs Rendimiento</h4>
+        <p>
+          Cloud APIs (OpenAI, Anthropic) son convenientes pero tus datos van a sus servidores.
+          Modelos on-prem garantizan privacidad pero requieren infraestructura.
+          <br><br>
+          <strong>Regla:</strong> Para datos PII/sensibles, usa on-prem o proveedor con garantías legales.
+        </p>
+      </div>
+
+      <h3>Tres categorías de modelos generativos (ampliadas)</h3>
+
+      <div class="table-card">
+        <h3>Clasificación por tipo de tarea</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Categoría</th>
+                <th>Descripción</th>
+                <th>Ejemplos</th>
+                <th>Casos de uso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Modelos de lenguaje natural (LLMs)</strong></td>
+                <td>Toman texto y generan respuestas textuales coherentes</td>
+                <td>GPT-4, Claude, Llama, Mistral</td>
+                <td>Chat, generación de contenido, traducción, código</td>
+              </tr>
+              <tr>
+                <td><strong>Modelos de transformador generativos (GPT-style)</strong></td>
+                <td>Toman fragmentos de código o lenguaje natural y generan código</td>
+                <td>GitHub Copilot, GPT-4 Code, CodeGen</td>
+                <td>Code completion, refactoring, debug, generación de tests</td>
+              </tr>
+              <tr>
+                <td><strong>Modelos de generación de imágenes</strong></td>
+                <td>Toman indicaciones textuales, imágenes base o ambas; crean imágenes nuevas</td>
+                <td>DALL-E, Midjourney, Stable Diffusion, Flux</td>
+                <td>Diseño, marketing, ilustración, edición de imágenes</td>
+              </tr>
+              <tr>
+                <td><strong>Modelos multimodales</strong></td>
+                <td>Combinan texto, imagen, video y audio en un modelo único</td>
+                <td>GPT-4o, Claude 3.5 Vision, Gemini 2.0</td>
+                <td>Análisis de documentos escaneados, asistente visual, video QA</td>
+              </tr>
+              <tr>
+                <td><strong>Modelos de embeddings</strong></td>
+                <td>Convierten texto a vectores numéricos; no generan, clasifican por similitud</td>
+                <td>text-embedding-3, ada, BGE</td>
+                <td>RAG, búsqueda semántica, clustering, recomendaciones</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>Resumen de decisión:</strong><br><br>
+          1. ¿Es tarea de texto/generación? → LLM<br>
+          2. ¿Necesitas código? → LLM code-optimizado<br>
+          3. ¿Necesitas imagen? → Modelo de imagen<br>
+          4. ¿Requiere exactitud 100%? → No uses LLM, usa búsqueda/cálculo directo<br>
+          5. ¿Datos sensibles? → On-prem o garantías legales<br>
+          6. ¿Tiempo real (&lt;100 ms)? → Modelo local pequeño
+        </div>
+      </div>
+    </section>
     <!-- SECCIÓN 5: FUNDAMENTOS DEL ENTRENAMIENTO LLM -->
     <section id="seccion-05" class="card">
       <h2><span>05 · Fundamentos</span>Entrenamiento de LLM: Autosupervisado → SFT → RLHF</h2>
@@ -1573,265 +1839,126 @@ Despliegue y operación
       </div>
     </section>
 
-    <!-- SECCIÓN 4: CUÁNDO USAR Y CUÁNDO NO USAR LLMs -->
-    <section id="seccion-04" class="card">
-      <h2><span>04 · Decisión</span>Cuándo usar (y cuándo NO usar) LLMs</h2>
+    <!-- SECCIÓN 13: EQUIVALENTES MODERNOS (2025-2026) -->
+    <section id="seccion-13" class="card">
+      <h2><span>13 · Ecosistema</span>Equivalentes Modernos (2025-2026)</h2>
 
       <p>
-        Los LLMs son herramientas poderosas, pero no son la solución para todo problema.
-        Esta sección te ayuda a decidir cuándo es una buena idea usarlos y cuándo es mejor buscar alternativas.
+        El ecosistema de IA generativa ha madurado con múltiples proveedores ofreciendo servicios equivalentes.
+        Esta tabla compara las principales ofertas por categoría.
       </p>
 
-      <h3>✅ Casos ideales para LLMs</h3>
+      <h3>Comparativa de servicios por proveedor</h3>
       <div class="table-card">
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Caso de uso</th>
-                <th>Por qué funciona bien</th>
-                <th>Ejemplo</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Generación de texto</strong></td>
-                <td>Es lo que los LLMs hacen mejor: predecir secuencias coherentes</td>
-                <td>Copywriting, emails, artículos, summaries</td>
-              </tr>
-              <tr>
-                <td><strong>Clasificación y análisis de sentimiento</strong></td>
-                <td>Pueden entender contexto complejo mejor que modelos simples</td>
-                <td>Detección de spam, análisis de feedback de clientes</td>
-              </tr>
-              <tr>
-                <td><strong>Traducción de idiomas</strong></td>
-                <td>Capturan semántica, no solo palabras clave</td>
-                <td>Localización de productos, documentos multiidioma</td>
-              </tr>
-              <tr>
-                <td><strong>Code generation y refactoring</strong></td>
-                <td>Entienden patrones de código y best practices</td>
-                <td>Autocomplete, generación de tests, conversión de lenguajes</td>
-              </tr>
-              <tr>
-                <td><strong>RAG (Retrieval + Generation)</strong></td>
-                <td>Combina recuperación precisa + generación fluida</td>
-                <td>Chatbots sobre docs internos, Q&A técnico</td>
-              </tr>
-              <tr>
-                <td><strong>Extracción de información</strong></td>
-                <td>Puede parsear documentos no estructurados</td>
-                <td>Extracción de datos de facturas, contratos, reportes</td>
-              </tr>
-              <tr>
-                <td><strong>Explicación y educación</strong></td>
-                <td>Adapta el nivel de detalle y simplicidad al usuario</td>
-                <td>Tutoriales personalizados, explicación de conceptos complejos</td>
-              </tr>
-              <tr>
-                <td><strong>Brainstorming y ideación</strong></td>
-                <td>Genera múltiples perspectivas rápidamente</td>
-                <td>Nombres de productos, estrategias de marketing, temas de contenido</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <h3>❌ Casos donde NO deberías usar LLMs</h3>
-      <div class="table-card">
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Caso problemático</th>
-                <th>Por qué es riesgoso</th>
-                <th>Alternativa recomendada</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Aritmética y cálculos precisos</strong></td>
-                <td>Los LLMs no entienden matemáticas, solo simulan; cometen errores sistemáticos</td>
-                <td>APIs de cálculo, Python, Excel</td>
-              </tr>
-              <tr>
-                <td><strong>Decisiones críticas sin validación</strong></td>
-                <td>Pueden alucinar; riesgo de daño si se actúa sin verificar</td>
-                <td>Procesos de aprobación humana, auditoría</td>
-              </tr>
-              <tr>
-                <td><strong>Datos sensibles sin compliance</strong></td>
-                <td>Riesgo de data leakage; memorización de PII; regulaciones (GDPR, HIPAA)</td>
-                <td>Modelos locales, on-prem, o APIs con garantías de privacidad</td>
-              </tr>
-              <tr>
-                <td><strong>Tareas que exigen exactitud 100%</strong></td>
-                <td>Los LLMs tienen tasa de error inherente (hallucinations)</td>
-                <td>Búsqueda de bases de datos, consultas SQL</td>
-              </tr>
-              <tr>
-                <td><strong>Sistemas en tiempo real ultra-bajo latency</strong></td>
-                <td>Los LLMs son lentos (cientos de ms); no apto para trading HFT, juegos, etc.</td>
-                <td>Modelos más pequeños, reglas heurísticas, búsqueda indexada</td>
-              </tr>
-              <tr>
-                <td><strong>Tareas que solo requieren buscar hechos</strong></td>
-                <td>Usa un buscador (Google, Elastic); es más rápido y preciso que LLM</td>
-                <td>Motores de búsqueda, bases de datos vectoriales (si es por similitud)</td>
-              </tr>
-              <tr>
-                <td><strong>Información muy reciente (últimas horas)</strong></td>
-                <td>El conocimiento del LLM es estático; no actualiza en tiempo real</td>
-                <td>APIs de noticias, web scraping, bases de datos en vivo</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <h3>Matriz de decisión: ¿Qué modelo elegir?</h3>
-
-      <div class="table-card">
-        <h3>Guía por escenario</h3>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Escenario</th>
-                <th>Prioridad</th>
-                <th>Opción recomendada</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Máxima capacidad + presupuesto ilimitado</strong></td>
-                <td>Calidad &gt; costo</td>
-                <td>GPT-4 / Claude 3 Opus (cloud)</td>
-              </tr>
-              <tr>
-                <td><strong>Buen balance calidad/costo</strong></td>
-                <td>Equilibrio</td>
-                <td>GPT-4 Mini / Claude 3.5 Sonnet / Llama 3.1</td>
-              </tr>
-              <tr>
-                <td><strong>Costo mínimo (presupuesto ajustado)</strong></td>
-                <td>Costo &lt; calidad</td>
-                <td>Llama 2 / Mistral 7B (local) o Grok (acceso gratuito)</td>
-              </tr>
-              <tr>
-                <td><strong>Privacidad máxima (datos sensibles)</strong></td>
-                <td>Privacidad &gt; todo</td>
-                <td>Llama 3 / Mistral en servidor propio (on-prem)</td>
-              </tr>
-              <tr>
-                <td><strong>Baja latencia (aplicaciones en tiempo real)</strong></td>
-                <td>Velocidad &gt; capacidad</td>
-                <td>Modelos pequeños (Phi 3, TinyLlama) locales, o destillación</td>
-              </tr>
-              <tr>
-                <td><strong>Dominio especializado (medicina, ley, finanzas)</strong></td>
-                <td>Exactitud en dominio</td>
-                <td>Modelo base fine-tuneado + RAG + guardrails</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <h3>Trade-offs clave</h3>
-
-      <div class="phase-box">
-        <h4>🎯 Costo vs Capacidad</h4>
-        <p>
-          Modelos grandes (GPT-4, Claude Opus) son mejores pero 10-100x más caros.
-          Para tareas sencillas, modelos pequeños baratos pueden ser suficientes.
-          <br><br>
-          <strong>Regla:</strong> Comienza con modelo pequeño; escala si no cumple.
-        </p>
-      </div>
-
-      <div class="phase-box">
-        <h4>⚡ Latencia vs Precisión</h4>
-        <p>
-          Modelos locales = baja latencia (50-200 ms) pero menor capacidad.
-          Modelos cloud = latencia media (500 ms-2 s) pero mejor precisión.
-          <br><br>
-          <strong>Regla:</strong> Si necesitas respuesta en &lt;100 ms, usa modelo local o reglas heurísticas.
-        </p>
-      </div>
-
-      <div class="phase-box">
-        <h4>🔒 Privacidad vs Rendimiento</h4>
-        <p>
-          Cloud APIs (OpenAI, Anthropic) son convenientes pero tus datos van a sus servidores.
-          Modelos on-prem garantizan privacidad pero requieren infraestructura.
-          <br><br>
-          <strong>Regla:</strong> Para datos PII/sensibles, usa on-prem o proveedor con garantías legales.
-        </p>
-      </div>
-
-      <h3>Tres categorías de modelos generativos (ampliadas)</h3>
-
-      <div class="table-card">
-        <h3>Clasificación por tipo de tarea</h3>
         <div class="table-wrapper">
           <table>
             <thead>
               <tr>
                 <th>Categoría</th>
-                <th>Descripción</th>
-                <th>Ejemplos</th>
-                <th>Casos de uso</th>
+                <th>OpenAI</th>
+                <th>Google</th>
+                <th>Anthropic</th>
+                <th>Oracle Cloud</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>Modelos de lenguaje natural (LLMs)</strong></td>
-                <td>Toman texto y generan respuestas textuales coherentes</td>
-                <td>GPT-4, Claude, Llama, Mistral</td>
-                <td>Chat, generación de contenido, traducción, código</td>
+                <td><strong>LLM (Texto)</strong></td>
+                <td>GPT-4o, GPT-4 Turbo, GPT-5</td>
+                <td>Gemini 2.0, Gemini 1.5 Pro</td>
+                <td>Claude 3.5 Sonnet, Claude 3 Opus</td>
+                <td>OCI Generative AI (Cohere, Llama)</td>
               </tr>
               <tr>
-                <td><strong>Modelos de transformador generativos (GPT-style)</strong></td>
-                <td>Toman fragmentos de código o lenguaje natural y generan código</td>
-                <td>GitHub Copilot, GPT-4 Code, CodeGen</td>
-                <td>Code completion, refactoring, debug, generación de tests</td>
+                <td><strong>Embeddings</strong></td>
+                <td>text-embedding-3-large/small</td>
+                <td>Gemini Embeddings, Gecko</td>
+                <td>Claude Embeddings (vía API)</td>
+                <td>OCI Vector Embeddings</td>
               </tr>
               <tr>
-                <td><strong>Modelos de generación de imágenes</strong></td>
-                <td>Toman indicaciones textuales, imágenes base o ambas; crean imágenes nuevas</td>
-                <td>DALL-E, Midjourney, Stable Diffusion, Flux</td>
-                <td>Diseño, marketing, ilustración, edición de imágenes</td>
+                <td><strong>Generación de Imagen</strong></td>
+                <td>DALL-E 3</td>
+                <td>Imagen 3, Imagen 2</td>
+                <td>—</td>
+                <td>OCI Vision (análisis, no generación)</td>
               </tr>
               <tr>
-                <td><strong>Modelos multimodales</strong></td>
-                <td>Combinan texto, imagen, video y audio en un modelo único</td>
-                <td>GPT-4o, Claude 3.5 Vision, Gemini 2.0</td>
-                <td>Análisis de documentos escaneados, asistente visual, video QA</td>
+                <td><strong>Audio / Speech</strong></td>
+                <td>Whisper (STT), TTS API</td>
+                <td>Chirp (STT), Cloud TTS</td>
+                <td>—</td>
+                <td>OCI Speech (STT/TTS)</td>
               </tr>
               <tr>
-                <td><strong>Modelos de embeddings</strong></td>
-                <td>Convierten texto a vectores numéricos; no generan, clasifican por similitud</td>
-                <td>text-embedding-3, ada, BGE</td>
-                <td>RAG, búsqueda semántica, clustering, recomendaciones</td>
+                <td><strong>Multimodal</strong></td>
+                <td>GPT-4o (texto + imagen + audio)</td>
+                <td>Gemini 2.0 (nativo multimodal)</td>
+                <td>Claude 3.5 Vision</td>
+                <td>OCI Document Understanding</td>
+              </tr>
+              <tr>
+                <td><strong>Base de datos vectorial</strong></td>
+                <td>— (integra con Pinecone, etc.)</td>
+                <td>Vertex AI Vector Search</td>
+                <td>— (integra con externos)</td>
+                <td>Oracle Database 23ai (nativo)</td>
+              </tr>
+              <tr>
+                <td><strong>Orquestación / Agentes</strong></td>
+                <td>Assistants API, GPTs</td>
+                <td>Vertex AI Agent Builder</td>
+                <td>Claude Tool Use</td>
+                <td>OCI AI Agents</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
 
+      <h3>Arquitectura común: Flujo de un LLM</h3>
+      <p>
+        Independientemente del proveedor, todos los LLMs modernos siguen un patrón arquitectónico similar
+        basado en la arquitectura Transformer:
+      </p>
+
+      <div class="phase-box">
+        <pre style="background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: 8px; overflow-x: auto; font-family: 'Consolas', monospace;">
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        ARQUITECTURA LLM TRANSFORMER                         │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   ┌──────────┐    ┌──────────────┐    ┌─────────────────┐    ┌───────────┐ │
+│   │  INPUT   │───▶│ TOKENIZACIÓN │───▶│   TRANSFORMER   │───▶│  OUTPUT   │ │
+│   │  (Texto) │    │              │    │                 │    │           │ │
+│   └──────────┘    └──────────────┘    └─────────────────┘    └───────────┘ │
+│        │                 │                    │                    │       │
+│        ▼                 ▼                    ▼                    ▼       │
+│   "Explica        [15496, 2792,       ┌─────────────┐         Respuesta   │
+│    qué es          1182, 374,        │  Attention   │         coherente   │
+│    un LLM"          459, ...]        │  Mechanism   │         y fluida    │
+│                                      │      +       │                     │
+│                                      │  Feed-Fwd    │                     │
+│                                      │   Layers     │                     │
+│                                      └─────────────┘                      │
+│                                                                             │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  TIPOS DE OUTPUT ESPECIALIZADO:                                             │
+│  ├── 📝 Texto generativo (chat, resumen, traducción)                        │
+│  ├── 💻 Código (autocompletado, refactoring, debug)                         │
+│  ├── 🖼️ Imagen (DALL-E, Imagen, Stable Diffusion)                          │
+│  ├── 🔢 Embeddings (vectores para búsqueda semántica)                       │
+│  └── 🎵 Audio (transcripción, síntesis de voz)                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+        </pre>
+      </div>
+
       <div class="callout callout-success">
-        <div class="callout-icon">🎯</div>
+        <div class="callout-icon">💡</div>
         <div>
-          <strong>Resumen de decisión:</strong><br><br>
-          1. ¿Es tarea de texto/generación? → LLM<br>
-          2. ¿Necesitas código? → LLM code-optimizado<br>
-          3. ¿Necesitas imagen? → Modelo de imagen<br>
-          4. ¿Requiere exactitud 100%? → No uses LLM, usa búsqueda/cálculo directo<br>
-          5. ¿Datos sensibles? → On-prem o garantías legales<br>
-          6. ¿Tiempo real (&lt;100 ms)? → Modelo local pequeño
+          <strong>Insight clave:</strong> La arquitectura Transformer es el denominador común.
+          Las diferencias entre proveedores están en: tamaño del modelo, datos de entrenamiento,
+          técnicas de alineación (RLHF/DPO), y especialización del output.
         </div>
       </div>
     </section>
