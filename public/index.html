@@ -3,19 +3,612 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Proyecto Web Básico Vercel</title>
+  <title>Centro de Guías IA - JJRM 2026</title>
   <link rel="icon" type="image/png" href="img/IA_ALONE_ia.png" />
-  <link rel="stylesheet" href="/src/style.css" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --accent: #38bdf8;
+      --accent-purple: #a855f7;
+      --accent-green: #22c55e;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 50% 50%, #1e293b 0%, #020617 50%, #000 100%);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Menú hamburguesa superior izquierdo */
+    .hamburger-menu {
+      position: fixed;
+      top: 1.5rem;
+      left: 1.5rem;
+      z-index: 1000;
+    }
+
+    .hamburger-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .hamburger-btn:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 25px rgba(56, 189, 248, 0.3);
+    }
+
+    .hamburger-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger-btn.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-btn.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      min-width: 280px;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.98), rgba(15, 23, 42, 0.99));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 16px;
+      padding: 0.75rem;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(20px);
+    }
+
+    .dropdown-menu.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-title {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 0.85rem;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-item:hover {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+    }
+
+    .dropdown-item span.icon {
+      font-size: 1.2rem;
+      width: 28px;
+      text-align: center;
+    }
+
+    .dropdown-divider {
+      height: 1px;
+      background: rgba(56, 189, 248, 0.15);
+      margin: 0.5rem 0;
+    }
+
+    /* Partículas de fondo */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float 15s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 0.3; }
+      90% { opacity: 0.3; }
+      100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+      z-index: 10;
+    }
+
+    .header h1 {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #38bdf8, #a855f7, #22c55e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .header p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Contenedor principal del menú */
+    .menu-container {
+      position: relative;
+      width: min(90vw, 600px);
+      height: min(90vw, 600px);
+      z-index: 10;
+    }
+
+    /* Logo central */
+    .center-logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.2), rgba(168, 85, 247, 0.1));
+      border: 3px solid;
+      border-image: linear-gradient(135deg, #38bdf8, #a855f7, #22c55e) 1;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 
+        0 0 60px rgba(56, 189, 248, 0.4),
+        0 0 120px rgba(168, 85, 247, 0.2),
+        inset 0 0 30px rgba(56, 189, 248, 0.1);
+      animation: pulse-glow 3s ease-in-out infinite;
+      z-index: 20;
+    }
+
+    .center-logo::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #38bdf8, #22c55e, #a855f7, #38bdf8);
+      z-index: -1;
+      animation: rotate-border 8s linear infinite;
+    }
+
+    .center-logo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle, #0f172a 60%, transparent);
+    }
+
+    .center-logo img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      z-index: 2;
+      filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.5));
+      animation: logo-float 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 60px rgba(56, 189, 248, 0.4), 0 0 120px rgba(168, 85, 247, 0.2); }
+      50% { box-shadow: 0 0 80px rgba(56, 189, 248, 0.6), 0 0 160px rgba(168, 85, 247, 0.3); }
+    }
+
+    @keyframes rotate-border {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes logo-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    /* Órbita de elementos */
+    .orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      animation: orbit-rotate 60s linear infinite;
+    }
+
+    .orbit-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px dashed rgba(56, 189, 248, 0.2);
+      border-radius: 50%;
+    }
+
+    .orbit-ring-1 { width: 85%; height: 85%; }
+    .orbit-ring-2 { width: 100%; height: 100%; animation: orbit-rotate-reverse 40s linear infinite; }
+
+    @keyframes orbit-rotate {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    @keyframes orbit-rotate-reverse {
+      from { transform: translate(-50%, -50%) rotate(360deg); }
+      to { transform: translate(-50%, -50%) rotate(0deg); }
+    }
+
+    /* Items del menú */
+    .menu-item {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 110px;
+      height: 110px;
+      margin: -55px;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .menu-item:hover {
+      transform: scale(1.15);
+      z-index: 100;
+    }
+
+    .menu-item-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu-item-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(168, 85, 247, 0.1));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .menu-item:hover .menu-item-inner {
+      border-color: var(--accent);
+      box-shadow: 0 12px 40px rgba(56, 189, 248, 0.3);
+    }
+
+    .menu-item:hover .menu-item-inner::before {
+      opacity: 1;
+    }
+
+    .menu-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.4rem;
+      filter: grayscale(0);
+    }
+
+    .menu-title {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.2;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    /* Posiciones de los items (4 items en círculo) */
+    .menu-item:nth-of-type(1) { transform: rotate(0deg) translateX(220px) rotate(0deg); }
+    .menu-item:nth-of-type(2) { transform: rotate(90deg) translateX(220px) rotate(-90deg); }
+    .menu-item:nth-of-type(3) { transform: rotate(180deg) translateX(220px) rotate(-180deg); }
+    .menu-item:nth-of-type(4) { transform: rotate(270deg) translateX(220px) rotate(-270deg); }
+
+    /* Colores individuales por item */
+    .menu-item:nth-of-type(1) .menu-item-inner { border-color: rgba(56, 189, 248, 0.4); }
+    .menu-item:nth-of-type(2) .menu-item-inner { border-color: rgba(168, 85, 247, 0.4); }
+    .menu-item:nth-of-type(3) .menu-item-inner { border-color: rgba(34, 197, 94, 0.4); }
+    .menu-item:nth-of-type(4) .menu-item-inner { border-color: rgba(251, 191, 36, 0.4); }
+
+    .menu-item:nth-of-type(1):hover .menu-item-inner { border-color: #38bdf8; box-shadow: 0 12px 40px rgba(56, 189, 248, 0.4); }
+    .menu-item:nth-of-type(2):hover .menu-item-inner { border-color: #a855f7; box-shadow: 0 12px 40px rgba(168, 85, 247, 0.4); }
+    .menu-item:nth-of-type(3):hover .menu-item-inner { border-color: #22c55e; box-shadow: 0 12px 40px rgba(34, 197, 94, 0.4); }
+    .menu-item:nth-of-type(4):hover .menu-item-inner { border-color: #fbbf24; box-shadow: 0 12px 40px rgba(251, 191, 36, 0.4); }
+
+    /* Footer */
+    .footer {
+      margin-top: 2rem;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .footer p {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .menu-container {
+        width: 95vw;
+        height: 95vw;
+        max-width: 500px;
+        max-height: 500px;
+      }
+
+      .menu-item {
+        width: 85px;
+        height: 85px;
+        margin: -42.5px;
+      }
+
+      .menu-item:nth-of-type(1) { transform: rotate(0deg) translateX(170px) rotate(0deg); }
+      .menu-item:nth-of-type(2) { transform: rotate(90deg) translateX(170px) rotate(-90deg); }
+      .menu-item:nth-of-type(3) { transform: rotate(180deg) translateX(170px) rotate(-180deg); }
+      .menu-item:nth-of-type(4) { transform: rotate(270deg) translateX(170px) rotate(-270deg); }
+
+      .menu-icon { font-size: 1.4rem; }
+      .menu-title { font-size: 0.6rem; }
+      .center-logo { width: 100px; height: 100px; }
+      .center-logo img { width: 60px; height: 60px; }
+    }
+
+    @media (max-width: 500px) {
+      .menu-container {
+        width: 100vw;
+        height: auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        gap: 1rem;
+      }
+
+      .orbit, .orbit-ring { display: none; }
+
+      .center-logo {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin-bottom: 1.5rem;
+      }
+
+      .menu-item {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none !important;
+        margin: 0;
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+      }
+
+      .menu-item-inner {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 1rem;
+        padding: 1rem 1.2rem;
+        border-radius: 12px;
+      }
+
+      .menu-icon { margin-bottom: 0; }
+      .menu-title { font-size: 0.85rem; text-align: left; }
+    }
+  </style>
 </head>
 <body>
+  <!-- Menú hamburguesa -->
+  <nav class="hamburger-menu">
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menú de navegación">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="dropdown-menu" id="dropdownMenu">
+      <div class="dropdown-title">📚 Guías Disponibles</div>
+      <a href="guia-ia-LLM.html" class="dropdown-item">
+        <span class="icon">🧠</span> Fundamentos de LLM
+      </a>
+      <a href="guia-ia-agentes-autonomos.html" class="dropdown-item">
+        <span class="icon">🤖</span> Agentes Autónomos
+      </a>
+      <a href="guia-ia-gemini.html" class="dropdown-item">
+        <span class="icon">✨</span> Google Gemini
+      </a>
+      <a href="guia-ia-cloud-datacenter.html" class="dropdown-item">
+        <span class="icon">☁️</span> Cloud & Datacenter
+      </a>
+      <div class="dropdown-divider"></div>
+      <div class="dropdown-title">🚀 Despliegue</div>
+      <a href="opciones-despliegue-frontend-backend-pretty.html" class="dropdown-item">
+        <span class="icon">🌐</span> Opciones de Despliegue
+      </a>
+      <a href="guia-rapida-vercel-github.html" class="dropdown-item">
+        <span class="icon">⚡</span> Vercel + GitHub
+      </a>
+    </div>
+  </nav>
+
+  <!-- Partículas de fondo -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <h1>Centro de Guías IA</h1>
+    <p>Explora el conocimiento • JJRM 2026</p>
+  </header>
+
+  <!-- Menú rotativo -->
+  <div class="menu-container">
+    <!-- Anillos orbitales -->
+    <div class="orbit-ring orbit-ring-1"></div>
+    <div class="orbit-ring orbit-ring-2"></div>
+
+    <!-- Logo central -->
+    <div class="center-logo">
+      <img src="img/IA_ALONE_ia.png" alt="IA Logo" />
+    </div>
+
+    <!-- Items del menú -->
+    <a href="guia-ia-LLM.html" class="menu-item">
+      <div class="menu-item-inner">
+        <span class="menu-icon">🧠</span>
+        <span class="menu-title">Fundamentos LLM</span>
+      </div>
+    </a>
+
+    <a href="guia-ia-agentes-autonomos.html" class="menu-item">
+      <div class="menu-item-inner">
+        <span class="menu-icon">🤖</span>
+        <span class="menu-title">Agentes Autónomos</span>
+      </div>
+    </a>
+
+    <a href="guia-ia-gemini.html" class="menu-item">
+      <div class="menu-item-inner">
+        <span class="menu-icon">✨</span>
+        <span class="menu-title">Google Gemini</span>
+      </div>
+    </a>
+
+    <a href="guia-ia-cloud-datacenter.html" class="menu-item">
+      <div class="menu-item-inner">
+        <span class="menu-icon">☁️</span>
+        <span class="menu-title">Cloud & Datacenter</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Hecho con 💙 usando <a href="https://vercel.com" target="_blank">Vercel</a></p>
+  </footer>
+
   <script>
-    window.location.href = '/opciones-despliegue-frontend-backend-pretty.html';
+    // Menú hamburguesa
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    hamburgerBtn.addEventListener('click', () => {
+      hamburgerBtn.classList.toggle('active');
+      dropdownMenu.classList.toggle('active');
+    });
+
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener('click', (e) => {
+      if (!hamburgerBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        hamburgerBtn.classList.remove('active');
+        dropdownMenu.classList.remove('active');
+      }
+    });
+
+    // Cerrar menú al hacer clic en un enlace
+    dropdownMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburgerBtn.classList.remove('active');
+        dropdownMenu.classList.remove('active');
+      });
+    });
+
+    // Crear partículas animadas
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 30;
+
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 15 + 's';
+      particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+      
+      // Colores variados
+      const colors = ['#38bdf8', '#a855f7', '#22c55e', '#fbbf24'];
+      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      
+      particlesContainer.appendChild(particle);
+    }
   </script>
-  <main>
-    <noscript>
-      <h1>Redirección</h1>
-      <p>Si no eres redirigido automáticamente, <a href="/opciones-despliegue-frontend-backend-pretty.html">haz clic aquí</a>.</p>
-    </noscript>
-  </main>
 </body>
 </html>
