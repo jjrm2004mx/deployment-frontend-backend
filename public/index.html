@@ -520,7 +520,17 @@
 
     /* Pausar animación de items al hover */
     .menu-container:hover .menu-item {
-      animation-play-state: paused;
+      animation-play-state: paused !important;
+    }
+
+    /* Pausar anillos orbitales al hover */
+    .menu-container:hover .orbit-ring {
+      animation-play-state: paused !important;
+    }
+
+    /* Pausar el borde del logo central */
+    .menu-container:hover .center-logo::before {
+      animation-play-state: paused !important;
     }
 
     /* Colores individuales por item - Guías IA */
