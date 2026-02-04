@@ -658,10 +658,22 @@
     }
 
     @media (max-width: 500px) {
+      .orbit-selector {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .orbit-pill {
+        width: 100%;
+        max-width: 200px;
+        justify-content: center;
+      }
+
       .menu-container {
-        width: 100vw;
+        width: 100%;
         height: auto;
-        min-height: 100vh;
+        min-height: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -677,6 +689,20 @@
         left: auto;
         transform: none;
         margin-bottom: 1.5rem;
+      }
+
+      /* Órbitas en móvil como lista vertical */
+      .orbit-content {
+        position: relative;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+      }
+
+      .orbit-content.active {
+        display: flex;
       }
 
       .menu-item {
