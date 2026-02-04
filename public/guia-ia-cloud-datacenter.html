@@ -1,1 +1,1740 @@
-...existing code from guia-ia-cloud-datacenter.html...
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Guía Empresarial: IA, Cloud y Gobierno de Datos (2026)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-elevated: #020617;
+      --bg-soft: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --border-strong: #38bdf8;
+      --badge-bg: rgba(16, 185, 129, 0.12);
+      --badge-text: #6ee7b7;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.9);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 2.5rem 1.5rem 3.5rem;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 55%, #000 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border-radius: var(--radius-pill);
+      padding: 0.2rem 0.75rem 0.2rem 0.25rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(circle at 0 0, rgba(56,189,248,0.3), transparent 45%),
+                  rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.9rem;
+    }
+
+    .pill-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: conic-gradient(from 180deg, #38bdf8, #22c55e, #a855f7, #38bdf8);
+      padding: 2px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pill-dot-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: #020617;
+    }
+
+    header {
+      margin-bottom: 2.2rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      margin: 0 0 0.4rem;
+      letter-spacing: -0.03em;
+      color: #f9fafb;
+    }
+
+    .subtitle {
+      margin: 0.2rem 0 1.2rem;
+      color: var(--muted);
+      font-size: 0.97rem;
+      max-width: 620px;
+    }
+
+    .meta-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      font-size: 0.8rem;
+    }
+
+    .meta-pill {
+      border-radius: var(--radius-pill);
+      border: 1px dashed rgba(148, 163, 184, 0.55);
+      padding: 0.35rem 0.7rem;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .meta-pill strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .meta-pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .card {
+      background: radial-gradient(circle at 0% -30%, rgba(56,189,248,0.35), transparent 55%),
+                  radial-gradient(circle at 100% 120%, rgba(129,140,248,0.25), transparent 55%),
+                  rgba(15, 23, 42, 0.96);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      box-shadow: var(--shadow-soft);
+      padding: 1.7rem 1.6rem 1.8rem;
+      margin-bottom: 1.9rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        120deg,
+        rgba(56, 189, 248, 0.2),
+        transparent,
+        rgba(129, 140, 248, 0.15)
+      );
+      opacity: 0.25;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+
+    .card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card h2 {
+      font-size: 1.15rem;
+      margin: 0 0 0.75rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .card h2 span {
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin: 1.2rem 0 0.6rem;
+      color: #e5e7eb;
+      letter-spacing: 0.02em;
+    }
+
+    .card p {
+      margin: 0 0 0.8rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .card ul, .card ol {
+      margin: 0.8rem 0;
+      padding-left: 1.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .card li {
+      margin-bottom: 0.4rem;
+    }
+
+    .callout {
+      border-radius: var(--radius-md);
+      padding: 0.95rem 1rem;
+      margin: 1rem 0;
+      background: linear-gradient(to right, rgba(56,189,248,0.12), rgba(37,99,235,0.12));
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      font-size: 0.86rem;
+      color: #d1d5db;
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+    }
+
+    .callout-icon {
+      margin-top: 0.08rem;
+      font-size: 1rem;
+    }
+
+    .callout strong {
+      color: #f9fafb;
+      font-weight: 500;
+    }
+
+    .callout-success {
+      background: linear-gradient(to right, rgba(34,197,94,0.12), rgba(22,163,74,0.12));
+      border-color: rgba(34,197,94,0.4);
+    }
+
+    .section-title {
+      font-size: 1rem;
+      margin: 0 0 0.9rem;
+      color: #e5e7eb;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .tables-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.5rem;
+    }
+
+    .table-card {
+      background: rgba(15, 23, 42, 0.92);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      padding: 1.25rem 1.35rem 1.35rem;
+      backdrop-filter: blur(18px);
+      margin-bottom: 1.5rem;
+    }
+
+    .table-card h3 {
+      margin: 0 0 0.35rem;
+      font-size: 0.98rem;
+      color: #e5e7eb;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .table-card p {
+      margin: 0 0 0.8rem;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 0.35rem;
+      margin: 0.15rem 0 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.83rem;
+      min-width: 640px;
+    }
+
+    th, td {
+      padding: 0.55rem 0.45rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    th {
+      font-weight: 500;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      background: radial-gradient(circle at top, rgba(15,23,42,0.96), rgba(15,23,42,0.96));
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
+    tbody tr:nth-child(odd) {
+      background: rgba(15, 23, 42, 0.92);
+    }
+
+    tbody tr:nth-child(even) {
+      background: rgba(15, 23, 42, 0.97);
+    }
+
+    tbody tr:hover {
+      background: radial-gradient(circle at left, rgba(56,189,248,0.13), rgba(15,23,42,0.98));
+    }
+
+    td {
+      color: #d1d5db;
+      vertical-align: top;
+    }
+
+    .badge-free {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      border-radius: var(--radius-pill);
+      padding: 0.1rem 0.5rem 0.12rem;
+      font-size: 0.72rem;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      border: 1px solid rgba(52, 211, 153, 0.55);
+    }
+
+    .badge-free span {
+      font-size: 0.82rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border-radius: var(--radius-pill);
+      padding: 0.08rem 0.45rem;
+      font-size: 0.72rem;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: #e5e7eb;
+      white-space: nowrap;
+    }
+
+    .tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      margin-right: 0.2rem;
+    }
+
+    .phase-box {
+      background: rgba(15, 23, 42, 0.85);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.2rem;
+      border-radius: var(--radius-md);
+      margin: 1rem 0;
+    }
+
+    .phase-box h4 {
+      margin: 0 0 0.5rem;
+      color: var(--accent);
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+    }
+
+    .phase-box p {
+      margin: 0.3rem 0;
+      font-size: 0.85rem;
+      color: #d1d5db;
+    }
+
+    .footer-note {
+      margin-top: 2.2rem;
+      font-size: 0.78rem;
+      color: #6b7280;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      padding-top: 1.1rem;
+    }
+
+    .footer-note strong {
+      color: #e5e7eb;
+    }
+
+    code {
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.85em;
+      color: #38bdf8;
+      font-family: 'Courier New', monospace;
+    }
+
+    strong {
+      color: #f9fafb;
+      font-weight: 500;
+    }
+
+    .index-nav {
+      margin-bottom: 3rem;
+      background: rgba(30, 41, 59, 0.4);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.8rem;
+      border: 1px solid rgba(51, 65, 85, 0.6);
+    }
+
+    .index-main-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #f9fafb;
+      margin: 0 0 1.8rem 0;
+      text-align: left;
+    }
+
+    .index-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .index-link {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 1.1rem 1.3rem;
+      border-radius: 12px;
+      border: 1px solid rgba(71, 85, 105, 0.5);
+      background: rgba(30, 41, 59, 0.6);
+      text-decoration: none;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+    }
+
+    .index-link::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(129, 140, 248, 0.08));
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .index-link:hover {
+      border-color: rgba(56, 189, 248, 0.6);
+      background: rgba(30, 41, 59, 0.8);
+      box-shadow: 0 4px 16px rgba(56, 189, 248, 0.15);
+    }
+
+    .index-link:hover::before {
+      opacity: 1;
+    }
+
+    .index-number {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
+
+    .index-title {
+      position: relative;
+      z-index: 1;
+      color: #e5e7eb;
+      font-size: 0.92rem;
+      font-weight: 400;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .index-link:hover .index-title {
+      color: #f9fafb;
+    }
+
+    .index-link:hover .index-number {
+      background: rgba(56, 189, 248, 0.25);
+      border-color: rgba(56, 189, 248, 0.6);
+    }
+
+    @media (max-width: 1024px) {
+      .index-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .index-nav {
+        padding: 1.5rem 1.2rem;
+      }
+      .index-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+      .index-link {
+        padding: 0.9rem 1rem;
+      }
+      body {
+        padding: 1.8rem 1rem 2.5rem;
+      }
+      .card {
+        padding: 1.35rem 1.15rem 1.45rem;
+      }
+      .table-card {
+        padding: 1.1rem 1rem 1.15rem;
+      }
+      table {
+        min-width: 520px;
+      }
+    }
+
+    /* Botón flotante para regresar al menú */
+    .back-to-menu {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.9), rgba(37, 99, 235, 0.9));
+      border: 2px solid rgba(56, 189, 248, 0.6);
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      text-decoration: none;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    .back-to-menu:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(56, 189, 248, 0.6);
+      background: linear-gradient(135deg, rgba(56, 189, 248, 1), rgba(37, 99, 235, 1));
+    }
+
+    @media (max-width: 720px) {
+      .back-to-menu {
+        width: 48px;
+        height: 48px;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="pill">
+        <span class="pill-dot"><span class="pill-dot-inner"></span></span>
+        GUÍA EMPRESARIAL · IA & CLOUD STRATEGY
+      </div>
+      <h1>Guía Empresarial: IA, Cloud y Gobierno de Datos (2026)</h1>
+      <p class="subtitle">
+        Guía completa sobre adopción de nube, migración, gobierno de datos e 
+        implementación de IA empresarial. Desde fundamentos hasta arquitectura 
+        avanzada y operación en producción.
+      </p>
+      <div class="meta-grid">
+        <div class="meta-pill">
+          <span class="meta-pill-dot"></span>
+          <strong>Scope:</strong> Cloud + Data + AI
+        </div>
+        <div class="meta-pill">
+          <span class="meta-pill-dot"></span>
+          <strong>Nivel:</strong> Arquitectura Empresarial
+        </div>
+        <div class="meta-pill">
+          <span class="meta-pill-dot"></span>
+          <strong>Año:</strong> 2026 - JJRM
+        </div>
+      </div>
+    </header>
+
+    <!-- ÍNDICE NAVEGABLE -->
+    <nav class="index-nav">
+      <h2 class="index-main-title">ÍNDICE DE CONTENIDOS</h2>
+      <div class="index-grid">
+        <a href="#seccion-00" class="index-link">
+          <span class="index-number">00</span>
+          <span class="index-title">La IA falla por datos, no por algoritmos</span>
+        </a>
+        <a href="#seccion-01" class="index-link">
+          <span class="index-number">01</span>
+          <span class="index-title">Nube abierta y confianza en datos</span>
+        </a>
+        <a href="#seccion-02" class="index-link">
+          <span class="index-number">02</span>
+          <span class="index-title">Las Seis R de migración a la nube</span>
+        </a>
+        <a href="#seccion-03" class="index-link">
+          <span class="index-number">03</span>
+          <span class="index-title">Viaje de madurez de datos</span>
+        </a>
+        <a href="#seccion-04" class="index-link">
+          <span class="index-number">04</span>
+          <span class="index-title">Por qué fallan proyectos de IA</span>
+        </a>
+        <a href="#seccion-05" class="index-link">
+          <span class="index-number">05</span>
+          <span class="index-title">Ruta para volverse AI-Ready</span>
+        </a>
+        <a href="#seccion-06" class="index-link">
+          <span class="index-number">06</span>
+          <span class="index-title">Multicloud e interconexión</span>
+        </a>
+        <a href="#seccion-07" class="index-link">
+          <span class="index-number">07</span>
+          <span class="index-title">Diccionario IA v1 - Fundamentos</span>
+        </a>
+        <a href="#seccion-08" class="index-link">
+          <span class="index-number">08</span>
+          <span class="index-title">Diccionario IA v2 - Arquitectura Empresarial</span>
+        </a>
+        <a href="#seccion-09" class="index-link">
+          <span class="index-number">09</span>
+          <span class="index-title">Diccionario IA v3 - Arquitectura Avanzada</span>
+        </a>
+        <a href="#seccion-10" class="index-link">
+          <span class="index-number">10</span>
+          <span class="index-title">Diccionario IA v4 - Gobierno y Operación</span>
+        </a>
+        <a href="#seccion-11" class="index-link">
+          <span class="index-number">11</span>
+          <span class="index-title">Diccionario IA v5 - Conceptos clave en entrenamiento de LLM</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- SECCIÓN 0: LA IA FALLA POR DATOS -->
+    <section id="seccion-00" class="card">
+      <h2><span>00 · Realidad</span>La IA falla por datos, no por algoritmos</h2>
+      <p>
+        La mayor parte del esfuerzo en un proyecto de IA no está en el modelo. 
+        <strong>Está en los datos.</strong>
+      </p>
+      <p>
+        De acuerdo con múltiples estudios y reportes de la industria (incluyendo análisis 
+        de <strong>IBM</strong>, <strong>IDC</strong> y reportes de práctica en ciencia de 
+        datos), los equipos destinan la mayor parte de su tiempo —más de la mitad— a:
+      </p>
+      <ul>
+        <li>Integrar fuentes</li>
+        <li>Limpiar datos</li>
+        <li>Resolver inconsistencias</li>
+        <li>Corregir calidad</li>
+        <li>Entender contexto</li>
+      </ul>
+      <p><strong>No en entrenar modelos.</strong></p>
+
+      <h3>Y aquí está el verdadero problema:</h3>
+      <p>
+        La mayoría de las organizaciones <strong>no tiene esa base lista</strong>.
+      </p>
+      <p>
+        Según <strong>IDC</strong>, más del <strong>50% de los datos empresariales nunca 
+        se utiliza</strong> para analítica, BI o IA. Vive aislado en silos, sistemas legacy 
+        o procesos que nunca fueron diseñados para generar valor.
+      </p>
+
+      <h3>Eso significa que:</h3>
+      <ul>
+        <li>Los modelos aprenden de una fracción de la realidad</li>
+        <li>Las predicciones nacen incompletas</li>
+        <li>Los resultados no generan confianza en el negocio</li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-icon">⚠️</div>
+        <div>
+          <strong>La IA no falla porque no sepa aprender.</strong> Falla porque aprende 
+          de datos pobres, fragmentados o sin significado de negocio.
+        </div>
+      </div>
+
+      <h3>Por eso la verdadera ventaja competitiva ya no está en el algoritmo.</h3>
+      <p>Está en quién logra:</p>
+      <ul>
+        <li>→ Integrar datos</li>
+        <li>→ Gobernarlos</li>
+        <li>→ Darles contexto</li>
+        <li>→ Conectarlos a procesos reales</li>
+      </ul>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>La IA solo escala cuando la data escala.</strong><br><br>
+          IA con sentido de negocio empieza por datos que el negocio puede usar.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 1: NUBE ABIERTA Y DATA TRUST -->
+    <section id="seccion-01" class="card">
+      <h2><span>01 · Fundamentos</span>Nube abierta y confianza en datos (Data Trust)</h2>
+      <p>
+        La adopción de IA empresarial depende más de la <strong>calidad e integración 
+        de datos</strong> que del modelo utilizado. Gran parte del tiempo en proyectos 
+        se invierte en limpiar, integrar y gobernar datos provenientes de múltiples sistemas.
+      </p>
+      <p>
+        Una <strong>nube abierta</strong> permite integrar datos sin importar su ubicación, 
+        eliminando silos y habilitando la analítica y la IA a escala.
+      </p>
+      <div class="callout callout-success">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>Conclusión clave:</strong> La nube proporciona escala; el gobierno de 
+          datos genera confianza; los datos confiables hacen posible la IA.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: LAS SEIS R -->
+    <section id="seccion-02" class="card">
+      <h2><span>02 · Migración</span>Las Seis R de la migración a la nube</h2>
+      <p>
+        Cuando las empresas migran sistemas a la nube, no existe una sola forma de hacerlo. 
+        El marco de las <strong>"Seis R"</strong> agrupa las estrategias típicas para mover 
+        aplicaciones y datos desde infraestructura tradicional hacia plataformas cloud.
+      </p>
+
+      <h3>✅ 1) Rehost — Lift & Shift</h3>
+      <p>
+        Se toma la aplicación tal como está y se mueve a la nube sin modificarla.
+      </p>
+      <p><strong>Ejemplo:</strong> Un servidor físico con Java/Spring Boot pasa a una VM en la nube.</p>
+      <p>✔ Ventaja: rápido | ❌ Desventaja: no aprovecha ventajas cloud</p>
+
+      <h3>✅ 2) Replatform — Ajustes mínimos</h3>
+      <p>
+        Se mueve la aplicación pero se hacen pequeños ajustes para aprovechar la nube.
+      </p>
+      <p><strong>Ejemplo:</strong> Migrar BD local a base administrada cloud.</p>
+      <p>✔ Mejora rendimiento y costos | ✔ Poco riesgo | ❌ No es modernización completa</p>
+
+      <h3>✅ 3) Refactor / Re-architect — Modernización real</h3>
+      <p>
+        Se cambia la arquitectura, manteniendo la funcionalidad.
+      </p>
+      <p>
+        <strong>Antes:</strong> App monolítica en un servidor<br>
+        <strong>Después:</strong> Microservicios, contenedores, Kubernetes, servicios administrados
+      </p>
+      <p>✔ Alta escalabilidad | ✔ Mejor resiliencia | ✔ Ahorro a largo plazo | ❌ Alto esfuerzo inicial</p>
+
+      <h3>✅ 4) Repurchase — Cambiar por SaaS</h3>
+      <p>
+        No migras el sistema; lo reemplazas por uno cloud ya existente.
+      </p>
+      <p><strong>Ejemplo:</strong> Sistema interno → Salesforce, SAP Cloud, Microsoft 365</p>
+      <p>✔ Sin mantenimiento | ✔ Actualizaciones automáticas | ❌ Menos personalización</p>
+
+      <h3>✅ 5) Retire — Apagar sistemas</h3>
+      <p>
+        Durante migraciones se descubre que muchos sistemas ya no se usan. Entonces se eliminan.
+      </p>
+      <p>✔ Ahorra costos | ✔ Reduce complejidad</p>
+
+      <h3>✅ 6) Retain — Mantener fuera de la nube</h3>
+      <p>
+        Algunas aplicaciones no deben migrarse aún por dependencias técnicas, regulaciones, 
+        alto costo de migración o ser sistemas legacy críticos.
+      </p>
+
+      <div class="table-card">
+        <h3>Comparación rápida de estrategias</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Estrategia</th>
+                <th>Cambio en la app</th>
+                <th>Esfuerzo</th>
+                <th>Aprovecha nube</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Rehost</td>
+                <td>No</td>
+                <td>Bajo</td>
+                <td>Bajo</td>
+              </tr>
+              <tr>
+                <td>Replatform</td>
+                <td>Poco</td>
+                <td>Medio</td>
+                <td>Medio</td>
+              </tr>
+              <tr>
+                <td>Refactor</td>
+                <td>Alto</td>
+                <td>Alto</td>
+                <td>Alto</td>
+              </tr>
+              <tr>
+                <td>Repurchase</td>
+                <td>Reemplazo</td>
+                <td>Medio</td>
+                <td>Alto</td>
+              </tr>
+              <tr>
+                <td>Retire</td>
+                <td>Se elimina</td>
+                <td>Bajo</td>
+                <td>N/A</td>
+              </tr>
+              <tr>
+                <td>Retain</td>
+                <td>No migra</td>
+                <td>Bajo</td>
+                <td>N/A</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-icon">🧠</div>
+        <div>
+          <strong>Regla práctica moderna:</strong> Hoy muchas empresas adoptan 
+          <code>Rehost → estabilizar → Refactor después</code>. Primero salen del 
+          datacenter y luego modernizan.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: DATA TRUST JOURNEY -->
+    <section id="seccion-03" class="card">
+      <h2><span>03 · Madurez de Datos</span>Viaje de madurez de datos: Data Trust Journey</h2>
+      <p>
+        Mover datos a la nube no genera confianza automáticamente; la confianza llega 
+        cuando los datos se gobiernan y certifican. Estas son las 5 etapas típicas:
+      </p>
+
+      <div class="phase-box">
+        <h4>1) Legacy & Siloed Data (Datos aislados y legacy)</h4>
+        <p><strong>Situación:</strong> Sistemas on-premise antiguos, ERPs viejos, definiciones distintas, mala calidad.</p>
+        <p><strong>Resultado:</strong> Cada área tiene números distintos. No hay confianza en reportes.</p>
+        <p><strong>Nivel de confianza:</strong> Bajo</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>2) Cloud Migration (Migración a la nube)</h4>
+        <p><strong>Beneficios:</strong> Mejor escalabilidad, alta disponibilidad, infraestructura moderna.</p>
+        <p><strong>Pero:</strong> Los datos siguen mal definidos. No hay métricas certificadas.</p>
+        <p><strong>Nivel de confianza:</strong> Medio-bajo</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>3) Governed Data (Datos gobernados)</h4>
+        <p><strong>Se agregan:</strong> Dueños de datos, Data Stewards, catálogo de datos, control de accesos, reglas de calidad.</p>
+        <p><strong>Resultado:</strong> Los datos se vuelven un activo empresarial.</p>
+        <p><strong>Nivel de confianza:</strong> Medio-alto</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>4) Curated & Certified Data (Datos curados y certificados)</h4>
+        <p><strong>Existen:</strong> Datasets oficiales, KPIs certificados, una sola fuente de verdad, métricas alineadas al negocio.</p>
+        <p><strong>Resultado:</strong> Ya no se discuten los números.</p>
+        <p><strong>Nivel de confianza:</strong> Alto</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>5) AI-Ready & Trusted Data (Datos listos para IA)</h4>
+        <p><strong>Características:</strong> Datos versionados, enriquecidos, etiquetados, monitoreo continuo.</p>
+        <p><strong>Resultado:</strong> IA puede operar en producción sin riesgo.</p>
+        <p><strong>Nivel de confianza:</strong> Muy alto</p>
+      </div>
+
+      <div class="callout">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>Orden real de adopción:</strong> Cloud → Governance → Data Quality → AI
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: POR QUÉ FALLAN PROYECTOS IA -->
+    <section id="seccion-04" class="card">
+      <h2><span>04 · Riesgos</span>Por qué los proyectos de IA fallan por datos</h2>
+      <p>
+        Entre 60% y 80% de los proyectos de IA no llegan a producción o no generan valor. 
+        El problema casi siempre está en la calidad y disponibilidad de datos.
+      </p>
+
+      <h3>1) Datos de mala calidad</h3>
+      <p>Datos incompletos, duplicados, incorrectos, vacíos u obsoletos. <em>Basura entra → basura sale.</em></p>
+
+      <h3>2) Datos en silos</h3>
+      <p>ERP por un lado, CRM por otro, Excel locales. No existe vista completa del negocio.</p>
+
+      <h3>3) No existe una "fuente única de verdad"</h3>
+      <p>Ventas dice 10M, Finanzas 8M, Operaciones 9M. ¿Con cuál entrenas la IA?</p>
+
+      <h3>4) Falta de gobierno de datos</h3>
+      <p>Sin dueños de datos, responsables de calidad, definiciones claras ni catálogos.</p>
+
+      <h3>5) Datos no preparados para IA</h3>
+      <p>Texto sin limpiar, imágenes sin etiquetar, sin estructura ni historial suficiente.</p>
+
+      <h3>6) Expectativas irreales del negocio</h3>
+      <p>"Pongamos IA y listo" sin preparar datos. El proyecto termina como PoC que nunca entra en producción.</p>
+
+      <h3>7) Falta de monitoreo posterior</h3>
+      <p>El modelo se degrada con el tiempo si cambian datos, negocio o comportamiento de usuarios.</p>
+
+      <div class="table-card">
+        <h3>Distribución real del esfuerzo en proyectos IA</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Actividad</th>
+                <th>Tiempo real</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Preparar datos</td>
+                <td>60–80%</td>
+              </tr>
+              <tr>
+                <td>Entrenar modelo</td>
+                <td>10–20%</td>
+              </tr>
+              <tr>
+                <td>Despliegue</td>
+                <td>10%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-icon">🧠</div>
+        <div>
+          <strong>Frase clave:</strong> La IA no falla por algoritmos, falla por datos malos. 
+          El orden correcto es: <code>Integrar → Limpiar → Gobernar → Certificar → IA</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: RUTA AI-READY -->
+    <section id="seccion-05" class="card">
+      <h2><span>05 · Roadmap</span>Ruta típica para volverse AI-Ready (18–24 meses)</h2>
+      <p>
+        La mayoría de organizaciones no pasan directo a IA en producción. Una ruta 
+        realista se divide en 4 fases:
+      </p>
+
+      <div class="phase-box">
+        <h4>📍 Fase 1 — Fundamentos y Migración (0–6 meses)</h4>
+        <p><strong>Objetivo:</strong> Sacar datos del caos inicial</p>
+        <p><strong>Actividades:</strong> Inventario de sistemas, migración a nube, centralización inicial, primeros data lakes/warehouses</p>
+        <p><strong>Resultado:</strong> ✔ Datos accesibles | ✔ Infraestructura escalable | ❌ Aún no hay confianza total</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>📍 Fase 2 — Gobierno y Calidad de Datos (6–12 meses)</h4>
+        <p><strong>Objetivo:</strong> Comenzar a confiar en los datos</p>
+        <p><strong>Actividades:</strong> Data Owners/Stewards, catálogo de datos, reglas de calidad, definiciones comunes de KPIs</p>
+        <p><strong>Resultado:</strong> ✔ Datos entendibles | ✔ Definiciones unificadas | ✔ Menos discusiones por cifras</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>📍 Fase 3 — Datos Certificados y Analítica Avanzada (12–18 meses)</h4>
+        <p><strong>Objetivo:</strong> Tener datasets confiables para modelos</p>
+        <p><strong>Actividades:</strong> Datasets certificados, Single Source of Truth, automatizar pipelines, modelos predictivos iniciales</p>
+        <p><strong>Resultado:</strong> ✔ KPIs certificados | ✔ Analítica confiable | ✔ Primeros proyectos reales de IA</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>📍 Fase 4 — IA en Producción (18–24 meses)</h4>
+        <p><strong>Objetivo:</strong> IA integrada al negocio</p>
+        <p><strong>Actividades:</strong> Modelos en producción, automatización de decisiones, monitoreo de modelos, MLOps/AIOps</p>
+        <p><strong>Resultado:</strong> ✔ IA generando valor real | ✔ Automatización operativa | ✔ Optimización de procesos</p>
+      </div>
+
+      <div class="table-card">
+        <h3>Tiempo realista por tamaño de empresa</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Tamaño empresa</th>
+                <th>Tiempo a AI-Ready</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Mediana</td>
+                <td>12–18 meses</td>
+              </tr>
+              <tr>
+                <td>Grande</td>
+                <td>18–30 meses</td>
+              </tr>
+              <tr>
+                <td>Corporativo global</td>
+                <td>24–36 meses</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>Regla práctica:</strong> El éxito no está en el modelo más avanzado, 
+          sino en: Datos confiables + procesos gobernados + IA aplicada a problemas reales.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 6: MULTICLOUD -->
+    <section id="seccion-06" class="card">
+      <h2><span>06 · Estrategia Cloud</span>Multicloud, interconexión y ROI en adopción de nube</h2>
+      
+      <h3>Hyperscalers</h3>
+      <p>
+        Grandes proveedores de nube pública con escala global. El mercado impulsa 
+        colaboraciones (alianzas, interconexión, servicios compatibles) para reducir 
+        fricción multicloud.
+      </p>
+
+      <h3>Multicloud</h3>
+      <p>
+        Estrategia para usar más de una nube (y/o on-prem), eligiendo "la mejor 
+        herramienta para cada parte" de la solución.
+      </p>
+      <p><strong>Ventaja:</strong> Flexibilidad y optimización</p>
+      <p><strong>Reto:</strong> Redes, identidad, seguridad, observabilidad, costos</p>
+
+      <h3>Interconexión de redes (híbrida / multicloud)</h3>
+      <p><strong>Arquitecturas típicas:</strong></p>
+      <ul>
+        <li>VPNs (rápido, menor costo)</li>
+        <li>Conectividad directa dedicada (menor latencia, mayor estabilidad)</li>
+        <li>Redes privadas, ruteo, segmentación y políticas</li>
+      </ul>
+
+      <h3>ROI (Return on Investment)</h3>
+      <p>
+        Retorno de inversión: qué tan rápido el valor (ahorros, eficiencia, reducción 
+        de riesgo, ingresos) compensa lo invertido.
+      </p>
+      <p><strong>En adopción de nube/IA, ROI se acelera cuando:</strong></p>
+      <ul>
+        <li>Usas servicios gestionados</li>
+        <li>Reduces operación</li>
+        <li>Automatizas procesos</li>
+        <li>Aprovechas herramientas maduras del ecosistema</li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-icon">⚡</div>
+        <div>
+          <strong>Punto clave:</strong> La IA empresarial depende de conectividad 
+          confiable entre datos, servicios y modelos.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 7: DICCIONARIO IA V1 -->
+    <section id="seccion-07" class="card">
+      <h2><span>07 · Fundamentos IA</span>Diccionario IA v1 — Fundamentos de Inteligencia Artificial</h2>
+      
+      <h3>1) Conceptos base de IA</h3>
+      
+      <p><strong>Inteligencia Artificial (IA)</strong></p>
+      <p>
+        Conjunto de técnicas que permiten a sistemas realizar tareas que requieren 
+        inteligencia humana: comprensión de lenguaje, reconocimiento de patrones, 
+        predicción y toma de decisiones.
+      </p>
+
+      <p><strong>IA Generativa</strong></p>
+      <p>
+        Tipo de IA capaz de crear contenido nuevo (texto, imágenes, código, audio) 
+        a partir de patrones aprendidos.
+      </p>
+
+      <p><strong>NLP (Natural Language Processing)</strong></p>
+      <p>
+        Tecnología que permite a las máquinas entender, interpretar y generar lenguaje 
+        humano. Ejemplos: chatbots, clasificación de texto, extracción de entidades.
+      </p>
+
+      <p><strong>NLP empresarial</strong></p>
+      <p>
+        Aplicación del NLP a información interna corporativa con controles de seguridad 
+        y trazabilidad. Importa gobierno, permisos, auditoría y precisión operacional.
+      </p>
+
+      <h3>2) Modelos y LLM</h3>
+
+      <p><strong>Modelo</strong></p>
+      <p>
+        Sistema matemático que aprende patrones de datos para predecir, clasificar o 
+        generar resultados.
+      </p>
+
+      <p><strong>LLM (Large Language Model)</strong></p>
+      <p>
+        Modelo de lenguaje entrenado con grandes volúmenes de texto capaz de responder 
+        preguntas, generar texto, programar código, resumir contenido y mantener 
+        conversación con contexto.
+      </p>
+
+      <p><strong>Prompt</strong></p>
+      <p>
+        Instrucción o entrada que guía al modelo para producir una salida deseada.
+      </p>
+
+      <p><strong>Prompt Engineering</strong></p>
+      <p>
+        Diseño de prompts para mejorar precisión, formato y seguridad. Incluye contexto, 
+        restricciones, formato de salida, políticas y tono.
+      </p>
+
+      <p><strong>Context Window</strong></p>
+      <p>
+        Cantidad máxima de información que el modelo puede procesar en una interacción. 
+        Impacta cuánto contexto puedes mandar, cuánto cuesta y qué tan completa puede 
+        ser la respuesta.
+      </p>
+
+      <h3>3) Embeddings y vectores</h3>
+
+      <p><strong>Embeddings</strong></p>
+      <p>
+        Representación numérica del significado de texto o contenido en forma de vectores 
+        para medir similitud.
+      </p>
+
+      <p><strong>Vectores</strong></p>
+      <p>
+        Conjunto de números que representan el significado en un espacio matemático. 
+        Se usan para búsquedas semánticas, recomendaciones, clasificación y detección 
+        de similitud.
+      </p>
+
+      <h3>4) Búsqueda y análisis inteligente</h3>
+
+      <p><strong>Búsqueda semántica</strong></p>
+      <p>
+        Busca por significado, no por coincidencia exacta de palabras. Encuentra 
+        contenido con contexto parecido aunque use vocabulario distinto.
+      </p>
+
+      <h3>5) RAG y recuperación de información</h3>
+
+      <p><strong>RAG (Retrieval-Augmented Generation)</strong></p>
+      <p>
+        Arquitectura que combina recuperación de información relevante con generación 
+        de respuesta usando un LLM.
+      </p>
+      <p><strong>Flujo:</strong> Pregunta → Buscar datos relevantes → Generar respuesta con contexto</p>
+      <p><strong>Ventaja:</strong> Responde con datos empresariales reales sin depender 
+      únicamente del conocimiento interno del modelo.</p>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>Resumen v1:</strong> Un sistema moderno de IA empresarial combina: 
+          LLM + Embeddings + Búsqueda semántica + RAG + Datos empresariales (gobernados)
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 8: DICCIONARIO IA V2 -->
+    <section id="seccion-08" class="card">
+      <h2><span>08 · Arquitectura Empresarial</span>Diccionario IA v2 — Arquitectura Empresarial</h2>
+      
+      <h3>Arquitectura típica moderna</h3>
+      <pre style="background: rgba(15,23,42,0.8); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.8rem; line-height: 1.6;">
+Datos empresariales
+        ↓
+Generación de embeddings
+        ↓
+Base vectorial
+        ↓
+Búsqueda semántica
+        ↓
+RAG
+        ↓
+LLM genera respuesta
+        ↓
+Aplicación / chatbot / sistema</pre>
+
+      <h3>Data Lakehouse</h3>
+      <p>
+        Arquitectura que combina Data Lake + Data Warehouse para soportar analítica 
+        masiva, datos estructurados y no estructurados, procesamiento batch y near-real-time.
+      </p>
+
+      <h3>Data Governance</h3>
+      <p>
+        Políticas y procesos que garantizan calidad, seguridad, acceso controlado, 
+        definiciones comunes y trazabilidad.
+      </p>
+
+      <h3>Data Lineage</h3>
+      <p>
+        Seguimiento del origen y transformación del dato (de fuente → pipeline → consumo). 
+        Clave para auditoría.
+      </p>
+
+      <h3>Single Source of Truth (SSOT)</h3>
+      <p>
+        Fuente oficial y certificada de datos empresariales. Evita "números discutidos" 
+        entre áreas.
+      </p>
+
+      <h3>Foundation Models</h3>
+      <p>
+        Modelos grandes reutilizables entrenados en múltiples dominios. Se especializan 
+        mediante Prompting, RAG o Fine-tuning.
+      </p>
+
+      <h3>Fine-tuning vs RAG (criterio arquitectónico)</h3>
+      <ul>
+        <li><strong>Fine-tuning:</strong> especializa comportamiento con ejemplos; útil para estilo/política estable</li>
+        <li><strong>RAG:</strong> incorpora conocimiento corporativo actualizado sin reentrenar</li>
+      </ul>
+      <p>
+        En empresas se privilegia RAG porque reduce costos de retraining y mantiene "dato vivo".
+      </p>
+
+      <h3>AI Agents</h3>
+      <p>
+        Entidades IA capaces de planear acciones, consultar sistemas, ejecutar tareas, 
+        evaluar resultados e iterar y corregir.
+      </p>
+
+      <h3>Tool Calling</h3>
+      <p>
+        Capacidad del LLM/agente de invocar funciones o APIs empresariales. 
+        Ejemplo: consultar API de órdenes, obtener historial, ejecutar búsqueda filtrada.
+      </p>
+    </section>
+
+    <!-- SECCIÓN 9: DICCIONARIO IA V3 -->
+    <section id="seccion-09" class="card">
+      <h2><span>09 · Arquitectura Avanzada</span>Diccionario IA v3 — Arquitectura Avanzada</h2>
+      
+      <h3>RAG Multi-Fuente</h3>
+      <p>
+        Recupera contexto desde múltiples repositorios: órdenes técnicas, documentos, 
+        base de conocimiento, APIs internas.
+      </p>
+      <p><strong>Requiere:</strong> Normalizar formatos, control de permisos por fuente, 
+      consolidación y deduplicación de contexto.</p>
+
+      <h3>RAG Jerárquico</h3>
+      <p>
+        Recuperación en niveles: Resumen → Detalle → Documento fuente. 
+        Útil para respuestas ejecutivas con trazabilidad a evidencia.
+      </p>
+
+      <h3>Hybrid Search</h3>
+      <p>Combinación de:</p>
+      <ul>
+        <li>Búsqueda vectorial (semántica)</li>
+        <li>Búsqueda por palabras clave (exact match)</li>
+        <li>Filtros estructurados (fecha, zona, tipo, estado)</li>
+      </ul>
+      <p><strong>Beneficio:</strong> Mejor precisión para datos operativos reales.</p>
+
+      <h3>Agentic RAG Orchestration</h3>
+      <p>Sistema donde agentes deciden:</p>
+      <ul>
+        <li>Qué consultar</li>
+        <li>Qué herramientas usar</li>
+        <li>Cómo responder por pasos</li>
+        <li>Cuándo pedir confirmación humana</li>
+      </ul>
+
+      <h3>MLOps / LLMOps</h3>
+      <p><strong>MLOps:</strong> Versionado, pruebas, deploy, monitoreo, automatización CI/CD</p>
+      <p><strong>LLMOps:</strong> Extensión para sistemas generativos: versionado de prompts, 
+      evaluación de groundedness, gestión de contexto, seguridad (guardrails), optimización 
+      de costos (tokens)</p>
+
+      <h3>Observabilidad IA</h3>
+      <p>Monitoreo de:</p>
+      <ul>
+        <li>Latencia (retrieval + generación)</li>
+        <li>Calidad (feedback, métricas RAG)</li>
+        <li>Tasa de errores</li>
+        <li>Costo por consulta</li>
+        <li>Trazabilidad (fuentes usadas)</li>
+      </ul>
+
+      <h3>AI Governance (visión avanzada)</h3>
+      <p>
+        Normas, roles, controles y auditoría para IA responsable.
+      </p>
+
+      <h3>Prompt Injection Attack</h3>
+      <p>
+        Intento de manipular al sistema para saltarse políticas, exfiltrar datos o 
+        ejecutar acciones indebidas.
+      </p>
+
+      <h3>Token Optimization</h3>
+      <p>Reducir contexto y salida mediante:</p>
+      <ul>
+        <li>Resúmenes previos</li>
+        <li>Chunking eficiente</li>
+        <li>Top-k ajustado</li>
+        <li>Re-ranking para precisión</li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>Resumen ejecutivo v3:</strong> Arquitectura avanzada integra: 
+          Datos gobernados + RAG/Hybrid Search + Agentes/Tools + LLMOps + Seguridad + 
+          Multicloud/Redes + Optimización de costos
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 10: DICCIONARIO IA V4 -->
+    <section id="seccion-10" class="card">
+      <h2><span>10 · Gobierno y Operación</span>Diccionario IA v4 — Gobierno y Operación Empresarial</h2>
+      
+      <h3>1) Gobierno de IA y cumplimiento</h3>
+
+      <p><strong>AI Governance</strong></p>
+      <p>
+        Marco de políticas, roles, procesos y controles para asegurar que la IA sea 
+        segura, confiable, auditable y alineada al negocio.
+      </p>
+
+      <p><strong>AI Policy</strong></p>
+      <p>
+        Documento que define qué se puede automatizar, restricciones de datos, 
+        proveedores permitidos y responsabilidades.
+      </p>
+
+      <p><strong>Risk Assessment</strong></p>
+      <p>
+        Clasificación del riesgo del caso de uso (bajo/medio/alto) según impacto legal, 
+        operativo, reputacional y privacidad.
+      </p>
+
+      <p><strong>Responsible AI</strong></p>
+      <p>Principios para reducir sesgos, proteger privacidad, asegurar trazabilidad y 
+      evitar uso indebido.</p>
+
+      <p><strong>Model Cards / System Cards</strong></p>
+      <p>
+        Ficha técnica del modelo/sistema: propósito, datos y límites, riesgos, pruebas, 
+        criterios de aceptación, versiones.
+      </p>
+
+      <h3>2) Roles y responsabilidades</h3>
+
+      <div class="table-card">
+        <h3>Operating Model - Roles clave</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Rol</th>
+                <th>Responsabilidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>AI Product Owner</td>
+                <td>Valor, objetivos, KPIs de éxito, priorización del roadmap</td>
+              </tr>
+              <tr>
+                <td>Data Owner</td>
+                <td>Define significado, autoriza uso, aprueba acceso</td>
+              </tr>
+              <tr>
+                <td>Data Steward</td>
+                <td>Reglas de calidad, catálogo, validaciones, limpieza, mantenimiento</td>
+              </tr>
+              <tr>
+                <td>Model Owner</td>
+                <td>Desempeño, cambios, incidentes, revisión y mejora del modelo</td>
+              </tr>
+              <tr>
+                <td>Security Owner</td>
+                <td>Accesos, controles de seguridad, gestión de riesgos</td>
+              </tr>
+              <tr>
+                <td>AI Ops / Platform Team</td>
+                <td>Pipelines, observabilidad, costos, despliegues, SRE</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>3) Gobierno de datos para IA</h3>
+
+      <p><strong>Data Quality</strong></p>
+      <p>
+        Medición y mejora de precisión, completitud, consistencia, unicidad y actualidad.
+      </p>
+
+      <p><strong>Data Catalog</strong></p>
+      <p>
+        Inventario con definiciones, dueños, sensibilidad, calidad, ubicación y lineage.
+      </p>
+
+      <p><strong>Data Classification</strong></p>
+      <p>
+        Etiquetado: público / interno / confidencial / restringido.
+      </p>
+
+      <p><strong>PII / Sensitive Data</strong></p>
+      <p>
+        Datos que requieren protección adicional: enmascaramiento, minimización, 
+        políticas por rol, auditoría.
+      </p>
+
+      <h3>4) Seguridad específica para LLM/RAG/Agentes</h3>
+
+      <p><strong>Guardrails</strong></p>
+      <p>Reglas de control:</p>
+      <ul>
+        <li>Validación de entrada</li>
+        <li>Filtros de salida</li>
+        <li>Detección de PII</li>
+        <li>Políticas de respuesta</li>
+        <li>Bloqueo de temas o acciones no autorizadas</li>
+      </ul>
+
+      <p><strong>Least Privilege</strong></p>
+      <p>
+        Permisos mínimos por componente (agente, conector, API, BD).
+      </p>
+
+      <p><strong>Secrets Management</strong></p>
+      <p>
+        Gestión segura de credenciales: vault, rotación, sin hardcode.
+      </p>
+
+      <p><strong>Redaction / Masking</strong></p>
+      <p>
+        Ocultar datos sensibles antes de enviar contexto al LLM o mostrar salida al usuario.
+      </p>
+
+      <h3>5) Calidad del sistema IA</h3>
+
+      <p><strong>Golden Questions / Test Set</strong></p>
+      <p>
+        Batería representativa: preguntas reales, escenarios críticos, consultas de alto riesgo.
+      </p>
+
+      <p><strong>Groundedness</strong></p>
+      <p>
+        Qué tanto la respuesta está sustentada en fuentes reales (no inventada).
+      </p>
+
+      <p><strong>Hallucination</strong></p>
+      <p>
+        Respuesta inventada/no sustentada.
+      </p>
+
+      <p><strong>A/B Testing</strong></p>
+      <p>
+        Comparación controlada entre variantes: modelos, prompts, chunking, reranker, 
+        estrategia de búsqueda.
+      </p>
+
+      <h3>6) Operación: SRE for AI</h3>
+
+      <p><strong>SLO/SLI (ejemplos)</strong></p>
+      <ul>
+        <li>Latencia P95</li>
+        <li>Tasa de éxito</li>
+        <li>Costo por consulta</li>
+        <li>Porcentaje de respuestas con fuente válida</li>
+      </ul>
+
+      <p><strong>Incident Management</strong></p>
+      <p>
+        Proceso para manejar caídas, exposición de datos, degradación de calidad, 
+        picos de costos.
+      </p>
+
+      <h3>7) Observabilidad</h3>
+
+      <p><strong>Telemetry</strong></p>
+      <p>
+        Logs, métricas, trazas: retrieval, llamadas al LLM, tools, resultados.
+      </p>
+
+      <p><strong>Traceability</strong></p>
+      <p>
+        Registrar: pregunta → documentos recuperados → respuesta → versión 
+        (prompt/modelo/embeddings)
+      </p>
+
+      <p><strong>Feedback Loop</strong></p>
+      <p>
+        Captura de "útil/no útil", correcciones y resultados para mejora continua.
+      </p>
+
+      <h3>8) Costos y FinOps de IA</h3>
+
+      <p><strong>Token Cost</strong></p>
+      <p>
+        Costo variable en IA generativa: depende del tamaño de entrada (contexto) y 
+        salida (respuesta).
+      </p>
+
+      <p><strong>Presupuesto y límites</strong></p>
+      <ul>
+        <li>Límites por usuario/área/caso de uso</li>
+        <li>Rate limiting</li>
+        <li>Políticas de consumo</li>
+      </ul>
+
+      <p><strong>Model Routing</strong></p>
+      <p>
+        Modelo "ligero" para consultas simples y "premium" para complejas.
+      </p>
+
+      <h3>9) Controles para sistemas Agentic</h3>
+
+      <p><strong>Tool Governance</strong></p>
+      <p>
+        Definir qué tools existen, quién las aprueba, límites y auditoría.
+      </p>
+
+      <p><strong>Human-in-the-Loop (HITL)</strong></p>
+      <p>
+        Validación humana para acciones de alto riesgo.
+      </p>
+
+      <p><strong>Policy-based Execution</strong></p>
+      <p>
+        Motor de reglas para permitir/denegar acciones según rol, contexto, riesgo y 
+        cumplimiento.
+      </p>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🧠</div>
+        <div>
+          <strong>Regla práctica moderna:</strong> El éxito no está en el modelo más 
+          avanzado, sino en: Datos confiables + procesos gobernados + IA aplicada a 
+          problemas reales.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 11: DICCIONARIO IA V5 - ENTRENAMIENTO DE LLM -->
+    <section id="seccion-11" class="card">
+      <h2><span>11 · Entrenamiento</span>Diccionario IA v5 — conceptos clave en entrenamiento de LLM</h2>
+
+      <h3>🔹 Pre-entrenamiento (Pretraining)</h3>
+      <p>
+        Fase inicial en la que un modelo de lenguaje aprende patrones generales del lenguaje 
+        a partir de grandes volúmenes de datos. Normalmente se basa en la predicción del 
+        siguiente token y permite adquirir gramática, semántica y conocimiento general.
+      </p>
+
+      <h3>🔹 Entrenamiento autosupervisado (Self-Supervised Learning)</h3>
+      <p>
+        Tipo de entrenamiento donde las etiquetas se derivan automáticamente de los propios 
+        datos, sin intervención humana explícita.
+      </p>
+      <p><strong>📌 En LLM:</strong></p>
+      <ul>
+        <li>El texto actúa como entrada y como "etiqueta"</li>
+        <li>Ejemplo: predecir la siguiente palabra de una secuencia</li>
+      </ul>
+      <p>
+        <strong>👉 Es el fundamento real del pre-entrenamiento de los LLM modernos.</strong>
+      </p>
+
+      <h3>🔹 Entrenamiento no supervisado (Unsupervised Learning)</h3>
+      <p>
+        Paradigma clásico de aprendizaje donde no existe una función objetivo explícita ni 
+        etiquetas, como:
+      </p>
+      <ul>
+        <li>Clustering</li>
+        <li>PCA</li>
+        <li>Topic Modeling</li>
+      </ul>
+      <p><strong>📌 Nota importante:</strong></p>
+      <p>
+        Los LLM no se entrenan principalmente con aprendizaje no supervisado puro, aunque 
+        históricamente se haya usado el término de forma imprecisa.
+      </p>
+
+      <h3>🔹 SFT – Supervised Fine-Tuning</h3>
+      <p><strong>(Ajuste fino supervisado)</strong></p>
+      <p>
+        Fase posterior al pre-entrenamiento en la que el modelo se entrena con pares 
+        entrada–salida etiquetados por humanos.
+      </p>
+      <p><strong>Ejemplos:</strong></p>
+      <ul>
+        <li>Pregunta → respuesta correcta</li>
+        <li>Instrucción → salida esperada</li>
+        <li>Código → resultado esperado</li>
+      </ul>
+      <p><strong>📌 Objetivo:</strong></p>
+      <ul>
+        <li>Mejorar seguimiento de instrucciones</li>
+        <li>Reducir respuestas erróneas</li>
+        <li>Especializar el modelo</li>
+      </ul>
+
+      <h3>🔹 Instrucción tuning (Instruction Tuning)</h3>
+      <p>
+        Variante de SFT enfocada específicamente en entrenar al modelo para seguir 
+        instrucciones en lenguaje natural.
+      </p>
+      <p><strong>Ejemplo:</strong></p>
+      <ul>
+        <li>"Instrucción: resume el texto"</li>
+        <li>"Salida esperada: resumen correcto"</li>
+      </ul>
+      <p>
+        <strong>📌 Es una de las razones por las que los LLM modernos "parecen asistentes".</strong>
+      </p>
+
+      <h3>🔹 RLHF – Reinforcement Learning from Human Feedback</h3>
+      <p><strong>(Aprendizaje por refuerzo con retroalimentación humana)</strong></p>
+      <p>Proceso de alineación donde:</p>
+      <ul>
+        <li>Humanos evalúan o comparan respuestas del modelo</li>
+        <li>Se entrena un modelo de recompensa</li>
+        <li>El LLM se optimiza para maximizar dicha recompensa</li>
+      </ul>
+      <p><strong>📌 Mejora:</strong></p>
+      <ul>
+        <li>Calidad</li>
+        <li>Utilidad</li>
+        <li>Seguridad</li>
+        <li>Estilo conversacional</li>
+      </ul>
+
+      <h3>🔹 Modelo de recompensa (Reward Model)</h3>
+      <p>
+        Modelo auxiliar entrenado para asignar una puntuación a las respuestas del LLM 
+        según preferencias humanas.
+      </p>
+      <p><strong>📌 Se usa como función objetivo durante RLHF.</strong></p>
+
+      <h3>🔹 Alineación (Alignment)</h3>
+      <p>Conjunto de técnicas cuyo objetivo es que el modelo:</p>
+      <ul>
+        <li>Responda de forma útil</li>
+        <li>Sea seguro</li>
+        <li>Se alinee con valores y expectativas humanas</li>
+      </ul>
+      <p><strong>Incluye:</strong></p>
+      <ul>
+        <li>SFT</li>
+        <li>RLHF</li>
+        <li>Filtros de seguridad</li>
+        <li>Evaluaciones humanas</li>
+      </ul>
+
+      <h3>🔹 Fine-Tuning</h3>
+      <p>
+        Término general que engloba cualquier ajuste posterior al pre-entrenamiento, 
+        incluyendo:
+      </p>
+      <ul>
+        <li>SFT</li>
+        <li>Instruction tuning</li>
+        <li>Ajustes con RLHF</li>
+        <li>Adaptaciones a dominios específicos</li>
+      </ul>
+
+      <h3>🔹 Preferencias humanas</h3>
+      <p>
+        Juicios realizados por personas sobre qué respuesta es "mejor" entre varias opciones, 
+        considerando:
+      </p>
+      <ul>
+        <li>Exactitud</li>
+        <li>Claridad</li>
+        <li>Seguridad</li>
+        <li>Estilo</li>
+      </ul>
+      <p><strong>📌 Son la base de RLHF.</strong></p>
+
+      <h3>🔹 Pipeline de entrenamiento de un LLM</h3>
+      <p>Secuencia típica de entrenamiento en modelos modernos:</p>
+      <ol>
+        <li>Pre-entrenamiento autosupervisado</li>
+        <li>Supervised Fine-Tuning (SFT)</li>
+        <li>Instruction tuning</li>
+        <li>RLHF / alineación</li>
+      </ol>
+    </section>
+
+    <p class="footer-note">
+      <strong>Nota final:</strong> Esta guía representa una visión actualizada (2026) 
+      del estado del arte en adopción de nube, gobierno de datos e implementación de 
+      IA empresarial. Las tecnologías y mejores prácticas evolucionan continuamente; 
+      consulta siempre la documentación oficial de los proveedores y valida contra los 
+      requisitos específicos de tu organización.
+    </p>
+  </main>
+
+  <!-- Botón flotante para regresar al menú -->
+  <a href="#" class="back-to-menu" title="Regresar al índice">↑</a>
+</body>
+</html>
