@@ -139,6 +139,21 @@
       text-align: center;
     }
 
+    /* Botones de cambio de órbita en dropdown */
+    button.dropdown-item {
+      width: 100%;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+    }
+
+    button.dropdown-item:hover {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+    }
+
     .dropdown-divider {
       height: 1px;
       background: rgba(56, 189, 248, 0.15);
@@ -196,6 +211,66 @@
       color: var(--muted);
       font-size: 0.95rem;
     }
+
+    /* Selector de órbitas (pills) */
+    .orbit-selector {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+      z-index: 10;
+    }
+
+    .orbit-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.1), transparent 45%),
+                  rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .orbit-pill:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.2), transparent 45%),
+                  rgba(15, 23, 42, 0.95);
+    }
+
+    .orbit-pill.active {
+      border-color: var(--accent);
+      color: var(--text);
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.25), transparent 45%),
+                  rgba(30, 41, 59, 0.95);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+    }
+
+    .orbit-pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.5;
+      transition: all 0.3s ease;
+    }
+
+    .orbit-pill.active .orbit-pill-dot {
+      opacity: 1;
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    .orbit-pill[data-orbit="guias"] .orbit-pill-dot { background: #38bdf8; }
+    .orbit-pill[data-orbit="cloud"] .orbit-pill-dot { background: #a855f7; }
+    .orbit-pill[data-orbit="deploy"] .orbit-pill-dot { background: #22c55e; }
 
     /* Contenedor principal del menú */
     .menu-container {
@@ -416,21 +491,31 @@
     }
 
     /* Posiciones de los items (4 items en círculo) con contra-rotación */
-    .menu-item:nth-of-type(1) { 
+    #orbit-guias .menu-item:nth-of-type(1) { 
       transform: rotate(0deg) translateX(220px) rotate(0deg);
       animation: counter-rotate-0 20s linear infinite;
     }
-    .menu-item:nth-of-type(2) { 
+    #orbit-guias .menu-item:nth-of-type(2) { 
       transform: rotate(90deg) translateX(220px) rotate(-90deg);
       animation: counter-rotate-90 20s linear infinite;
     }
-    .menu-item:nth-of-type(3) { 
+    #orbit-guias .menu-item:nth-of-type(3) { 
       transform: rotate(180deg) translateX(220px) rotate(-180deg);
       animation: counter-rotate-180 20s linear infinite;
     }
-    .menu-item:nth-of-type(4) { 
+    #orbit-guias .menu-item:nth-of-type(4) { 
       transform: rotate(270deg) translateX(220px) rotate(-270deg);
       animation: counter-rotate-270 20s linear infinite;
+    }
+
+    /* Posiciones para órbitas de 2 items */
+    .two-items .menu-item:nth-of-type(1) { 
+      transform: rotate(0deg) translateX(220px) rotate(0deg);
+      animation: counter-rotate-0 20s linear infinite;
+    }
+    .two-items .menu-item:nth-of-type(2) { 
+      transform: rotate(180deg) translateX(220px) rotate(-180deg);
+      animation: counter-rotate-180 20s linear infinite;
     }
 
     /* Pausar animación de items al hover */
@@ -438,16 +523,67 @@
       animation-play-state: paused;
     }
 
-    /* Colores individuales por item */
-    .menu-item:nth-of-type(1) .menu-item-inner { border-color: rgba(56, 189, 248, 0.4); }
-    .menu-item:nth-of-type(2) .menu-item-inner { border-color: rgba(168, 85, 247, 0.4); }
-    .menu-item:nth-of-type(3) .menu-item-inner { border-color: rgba(34, 197, 94, 0.4); }
-    .menu-item:nth-of-type(4) .menu-item-inner { border-color: rgba(251, 191, 36, 0.4); }
+    /* Colores individuales por item - Guías IA */
+    #orbit-guias .menu-item:nth-of-type(1) .menu-item-inner { border-color: rgba(56, 189, 248, 0.4); }
+    #orbit-guias .menu-item:nth-of-type(2) .menu-item-inner { border-color: rgba(168, 85, 247, 0.4); }
+    #orbit-guias .menu-item:nth-of-type(3) .menu-item-inner { border-color: rgba(34, 197, 94, 0.4); }
+    #orbit-guias .menu-item:nth-of-type(4) .menu-item-inner { border-color: rgba(251, 191, 36, 0.4); }
 
-    .menu-item:nth-of-type(1):hover .menu-item-inner { border-color: #38bdf8; box-shadow: 0 12px 40px rgba(56, 189, 248, 0.4); }
-    .menu-item:nth-of-type(2):hover .menu-item-inner { border-color: #a855f7; box-shadow: 0 12px 40px rgba(168, 85, 247, 0.4); }
-    .menu-item:nth-of-type(3):hover .menu-item-inner { border-color: #22c55e; box-shadow: 0 12px 40px rgba(34, 197, 94, 0.4); }
-    .menu-item:nth-of-type(4):hover .menu-item-inner { border-color: #fbbf24; box-shadow: 0 12px 40px rgba(251, 191, 36, 0.4); }
+    #orbit-guias .menu-item:nth-of-type(1):hover .menu-item-inner { border-color: #38bdf8; box-shadow: 0 12px 40px rgba(56, 189, 248, 0.4); }
+    #orbit-guias .menu-item:nth-of-type(2):hover .menu-item-inner { border-color: #a855f7; box-shadow: 0 12px 40px rgba(168, 85, 247, 0.4); }
+    #orbit-guias .menu-item:nth-of-type(3):hover .menu-item-inner { border-color: #22c55e; box-shadow: 0 12px 40px rgba(34, 197, 94, 0.4); }
+    #orbit-guias .menu-item:nth-of-type(4):hover .menu-item-inner { border-color: #fbbf24; box-shadow: 0 12px 40px rgba(251, 191, 36, 0.4); }
+
+    /* Sistema de órbitas múltiples */
+    .orbit-content {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .orbit-content.active {
+      display: block;
+    }
+
+    /* Órbitas con 2 items (Cloud y Deploy) */
+    .orbit-content.two-items .menu-item:nth-of-type(1) {
+      animation: counter-rotate-0-two 20s linear infinite;
+    }
+    .orbit-content.two-items .menu-item:nth-of-type(2) {
+      animation: counter-rotate-180-two 20s linear infinite;
+    }
+
+    @keyframes counter-rotate-0-two {
+      from { transform: rotate(0deg) translateX(220px) rotate(0deg); }
+      to { transform: rotate(-360deg) translateX(220px) rotate(360deg); }
+    }
+    @keyframes counter-rotate-180-two {
+      from { transform: rotate(180deg) translateX(220px) rotate(-180deg); }
+      to { transform: rotate(-180deg) translateX(220px) rotate(180deg); }
+    }
+
+    /* Colores específicos para Cloud Providers */
+    .orbit-cloud .menu-item:nth-of-type(1) .menu-item-inner { border-color: rgba(66, 133, 244, 0.5); }
+    .orbit-cloud .menu-item:nth-of-type(2) .menu-item-inner { border-color: rgba(255, 0, 0, 0.4); }
+    .orbit-cloud .menu-item:nth-of-type(1):hover .menu-item-inner { border-color: #4285f4; box-shadow: 0 12px 40px rgba(66, 133, 244, 0.5); }
+    .orbit-cloud .menu-item:nth-of-type(2):hover .menu-item-inner { border-color: #f80000; box-shadow: 0 12px 40px rgba(255, 0, 0, 0.4); }
+
+    /* Colores específicos para Deploy */
+    .orbit-deploy .menu-item:nth-of-type(1) .menu-item-inner { border-color: rgba(34, 197, 94, 0.5); }
+    .orbit-deploy .menu-item:nth-of-type(2) .menu-item-inner { border-color: rgba(239, 68, 68, 0.4); }
+    .orbit-deploy .menu-item:nth-of-type(1):hover .menu-item-inner { border-color: #22c55e; box-shadow: 0 12px 40px rgba(34, 197, 94, 0.5); }
+    .orbit-deploy .menu-item:nth-of-type(2):hover .menu-item-inner { border-color: #ef4444; box-shadow: 0 12px 40px rgba(239, 68, 68, 0.4); }
+
+    /* Icono de imagen en menu-item */
+    .menu-item-inner img.menu-logo {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      margin-bottom: 0.3rem;
+    }
 
     /* Footer */
     .footer {
@@ -598,6 +734,25 @@
       <a href="guia-rapida-vercel-github.html" class="dropdown-item">
         <span class="icon">⚡</span> Vercel + GitHub
       </a>
+      <div class="dropdown-divider"></div>
+      <div class="dropdown-title">🌐 Cloud Providers</div>
+      <a href="https://console.cloud.google.com/" target="_blank" class="dropdown-item">
+        <span class="icon">☁️</span> Google Cloud Console
+      </a>
+      <a href="https://www.oracle.com/cloud/" target="_blank" class="dropdown-item">
+        <span class="icon">🔶</span> Oracle Cloud
+      </a>
+      <div class="dropdown-divider"></div>
+      <div class="dropdown-title">🎯 Cambiar Órbita</div>
+      <button class="dropdown-item orbit-switch" data-orbit="guias">
+        <span class="icon">📚</span> Guías IA
+      </button>
+      <button class="dropdown-item orbit-switch" data-orbit="cloud">
+        <span class="icon">☁️</span> Cloud Providers
+      </button>
+      <button class="dropdown-item orbit-switch" data-orbit="deploy">
+        <span class="icon">🚀</span> Despliegue
+      </button>
     </div>
   </nav>
 
@@ -610,6 +765,22 @@
     <p>Explora el conocimiento • JJRM 2026</p>
   </header>
 
+  <!-- Selector de órbitas -->
+  <div class="orbit-selector">
+    <button class="orbit-pill active" data-orbit="guias">
+      <span class="orbit-pill-dot"></span>
+      Guías IA
+    </button>
+    <button class="orbit-pill" data-orbit="cloud">
+      <span class="orbit-pill-dot"></span>
+      Cloud Providers
+    </button>
+    <button class="orbit-pill" data-orbit="deploy">
+      <span class="orbit-pill-dot"></span>
+      Despliegue
+    </button>
+  </div>
+
   <!-- Menú rotativo -->
   <div class="menu-container">
     <!-- Anillos orbitales -->
@@ -621,34 +792,70 @@
       <img src="img/IA_ALONE_ia.png" alt="IA Logo" />
     </div>
 
-    <!-- Items del menú -->
-    <a href="guia-ia-LLM.html" class="menu-item">
-      <div class="menu-item-inner">
-        <span class="menu-icon">🧠</span>
-        <span class="menu-title">Fundamentos LLM</span>
-      </div>
-    </a>
+    <!-- ÓRBITA 1: Guías IA (default) -->
+    <div class="orbit-content active" id="orbit-guias">
+      <a href="guia-ia-LLM.html" class="menu-item">
+        <div class="menu-item-inner">
+          <span class="menu-icon">🧠</span>
+          <span class="menu-title">Fundamentos LLM</span>
+        </div>
+      </a>
 
-    <a href="guia-ia-agentes-autonomos.html" class="menu-item">
-      <div class="menu-item-inner">
-        <span class="menu-icon">🤖</span>
-        <span class="menu-title">Agentes Autónomos</span>
-      </div>
-    </a>
+      <a href="guia-ia-agentes-autonomos.html" class="menu-item">
+        <div class="menu-item-inner">
+          <span class="menu-icon">🤖</span>
+          <span class="menu-title">Agentes Autónomos</span>
+        </div>
+      </a>
 
-    <a href="guia-ia-gemini.html" class="menu-item">
-      <div class="menu-item-inner">
-        <span class="menu-icon">✨</span>
-        <span class="menu-title">Google Gemini</span>
-      </div>
-    </a>
+      <a href="guia-ia-gemini.html" class="menu-item">
+        <div class="menu-item-inner">
+          <span class="menu-icon">✨</span>
+          <span class="menu-title">Google Gemini</span>
+        </div>
+      </a>
 
-    <a href="guia-ia-cloud-datacenter.html" class="menu-item">
-      <div class="menu-item-inner">
-        <span class="menu-icon">☁️</span>
-        <span class="menu-title">Cloud & Datacenter</span>
-      </div>
-    </a>
+      <a href="guia-ia-cloud-datacenter.html" class="menu-item">
+        <div class="menu-item-inner">
+          <span class="menu-icon">☁️</span>
+          <span class="menu-title">Cloud & Datacenter</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- ÓRBITA 2: Cloud Providers -->
+    <div class="orbit-content two-items orbit-cloud" id="orbit-cloud">
+      <a href="https://console.cloud.google.com/" target="_blank" class="menu-item">
+        <div class="menu-item-inner">
+          <span class="menu-icon">🌐</span>
+          <span class="menu-title">Google Cloud Console</span>
+        </div>
+      </a>
+
+      <a href="https://www.oracle.com/cloud/" target="_blank" class="menu-item">
+        <div class="menu-item-inner">
+          <span class="menu-icon">🔶</span>
+          <span class="menu-title">Oracle Cloud</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- ÓRBITA 3: Despliegue -->
+    <div class="orbit-content two-items orbit-deploy" id="orbit-deploy">
+      <a href="opciones-despliegue-frontend-backend-pretty.html" class="menu-item">
+        <div class="menu-item-inner">
+          <span class="menu-icon">🚀</span>
+          <span class="menu-title">Opciones Despliegue</span>
+        </div>
+      </a>
+
+      <a href="guia-rapida-vercel-github.html" class="menu-item">
+        <div class="menu-item-inner">
+          <span class="menu-icon">⚡</span>
+          <span class="menu-title">Vercel + GitHub</span>
+        </div>
+      </a>
+    </div>
   </div>
 
   <!-- Footer -->
@@ -699,6 +906,44 @@
       
       particlesContainer.appendChild(particle);
     }
+
+    // Selector de órbitas (pills y botones del menú)
+    const orbitPills = document.querySelectorAll('.orbit-pill');
+    const orbitContents = document.querySelectorAll('.orbit-content');
+    const orbitSwitchButtons = document.querySelectorAll('.orbit-switch');
+
+    function switchOrbit(selectedOrbit) {
+      // Remover clase active de todas las pills
+      orbitPills.forEach(p => p.classList.remove('active'));
+      
+      // Agregar clase active a la pill correspondiente
+      document.querySelector(`.orbit-pill[data-orbit="${selectedOrbit}"]`).classList.add('active');
+
+      // Ocultar todas las órbitas y mostrar la seleccionada
+      orbitContents.forEach(content => {
+        content.classList.remove('active');
+        if (content.id === 'orbit-' + selectedOrbit) {
+          content.classList.add('active');
+        }
+      });
+    }
+
+    // Event listeners para las pills
+    orbitPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        switchOrbit(pill.dataset.orbit);
+      });
+    });
+
+    // Event listeners para los botones del menú hamburguesa
+    orbitSwitchButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        switchOrbit(btn.dataset.orbit);
+        // Cerrar el menú hamburguesa
+        hamburgerBtn.classList.remove('active');
+        dropdownMenu.classList.remove('active');
+      });
+    });
   </script>
 </body>
 </html>
