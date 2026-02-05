@@ -271,6 +271,7 @@
     .orbit-pill[data-orbit="guias"] .orbit-pill-dot { background: #38bdf8; }
     .orbit-pill[data-orbit="cloud"] .orbit-pill-dot { background: #a855f7; }
     .orbit-pill[data-orbit="deploy"] .orbit-pill-dot { background: #22c55e; }
+    .orbit-pill[data-orbit="data"] .orbit-pill-dot { background: #6366f1; }
 
     /* Contenedor principal del menú */
     .menu-container {
@@ -402,6 +403,16 @@
     @keyframes counter-rotate-288 {
       from { transform: rotate(288deg) translateX(220px) rotate(-288deg); }
       to { transform: rotate(-72deg) translateX(220px) rotate(72deg); }
+    }
+
+    /* Keyframes para órbita de 3 items (120° spacing) */
+    @keyframes counter-rotate-120 {
+      from { transform: rotate(120deg) translateX(220px) rotate(-120deg); }
+      to { transform: rotate(-240deg) translateX(220px) rotate(240deg); }
+    }
+    @keyframes counter-rotate-240 {
+      from { transform: rotate(240deg) translateX(220px) rotate(-240deg); }
+      to { transform: rotate(-120deg) translateX(220px) rotate(120deg); }
     }
 
     .orbit-ring {
@@ -547,14 +558,12 @@
     #orbit-guias .menu-item:nth-of-type(3) .menu-item-inner { border-color: rgba(34, 197, 94, 0.4); }
     #orbit-guias .menu-item:nth-of-type(4) .menu-item-inner { border-color: rgba(251, 191, 36, 0.4); }
     #orbit-guias .menu-item:nth-of-type(5) .menu-item-inner { border-color: rgba(249, 115, 22, 0.4); }
-    #orbit-guias .menu-item:nth-of-type(6) .menu-item-inner { border-color: rgba(236, 72, 153, 0.4); }
 
     #orbit-guias .menu-item:nth-of-type(1):hover .menu-item-inner { border-color: #38bdf8; box-shadow: 0 12px 40px rgba(56, 189, 248, 0.4); }
     #orbit-guias .menu-item:nth-of-type(2):hover .menu-item-inner { border-color: #a855f7; box-shadow: 0 12px 40px rgba(168, 85, 247, 0.4); }
     #orbit-guias .menu-item:nth-of-type(3):hover .menu-item-inner { border-color: #22c55e; box-shadow: 0 12px 40px rgba(34, 197, 94, 0.4); }
     #orbit-guias .menu-item:nth-of-type(4):hover .menu-item-inner { border-color: #fbbf24; box-shadow: 0 12px 40px rgba(251, 191, 36, 0.4); }
     #orbit-guias .menu-item:nth-of-type(5):hover .menu-item-inner { border-color: #f97316; box-shadow: 0 12px 40px rgba(249, 115, 22, 0.4); }
-    #orbit-guias .menu-item:nth-of-type(6):hover .menu-item-inner { border-color: #ec4899; box-shadow: 0 12px 40px rgba(236, 72, 153, 0.4); }
 
     /* Sistema de órbitas múltiples */
     .orbit-content {
@@ -598,6 +607,48 @@
     .orbit-deploy .menu-item:nth-of-type(2) .menu-item-inner { border-color: rgba(239, 68, 68, 0.4); }
     .orbit-deploy .menu-item:nth-of-type(1):hover .menu-item-inner { border-color: #22c55e; box-shadow: 0 12px 40px rgba(34, 197, 94, 0.5); }
     .orbit-deploy .menu-item:nth-of-type(2):hover .menu-item-inner { border-color: #ef4444; box-shadow: 0 12px 40px rgba(239, 68, 68, 0.4); }
+
+    /* Órbita Data & Analytics (3 items - 120° spacing) */
+    #orbit-data .menu-item:nth-of-type(1) { 
+      transform: rotate(0deg) translateX(220px) rotate(0deg);
+      animation: counter-rotate-0 20s linear infinite;
+    }
+    #orbit-data .menu-item:nth-of-type(2) { 
+      transform: rotate(120deg) translateX(220px) rotate(-120deg);
+      animation: counter-rotate-120 20s linear infinite;
+    }
+    #orbit-data .menu-item:nth-of-type(3) { 
+      transform: rotate(240deg) translateX(220px) rotate(-240deg);
+      animation: counter-rotate-240 20s linear infinite;
+    }
+
+    /* Colores específicos para Data & Analytics */
+    #orbit-data .menu-item:nth-of-type(1) .menu-item-inner { border-color: rgba(99, 102, 241, 0.5); }
+    #orbit-data .menu-item:nth-of-type(2) .menu-item-inner { border-color: rgba(99, 102, 241, 0.3); }
+    #orbit-data .menu-item:nth-of-type(3) .menu-item-inner { border-color: rgba(99, 102, 241, 0.3); }
+    #orbit-data .menu-item:nth-of-type(1):hover .menu-item-inner { border-color: #6366f1; box-shadow: 0 12px 40px rgba(99, 102, 241, 0.5); }
+    #orbit-data .menu-item:nth-of-type(2):hover .menu-item-inner { border-color: #6366f1; box-shadow: 0 12px 40px rgba(99, 102, 241, 0.3); }
+    #orbit-data .menu-item:nth-of-type(3):hover .menu-item-inner { border-color: #6366f1; box-shadow: 0 12px 40px rgba(99, 102, 241, 0.3); }
+
+    /* Estilo para items 'Coming Soon' (futuros) */
+    .menu-item.coming-soon {
+      cursor: default;
+      pointer-events: none;
+    }
+    .menu-item.coming-soon .menu-item-inner {
+      opacity: 0.5;
+      border-style: dashed;
+    }
+    .menu-item.coming-soon .menu-title {
+      font-size: 0.6rem;
+    }
+    .coming-soon-badge {
+      font-size: 0.5rem;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.2rem;
+    }
 
     /* Icono de imagen en menu-item */
     .menu-item-inner img.menu-logo {
@@ -786,6 +837,17 @@
         <span class="icon">⚡</span> Vercel + GitHub
       </a>
       <div class="dropdown-divider"></div>
+      <div class="dropdown-title">🗄️ Data & Analytics</div>
+      <a href="guia-ciencia-datos.html" class="dropdown-item">
+        <span class="icon">📊</span> Ciencia de Datos
+      </a>
+      <span class="dropdown-item" style="opacity: 0.5; cursor: default;">
+        <span class="icon">🏛️</span> Gobierno de Datos <small style="color: #6366f1;">(próximamente)</small>
+      </span>
+      <span class="dropdown-item" style="opacity: 0.5; cursor: default;">
+        <span class="icon">⚙️</span> Data Engineering <small style="color: #6366f1;">(próximamente)</small>
+      </span>
+      <div class="dropdown-divider"></div>
       <div class="dropdown-title">🌐 Cloud Providers</div>
       <a href="https://console.cloud.google.com/" target="_blank" class="dropdown-item">
         <span class="icon">☁️</span> Google Cloud Console
@@ -803,6 +865,9 @@
       </button>
       <button class="dropdown-item orbit-switch" data-orbit="deploy">
         <span class="icon">🚀</span> Despliegue
+      </button>
+      <button class="dropdown-item orbit-switch" data-orbit="data">
+        <span class="icon">🗄️</span> Data & Analytics
       </button>
     </div>
   </nav>
@@ -829,6 +894,10 @@
     <button class="orbit-pill" data-orbit="deploy">
       <span class="orbit-pill-dot"></span>
       Despliegue
+    </button>
+    <button class="orbit-pill" data-orbit="data">
+      <span class="orbit-pill-dot"></span>
+      Data & Analytics
     </button>
   </div>
 
@@ -911,6 +980,32 @@
         <div class="menu-item-inner">
           <span class="menu-icon">⚡</span>
           <span class="menu-title">Vercel + GitHub</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- ÓRBITA 4: Data & Analytics -->
+    <div class="orbit-content orbit-data" id="orbit-data">
+      <a href="guia-ciencia-datos.html" class="menu-item">
+        <div class="menu-item-inner">
+          <span class="menu-icon">📊</span>
+          <span class="menu-title">Ciencia de Datos</span>
+        </div>
+      </a>
+
+      <a href="#" class="menu-item coming-soon" onclick="return false;">
+        <div class="menu-item-inner">
+          <span class="menu-icon">🏛️</span>
+          <span class="menu-title">Gobierno de Datos</span>
+          <span class="coming-soon-badge">Próximamente</span>
+        </div>
+      </a>
+
+      <a href="#" class="menu-item coming-soon" onclick="return false;">
+        <div class="menu-item-inner">
+          <span class="menu-icon">⚙️</span>
+          <span class="menu-title">Data Engineering</span>
+          <span class="coming-soon-badge">Próximamente</span>
         </div>
       </a>
     </div>

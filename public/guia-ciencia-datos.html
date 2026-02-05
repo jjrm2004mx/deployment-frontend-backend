@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Guía Completa: Ciencia de Datos y Roles del Ecosistema (2026)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="img/IA_ALONE_ia.png" />
+  <link rel="stylesheet" href="css/guias-common.css" />
+</head>
+<body>
+  <!-- Botón flotante Home -->
+  <a href="index.html" class="home-btn" title="Volver al inicio">
+    <img src="img/IA_ALONE_ia.png" alt="Home" />
+  </a>
+
+  <main class="page">
+    <header>
+      <div class="pill">
+        <span class="pill-dot"><span class="pill-dot-inner"></span></span>
+        GUÍA DATA SCIENCE · FUNDAMENTOS & ROLES
+      </div>
+      <h1>Guía Completa: Ciencia de Datos y Roles del Ecosistema (2026)</h1>
+      <p class="subtitle">
+        Guía profesional sobre qué es la ciencia de datos, sus tres pilares fundamentales, 
+        los roles especializados en equipos de Data Science y cómo trabajan juntos para 
+        convertir datos en valor estratégico.
+      </p>
+      <div class="meta-grid">
+        <div class="meta-pill">
+          <span class="meta-pill-dot"></span>
+          <strong>Scope:</strong> Data Science + Analytics + Roles
+        </div>
+        <div class="meta-pill">
+          <span class="meta-pill-dot"></span>
+          <strong>Nivel:</strong> Fundamentos Organizacionales
+        </div>
+        <div class="meta-pill">
+          <span class="meta-pill-dot"></span>
+          <strong>Año:</strong> 2026 - JJRM
+        </div>
+      </div>
+    </header>
+
+    <!-- ÍNDICE NAVEGABLE -->
+    <nav class="index-nav">
+      <h2 class="index-main-title">ÍNDICE DE CONTENIDOS</h2>
+      <div class="index-grid">
+        <a href="#seccion-01" class="index-link">
+          <span class="index-number">01</span>
+          <span class="index-title">¿Qué es la Ciencia de Datos?</span>
+        </a>
+        <a href="#seccion-02" class="index-link">
+          <span class="index-number">02</span>
+          <span class="index-title">Los Tres Pilares Fundamentales</span>
+        </a>
+        <a href="#seccion-03" class="index-link">
+          <span class="index-number">03</span>
+          <span class="index-title">Integración de Universos</span>
+        </a>
+        <a href="#seccion-04" class="index-link">
+          <span class="index-number">04</span>
+          <span class="index-title">El "Unicornio" de Data Science</span>
+        </a>
+        <a href="#seccion-05" class="index-link">
+          <span class="index-number">05</span>
+          <span class="index-title">Chief Analytics Officer (CAO)</span>
+        </a>
+        <a href="#seccion-06" class="index-link">
+          <span class="index-number">06</span>
+          <span class="index-title">Líder Analista de Datos</span>
+        </a>
+        <a href="#seccion-07" class="index-link">
+          <span class="index-number">07</span>
+          <span class="index-title">Ingeniero de Datos</span>
+        </a>
+        <a href="#seccion-08" class="index-link">
+          <span class="index-number">08</span>
+          <span class="index-title">Administrador de Datos</span>
+        </a>
+        <a href="#seccion-09" class="index-link">
+          <span class="index-number">09</span>
+          <span class="index-title">Científico de Datos</span>
+        </a>
+        <a href="#seccion-10" class="index-link">
+          <span class="index-number">10</span>
+          <span class="index-title">Analista de Datos</span>
+        </a>
+        <a href="#seccion-11" class="index-link">
+          <span class="index-number">11</span>
+          <span class="index-title">Plataformas de Ciencia de Datos</span>
+        </a>
+        <a href="#seccion-12" class="index-link">
+          <span class="index-number">12</span>
+          <span class="index-title">Cómo Trabajan Juntos los Roles</span>
+        </a>
+        <a href="#seccion-13" class="index-link">
+          <span class="index-number">13</span>
+          <span class="index-title">Visión y Conclusión</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- SECCIÓN 1: QUÉ ES LA CIENCIA DE DATOS -->
+    <section id="seccion-01" class="card">
+      <h2><span>01 · Definición</span>¿Qué es la Ciencia de Datos?</h2>
+      
+      <p>
+        La <strong>ciencia de datos</strong> es una disciplina multidisciplinaria cuyo 
+        propósito principal es <strong>convertir datos en valor para el negocio</strong>.
+      </p>
+
+      <p>Para lograrlo, integra tres pilares fundamentales:</p>
+
+      <ul>
+        <li><strong>Conocimiento del negocio</strong> o experiencia en el sector</li>
+        <li><strong>Habilidades técnicas</strong> y de programación</li>
+        <li><strong>Matemáticas y estadística</strong></li>
+      </ul>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>En términos prácticos:</strong><br><br>
+          <code>Datos → Información → Conocimiento → Valor → Sabiduría empresarial</code>
+        </div>
+      </div>
+
+      <h3>La Cadena de Valor de los Datos</h3>
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #38bdf8;">📊 DATOS</strong>
+    ↓ <span style="color: #9ca3af;">(procesamiento y limpieza)</span>
+<strong style="color: #22c55e;">📋 INFORMACIÓN</strong>
+    ↓ <span style="color: #9ca3af;">(análisis y contexto)</span>
+<strong style="color: #a855f7;">🧠 CONOCIMIENTO</strong>
+    ↓ <span style="color: #9ca3af;">(aplicación estratégica)</span>
+<strong style="color: #fbbf24;">💎 VALOR</strong>
+    ↓ <span style="color: #9ca3af;">(experiencia y madurez)</span>
+<strong style="color: #f97316;">✨ SABIDURÍA EMPRESARIAL</strong>
+</pre>
+    </section>
+
+    <!-- SECCIÓN 2: LOS TRES PILARES -->
+    <section id="seccion-02" class="card">
+      <h2><span>02 · Fundamentos</span>Los Tres Pilares Fundamentales</h2>
+      
+      <div class="phase-box">
+        <h4>🏢 1. Conocimiento del Negocio</h4>
+        <ul>
+          <li>Permite entender <strong>qué problemas deben resolverse</strong></li>
+          <li>Ayuda a interpretar resultados en términos de <strong>impacto empresarial</strong></li>
+          <li>Es lo que convierte un modelo matemático en una <strong>solución útil</strong></li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>💻 2. Habilidades Técnicas y de Programación</h4>
+        <ul>
+          <li>Incluyen desarrollo de software, manejo de bases de datos</li>
+          <li>Ingeniería de datos y machine learning</li>
+          <li>Permiten <strong>automatizar procesos</strong>, construir pipelines de datos</li>
+          <li>Desarrollo de <strong>modelos predictivos</strong></li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>📐 3. Matemáticas y Estadística</h4>
+        <ul>
+          <li>Constituyen la base para crear <strong>modelos analíticos</strong></li>
+          <li>Algoritmos de <strong>aprendizaje automático</strong></li>
+          <li>Permiten identificar <strong>patrones, correlaciones y comportamientos</strong></li>
+        </ul>
+      </div>
+
+      <div class="table-card">
+        <h3>Intersección de los Pilares</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Combinación</th>
+                <th>Resultado</th>
+                <th>Ejemplo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Negocio + Técnico</strong></td>
+                <td>Soluciones implementables</td>
+                <td>Dashboard ejecutivo automatizado</td>
+              </tr>
+              <tr>
+                <td><strong>Negocio + Matemáticas</strong></td>
+                <td>Análisis estratégico</td>
+                <td>Forecasting de ventas</td>
+              </tr>
+              <tr>
+                <td><strong>Técnico + Matemáticas</strong></td>
+                <td>Machine Learning</td>
+                <td>Modelo de clasificación</td>
+              </tr>
+              <tr>
+                <td><strong>Los tres pilares</strong></td>
+                <td>🦄 Data Scientist completo</td>
+                <td>Sistema predictivo en producción con impacto medible</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: INTEGRACIÓN DE UNIVERSOS -->
+    <section id="seccion-03" class="card">
+      <h2><span>03 · Integración</span>La Ciencia de Datos como Integración de Universos</h2>
+      
+      <p>
+        Un profesional en este campo generalmente surge cuando se combinan disciplinas como:
+      </p>
+
+      <ul>
+        <li><strong>Ciencias computacionales</strong></li>
+        <li><strong>Estadística y matemáticas</strong></li>
+        <li><strong>Entendimiento profundo del negocio</strong></li>
+        <li><strong>Capacidad de comunicación estratégica</strong></li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-icon">🧠</div>
+        <div>
+          <strong>Evolución típica:</strong><br><br>
+          Un perfil técnico evoluciona hacia roles más estratégicos al comprender 
+          cómo los modelos impactan procesos comerciales, ventas o toma de decisiones.
+        </div>
+      </div>
+
+      <h3>Preguntas que un Data Scientist debe responder</h3>
+      <ul>
+        <li>❓ ¿Qué problema <strong>realmente</strong> debe resolver el modelo?</li>
+        <li>❓ ¿Cómo interpretar el resultado para <strong>ejecutivos</strong>?</li>
+        <li>❓ ¿Cómo transformar resultados técnicos en <strong>decisiones estratégicas</strong>?</li>
+      </ul>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">💡</div>
+        <div>
+          <strong>Insight clave:</strong><br><br>
+          El valor no está en el modelo más sofisticado, sino en el que resuelve 
+          el problema correcto de la manera más efectiva para el negocio.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: EL UNICORNIO -->
+    <section id="seccion-04" class="card">
+      <h2><span>04 · Realidad</span>El "Unicornio" de la Ciencia de Datos</h2>
+      
+      <p>
+        Un científico de datos que domine perfectamente los tres pilares es 
+        <strong>extremadamente raro</strong>. Por ello, la industria organiza el trabajo 
+        en <strong>roles especializados</strong> dentro del ecosistema Data Science.
+      </p>
+
+      <div class="callout callout-warning">
+        <div class="callout-icon">🦄</div>
+        <div>
+          <strong>El mito del Unicornio:</strong><br><br>
+          Buscar un solo profesional que domine matemáticas avanzadas, programación 
+          experta Y conocimiento profundo de negocio es poco realista. 
+          <strong>La solución: equipos multidisciplinarios.</strong>
+        </div>
+      </div>
+
+      <h3>Por qué los equipos superan a los individuos</h3>
+      <ul>
+        <li>✅ <strong>Especialización:</strong> Cada rol domina su área</li>
+        <li>✅ <strong>Velocidad:</strong> Trabajo en paralelo</li>
+        <li>✅ <strong>Calidad:</strong> Revisión cruzada entre especialistas</li>
+        <li>✅ <strong>Escalabilidad:</strong> Más proyectos simultáneos</li>
+        <li>✅ <strong>Continuidad:</strong> Menor dependencia de individuos</li>
+      </ul>
+
+      <h3>Árbol de Roles en Data Science</h3>
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-size: 0.8rem; line-height: 1.8; color: #e5e7eb;">
+<strong style="color: #38bdf8;">Ecosistema Data Science</strong>
+│
+├── <strong style="color: #fbbf24;">🎯 Liderazgo Estratégico</strong>
+│   ├── Chief Analytics Officer (CAO)
+│   └── Analytics Lead / Líder Analista
+│
+├── <strong style="color: #22c55e;">⚙️ Infraestructura de Datos</strong>
+│   ├── Data Engineer (Ingeniero de Datos)
+│   └── Data Steward (Administrador de Datos)
+│
+└── <strong style="color: #a855f7;">🧠 Análisis y Modelado</strong>
+    ├── Data Scientist (Científico de Datos)
+    └── Data Analyst (Analista de Datos)
+</pre>
+    </section>
+
+    <!-- SECCIÓN 5: CAO -->
+    <section id="seccion-05" class="card">
+      <h2><span>05 · Rol</span>Chief Analytics Officer (CAO) / Liderazgo Estratégico</h2>
+      
+      <h3>🎯 Responsabilidades</h3>
+      <ul>
+        <li>Define <strong>estrategia analítica</strong> y de inteligencia artificial</li>
+        <li>Prioriza proyectos <strong>alineados al negocio</strong></li>
+        <li>Supervisa <strong>gobierno de datos</strong> y cultura data-driven</li>
+        <li>Conecta <strong>tecnología con objetivos corporativos</strong></li>
+      </ul>
+
+      <div class="table-card">
+        <h3>Perfil del CAO</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Competencia</th>
+                <th>Descripción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Visión ejecutiva</strong></td>
+                <td>Capacidad de ver el panorama completo y alinear iniciativas con estrategia corporativa</td>
+              </tr>
+              <tr>
+                <td><strong>Conocimiento técnico estratégico</strong></td>
+                <td>Entiende tecnologías sin necesidad de implementarlas; evalúa viabilidad y riesgos</td>
+              </tr>
+              <tr>
+                <td><strong>Gestión organizacional</strong></td>
+                <td>Lidera equipos, gestiona presupuestos, y navega política corporativa</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">👔</div>
+        <div>
+          <strong>Posición en la organización:</strong><br><br>
+          El CAO típicamente reporta al CEO o COO y tiene visibilidad directa 
+          sobre cómo los datos impactan decisiones de alto nivel.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 6: LÍDER ANALISTA -->
+    <section id="seccion-06" class="card">
+      <h2><span>06 · Rol</span>Líder Analista de Datos / Analytics Lead</h2>
+      
+      <h3>📌 Responsabilidades</h3>
+      <ul>
+        <li>Coordina <strong>equipos analíticos</strong></li>
+        <li>Traduce necesidades del negocio en <strong>soluciones analíticas</strong></li>
+        <li>Supervisa <strong>proyectos y entregables</strong></li>
+        <li>Garantiza <strong>calidad y consistencia</strong> de análisis</li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-icon">🌉</div>
+        <div>
+          <strong>El puente crítico:</strong><br><br>
+          Este rol conecta la <strong>estrategia empresarial</strong> con los 
+          <strong>equipos técnicos</strong>. Traduce "necesitamos vender más" 
+          en "modelo de propensión de compra con estas variables".
+        </div>
+      </div>
+
+      <h3>Habilidades Clave</h3>
+      <ul>
+        <li>🗣️ <strong>Comunicación:</strong> Traducir técnico ↔ negocio</li>
+        <li>📋 <strong>Gestión de proyectos:</strong> Timelines, recursos, dependencias</li>
+        <li>🧠 <strong>Pensamiento analítico:</strong> Descomponer problemas complejos</li>
+        <li>👥 <strong>Liderazgo:</strong> Motivar y desarrollar equipos</li>
+      </ul>
+    </section>
+
+    <!-- SECCIÓN 7: INGENIERO DE DATOS -->
+    <section id="seccion-07" class="card">
+      <h2><span>07 · Rol</span>Ingeniero de Datos (Data Engineer)</h2>
+      
+      <h3>⚙️ Responsabilidades</h3>
+      <ul>
+        <li>Construye <strong>pipelines de datos</strong></li>
+        <li>Garantiza <strong>disponibilidad, calidad y seguridad</strong> de la información</li>
+        <li>Implementa <strong>arquitecturas de almacenamiento</strong> y procesamiento</li>
+        <li>Integra <strong>múltiples fuentes de datos</strong></li>
+      </ul>
+
+      <div class="table-card">
+        <h3>Tecnologías Comunes</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Categoría</th>
+                <th>Herramientas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Procesamiento</strong></td>
+                <td>Apache Spark, Flink, Kafka</td>
+              </tr>
+              <tr>
+                <td><strong>ETL / ELT</strong></td>
+                <td>Airflow, dbt, Fivetran, Informatica</td>
+              </tr>
+              <tr>
+                <td><strong>Almacenamiento</strong></td>
+                <td>Data Lakes, Data Warehouses (Snowflake, BigQuery, Redshift)</td>
+              </tr>
+              <tr>
+                <td><strong>Orquestación</strong></td>
+                <td>Airflow, Prefect, Dagster</td>
+              </tr>
+              <tr>
+                <td><strong>Infraestructura</strong></td>
+                <td>AWS, GCP, Azure, Kubernetes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div>
+          <strong>Sin este rol:</strong><br><br>
+          Los datos suelen estar <strong>dispersos, inconsistentes o inaccesibles</strong>. 
+          El Data Engineer es quien hace posible que científicos y analistas puedan trabajar.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 8: ADMINISTRADOR DE DATOS -->
+    <section id="seccion-08" class="card">
+      <h2><span>08 · Rol</span>Administrador de Datos (Data Steward / Data Governance)</h2>
+      
+      <h3>🗂️ Responsabilidades</h3>
+      <ul>
+        <li>Define <strong>políticas de calidad</strong> y gobierno de datos</li>
+        <li>Mantiene <strong>catálogo y linaje</strong> de datos</li>
+        <li>Establece <strong>reglas de uso y estándares</strong></li>
+        <li>Asegura <strong>cumplimiento regulatorio</strong> (GDPR, HIPAA, etc.)</li>
+      </ul>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">✅</div>
+        <div>
+          <strong>Su importancia:</strong><br><br>
+          Garantiza que los datos sean:
+          <ul style="margin: 0.5rem 0 0 1rem;">
+            <li><strong>Confiables:</strong> Fuente de verdad única</li>
+            <li><strong>Comprensibles:</strong> Documentación y metadatos claros</li>
+            <li><strong>Correctamente gestionados:</strong> Acceso, retención, seguridad</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Entregables Típicos</h3>
+      <ul>
+        <li>📚 <strong>Catálogo de datos:</strong> Inventario de datasets y sus definiciones</li>
+        <li>🔗 <strong>Linaje de datos:</strong> De dónde vienen y cómo se transforman</li>
+        <li>📜 <strong>Políticas:</strong> Quién puede acceder a qué y bajo qué condiciones</li>
+        <li>📊 <strong>Métricas de calidad:</strong> Completitud, exactitud, frescura</li>
+      </ul>
+    </section>
+
+    <!-- SECCIÓN 9: CIENTÍFICO DE DATOS -->
+    <section id="seccion-09" class="card">
+      <h2><span>09 · Rol</span>Científico de Datos (Data Scientist)</h2>
+      
+      <h3>🤖 Responsabilidades</h3>
+      <ul>
+        <li>Diseña <strong>modelos predictivos</strong> y algoritmos de machine learning</li>
+        <li>Entrena, valida y <strong>despliega modelos</strong></li>
+        <li>Realiza <strong>análisis exploratorio avanzado</strong></li>
+        <li>Construye <strong>sistemas de inferencia</strong></li>
+      </ul>
+
+      <div class="table-card">
+        <h3>Actividades Principales</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Actividad</th>
+                <th>Descripción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Feature Engineering</strong></td>
+                <td>Crear variables predictivas a partir de datos crudos</td>
+              </tr>
+              <tr>
+                <td><strong>Entrenamiento de modelos</strong></td>
+                <td>Seleccionar algoritmos, ajustar hiperparámetros</td>
+              </tr>
+              <tr>
+                <td><strong>Validación estadística</strong></td>
+                <td>Cross-validation, métricas de performance, tests de significancia</td>
+              </tr>
+              <tr>
+                <td><strong>Interpretación de resultados</strong></td>
+                <td>Explicar qué significa el modelo para el negocio</td>
+              </tr>
+              <tr>
+                <td><strong>Despliegue (MLOps)</strong></td>
+                <td>Poner modelos en producción y monitorearlos</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🧠</div>
+        <div>
+          <strong>Rol fundamental:</strong><br><br>
+          Es quien convierte los datos en <strong>inteligencia automatizada</strong>. 
+          Su trabajo permite que las organizaciones predigan, clasifiquen y optimicen 
+          de manera sistemática.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 10: ANALISTA DE DATOS -->
+    <section id="seccion-10" class="card">
+      <h2><span>10 · Rol</span>Analista de Datos (Data Analyst)</h2>
+      
+      <h3>📊 Responsabilidades</h3>
+      <ul>
+        <li>Genera <strong>reportes y dashboards</strong></li>
+        <li>Realiza <strong>análisis descriptivos</strong></li>
+        <li>Responde <strong>preguntas operativas</strong> del negocio</li>
+        <li>Apoya <strong>toma de decisiones diarias</strong></li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>Metáfora común:</strong><br><br>
+          Es el profesional que está en <strong>"primera línea"</strong>, respondiendo 
+          preguntas inmediatas del negocio: "¿Cuánto vendimos ayer?", "¿Qué productos 
+          tienen mejor margen?", "¿Dónde estamos perdiendo clientes?"
+        </div>
+      </div>
+
+      <h3>Herramientas Típicas</h3>
+      <ul>
+        <li>📈 <strong>Visualización:</strong> Tableau, Power BI, Looker, Metabase</li>
+        <li>🔢 <strong>Hojas de cálculo:</strong> Excel, Google Sheets</li>
+        <li>🗄️ <strong>SQL:</strong> Consultas directas a bases de datos</li>
+        <li>🐍 <strong>Python/R:</strong> Análisis más avanzados</li>
+      </ul>
+
+      <h3>Diferencia con Data Scientist</h3>
+      <div class="table-card">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Aspecto</th>
+                <th>Data Analyst</th>
+                <th>Data Scientist</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Enfoque</strong></td>
+                <td>Descriptivo: ¿Qué pasó?</td>
+                <td>Predictivo: ¿Qué pasará?</td>
+              </tr>
+              <tr>
+                <td><strong>Herramientas</strong></td>
+                <td>SQL, BI tools</td>
+                <td>Python, ML frameworks</td>
+              </tr>
+              <tr>
+                <td><strong>Output</strong></td>
+                <td>Reportes, dashboards</td>
+                <td>Modelos, sistemas de inferencia</td>
+              </tr>
+              <tr>
+                <td><strong>Horizonte</strong></td>
+                <td>Corto plazo, operativo</td>
+                <td>Mediano/largo plazo, estratégico</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 11: PLATAFORMAS -->
+    <section id="seccion-11" class="card">
+      <h2><span>11 · Herramientas</span>Plataformas de Ciencia de Datos</h2>
+      
+      <p>
+        Las plataformas modernas de ciencia de datos permiten:
+      </p>
+
+      <ul>
+        <li>✅ <strong>Desarrollo de modelos</strong> en entornos colaborativos</li>
+        <li>✅ <strong>Entrenamiento distribuido</strong> para grandes datasets</li>
+        <li>✅ <strong>Automatización de pipelines</strong> (MLOps)</li>
+        <li>✅ <strong>Despliegue en producción</strong> con un clic</li>
+        <li>✅ <strong>Integración con herramientas Big Data</strong> (ejemplo: Spark)</li>
+      </ul>
+
+      <div class="table-card">
+        <h3>Plataformas Populares</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Plataforma</th>
+                <th>Características</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Databricks</strong></td>
+                <td>Lakehouse, Spark nativo, colaboración, MLflow integrado</td>
+              </tr>
+              <tr>
+                <td><strong>Google Vertex AI</strong></td>
+                <td>AutoML, Model Garden, integración GCP</td>
+              </tr>
+              <tr>
+                <td><strong>AWS SageMaker</strong></td>
+                <td>End-to-end ML, notebooks, despliegue serverless</td>
+              </tr>
+              <tr>
+                <td><strong>Azure ML</strong></td>
+                <td>Designer visual, AutoML, integración Microsoft</td>
+              </tr>
+              <tr>
+                <td><strong>Dataiku</strong></td>
+                <td>Low-code/no-code, colaboración, gobernanza</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🚀</div>
+        <div>
+          <strong>Beneficio principal:</strong><br><br>
+          Estas plataformas <strong>reducen complejidad</strong> y permiten 
+          <strong>colaboración entre roles</strong>, acelerando el tiempo 
+          desde idea hasta valor en producción.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 12: CÓMO TRABAJAN JUNTOS -->
+    <section id="seccion-12" class="card">
+      <h2><span>12 · Colaboración</span>Cómo Trabajan Juntos los Roles</h2>
+      
+      <p>Un flujo típico de proyecto de Data Science:</p>
+
+      <div class="phase-box">
+        <h4>1️⃣ CAO define estrategia</h4>
+        <p>"Necesitamos reducir churn en un 15% este año"</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>2️⃣ Líder analítico prioriza proyectos</h4>
+        <p>"Construiremos un modelo de predicción de churn con alertas tempranas"</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>3️⃣ Ingeniero de datos prepara la información</h4>
+        <p>"Pipeline listo con datos de CRM, tickets y uso del producto"</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>4️⃣ Administrador garantiza calidad y gobierno</h4>
+        <p>"Datos validados, documentados y con permisos correctos"</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>5️⃣ Científico crea modelos predictivos</h4>
+        <p>"Modelo XGBoost con AUC 0.87 desplegado en producción"</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>6️⃣ Analista genera reportes e insights operativos</h4>
+        <p>"Dashboard de clientes en riesgo actualizado diariamente"</p>
+      </div>
+
+      <h3>Diagrama del Flujo</h3>
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-size: 0.8rem; line-height: 1.8; color: #e5e7eb;">
+<strong style="color: #fbbf24;">CAO</strong> ──────────────────────────────────────────────────────┐
+  │ Estrategia                                              │
+  ▼                                                         │
+<strong style="color: #fbbf24;">Analytics Lead</strong> ─────────────────────────────────────────┤
+  │ Priorización                                            │
+  ▼                                                         │
+<strong style="color: #22c55e;">Data Engineer</strong> ────────────────────────────────────────┤
+  │ Pipelines & Infraestructura                             │
+  ▼                                                         │ <strong style="color: #38bdf8;">CICLO</strong>
+<strong style="color: #22c55e;">Data Steward</strong> ─────────────────────────────────────────┤
+  │ Calidad & Gobierno                                      │
+  ▼                                                         │
+<strong style="color: #a855f7;">Data Scientist</strong> ───────────────────────────────────────┤
+  │ Modelos & Algoritmos                                    │
+  ▼                                                         │
+<strong style="color: #a855f7;">Data Analyst</strong> ─────────────────────────────────────────┤
+  │ Reportes & Dashboards                                   │
+  ▼                                                         │
+<strong style="color: #f97316;">📊 VALOR DE NEGOCIO</strong> ◄──────────────────────────────────┘
+</pre>
+    </section>
+
+    <!-- SECCIÓN 13: VISIÓN Y CONCLUSIÓN -->
+    <section id="seccion-13" class="card">
+      <h2><span>13 · Conclusión</span>Visión Conceptual y Conclusión</h2>
+      
+      <h3>🌟 La ciencia de datos no solo trata de tecnología o matemáticas</h3>
+      <p>Es una disciplina que busca:</p>
+      <ul>
+        <li>👉 <strong>Entender la realidad</strong> a través de datos</li>
+        <li>👉 <strong>Anticipar comportamientos</strong></li>
+        <li>👉 <strong>Optimizar decisiones</strong></li>
+        <li>👉 <strong>Generar ventajas competitivas</strong></li>
+      </ul>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">💡</div>
+        <div>
+          <strong>Versión "Romántica" de la Ciencia de Datos:</strong><br><br>
+          <em>"El arte de transformar datos en conocimiento y ese conocimiento 
+          en decisiones inteligentes que generan impacto real en las organizaciones."</em>
+        </div>
+      </div>
+
+      <h3>🚀 Conclusión Ejecutiva</h3>
+      <p>
+        La ciencia de datos es un <strong>ecosistema colaborativo</strong> donde cada rol 
+        aporta una pieza esencial para convertir datos en valor estratégico.
+      </p>
+      <p>
+        <strong>No depende de un solo perfil</strong>, sino del trabajo coordinado entre 
+        especialistas técnicos, analíticos y de negocio.
+      </p>
+
+      <div class="table-card">
+        <h3>Resumen de Roles</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Rol</th>
+                <th>Aportación Principal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>CAO</strong></td>
+                <td>Visión estratégica y alineación con negocio</td>
+              </tr>
+              <tr>
+                <td><strong>Analytics Lead</strong></td>
+                <td>Traducción y coordinación</td>
+              </tr>
+              <tr>
+                <td><strong>Data Engineer</strong></td>
+                <td>Infraestructura y pipelines</td>
+              </tr>
+              <tr>
+                <td><strong>Data Steward</strong></td>
+                <td>Calidad y gobernanza</td>
+              </tr>
+              <tr>
+                <td><strong>Data Scientist</strong></td>
+                <td>Modelos predictivos e IA</td>
+              </tr>
+              <tr>
+                <td><strong>Data Analyst</strong></td>
+                <td>Insights operativos y reportes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>Mensaje final:</strong><br><br>
+          El éxito en Data Science no se mide por la complejidad de los modelos, 
+          sino por el <strong>impacto real en las decisiones</strong> y los 
+          <strong>resultados del negocio</strong>.
+        </div>
+      </div>
+    </section>
+
+    <p class="footer-note">
+      <strong>Nota final:</strong> Esta guía presenta una visión integral del ecosistema 
+      de Ciencia de Datos (2026). Los roles y responsabilidades pueden variar según la 
+      organización, pero los principios fundamentales de colaboración y especialización 
+      se mantienen constantes.
+    </p>
+  </main>
+
+  <!-- Botón flotante para regresar al índice -->
+  <a href="#" class="back-to-menu" title="Regresar al índice">↑</a>
+</body>
+</html>
