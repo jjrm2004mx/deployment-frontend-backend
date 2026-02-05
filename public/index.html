@@ -89,6 +89,8 @@
       top: 60px;
       left: 0;
       min-width: 280px;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
       background: linear-gradient(135deg, rgba(30, 41, 59, 0.98), rgba(15, 23, 42, 0.99));
       border: 1px solid rgba(56, 189, 248, 0.3);
       border-radius: 16px;
@@ -99,6 +101,25 @@
       transition: all 0.3s ease;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(20px);
+    }
+
+    /* Scrollbar estilizado para el menú */
+    .dropdown-menu::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .dropdown-menu::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.5);
+      border-radius: 3px;
+    }
+
+    .dropdown-menu::-webkit-scrollbar-thumb {
+      background: rgba(56, 189, 248, 0.4);
+      border-radius: 3px;
+    }
+
+    .dropdown-menu::-webkit-scrollbar-thumb:hover {
+      background: rgba(56, 189, 248, 0.6);
     }
 
     .dropdown-menu.active {
@@ -841,12 +862,12 @@
       <a href="guia-ciencia-datos.html" class="dropdown-item">
         <span class="icon">📊</span> Ciencia de Datos
       </a>
-      <span class="dropdown-item" style="opacity: 0.5; cursor: default;">
-        <span class="icon">🏛️</span> Gobierno de Datos <small style="color: #6366f1;">(próximamente)</small>
-      </span>
-      <span class="dropdown-item" style="opacity: 0.5; cursor: default;">
-        <span class="icon">⚙️</span> Data Engineering <small style="color: #6366f1;">(próximamente)</small>
-      </span>
+      <a href="guia-gobierno-datos.html" class="dropdown-item">
+        <span class="icon">🏛️</span> Gobierno de Datos
+      </a>
+      <a href="guia-data-engineering.html" class="dropdown-item">
+        <span class="icon">⚙️</span> Data Engineering
+      </a>
       <div class="dropdown-divider"></div>
       <div class="dropdown-title">🌐 Cloud Providers</div>
       <a href="https://console.cloud.google.com/" target="_blank" class="dropdown-item">
