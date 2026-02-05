@@ -387,17 +387,21 @@
       from { transform: rotate(0deg) translateX(220px) rotate(0deg); }
       to { transform: rotate(-360deg) translateX(220px) rotate(360deg); }
     }
-    @keyframes counter-rotate-90 {
-      from { transform: rotate(90deg) translateX(220px) rotate(-90deg); }
-      to { transform: rotate(-270deg) translateX(220px) rotate(270deg); }
+    @keyframes counter-rotate-72 {
+      from { transform: rotate(72deg) translateX(220px) rotate(-72deg); }
+      to { transform: rotate(-288deg) translateX(220px) rotate(288deg); }
     }
-    @keyframes counter-rotate-180 {
-      from { transform: rotate(180deg) translateX(220px) rotate(-180deg); }
-      to { transform: rotate(-180deg) translateX(220px) rotate(180deg); }
+    @keyframes counter-rotate-144 {
+      from { transform: rotate(144deg) translateX(220px) rotate(-144deg); }
+      to { transform: rotate(-216deg) translateX(220px) rotate(216deg); }
     }
-    @keyframes counter-rotate-270 {
-      from { transform: rotate(270deg) translateX(220px) rotate(-270deg); }
-      to { transform: rotate(-90deg) translateX(220px) rotate(90deg); }
+    @keyframes counter-rotate-216 {
+      from { transform: rotate(216deg) translateX(220px) rotate(-216deg); }
+      to { transform: rotate(-144deg) translateX(220px) rotate(144deg); }
+    }
+    @keyframes counter-rotate-288 {
+      from { transform: rotate(288deg) translateX(220px) rotate(-288deg); }
+      to { transform: rotate(-72deg) translateX(220px) rotate(72deg); }
     }
 
     .orbit-ring {
@@ -490,22 +494,26 @@
       letter-spacing: 0.03em;
     }
 
-    /* Posiciones de los items (4 items en círculo) con contra-rotación */
+    /* Posiciones de los items (5 items en círculo) con contra-rotación - 72° spacing */
     #orbit-guias .menu-item:nth-of-type(1) { 
       transform: rotate(0deg) translateX(220px) rotate(0deg);
       animation: counter-rotate-0 20s linear infinite;
     }
     #orbit-guias .menu-item:nth-of-type(2) { 
-      transform: rotate(90deg) translateX(220px) rotate(-90deg);
-      animation: counter-rotate-90 20s linear infinite;
+      transform: rotate(72deg) translateX(220px) rotate(-72deg);
+      animation: counter-rotate-72 20s linear infinite;
     }
     #orbit-guias .menu-item:nth-of-type(3) { 
-      transform: rotate(180deg) translateX(220px) rotate(-180deg);
-      animation: counter-rotate-180 20s linear infinite;
+      transform: rotate(144deg) translateX(220px) rotate(-144deg);
+      animation: counter-rotate-144 20s linear infinite;
     }
     #orbit-guias .menu-item:nth-of-type(4) { 
-      transform: rotate(270deg) translateX(220px) rotate(-270deg);
-      animation: counter-rotate-270 20s linear infinite;
+      transform: rotate(216deg) translateX(220px) rotate(-216deg);
+      animation: counter-rotate-216 20s linear infinite;
+    }
+    #orbit-guias .menu-item:nth-of-type(5) { 
+      transform: rotate(288deg) translateX(220px) rotate(-288deg);
+      animation: counter-rotate-288 20s linear infinite;
     }
 
     /* Posiciones para órbitas de 2 items */
@@ -538,11 +546,13 @@
     #orbit-guias .menu-item:nth-of-type(2) .menu-item-inner { border-color: rgba(168, 85, 247, 0.4); }
     #orbit-guias .menu-item:nth-of-type(3) .menu-item-inner { border-color: rgba(34, 197, 94, 0.4); }
     #orbit-guias .menu-item:nth-of-type(4) .menu-item-inner { border-color: rgba(251, 191, 36, 0.4); }
+    #orbit-guias .menu-item:nth-of-type(5) .menu-item-inner { border-color: rgba(249, 115, 22, 0.4); }
 
     #orbit-guias .menu-item:nth-of-type(1):hover .menu-item-inner { border-color: #38bdf8; box-shadow: 0 12px 40px rgba(56, 189, 248, 0.4); }
     #orbit-guias .menu-item:nth-of-type(2):hover .menu-item-inner { border-color: #a855f7; box-shadow: 0 12px 40px rgba(168, 85, 247, 0.4); }
     #orbit-guias .menu-item:nth-of-type(3):hover .menu-item-inner { border-color: #22c55e; box-shadow: 0 12px 40px rgba(34, 197, 94, 0.4); }
     #orbit-guias .menu-item:nth-of-type(4):hover .menu-item-inner { border-color: #fbbf24; box-shadow: 0 12px 40px rgba(251, 191, 36, 0.4); }
+    #orbit-guias .menu-item:nth-of-type(5):hover .menu-item-inner { border-color: #f97316; box-shadow: 0 12px 40px rgba(249, 115, 22, 0.4); }
 
     /* Sistema de órbitas múltiples */
     .orbit-content {
@@ -762,6 +772,9 @@
       <a href="guia-ia-cloud-datacenter.html" class="dropdown-item">
         <span class="icon">☁️</span> Cloud & Datacenter
       </a>
+      <a href="guia-ia-langchain.html" class="dropdown-item">
+        <span class="icon">🔗</span> LangChain Ecosystem
+      </a>
       <div class="dropdown-divider"></div>
       <div class="dropdown-title">🚀 Despliegue</div>
       <a href="opciones-despliegue-frontend-backend-pretty.html" class="dropdown-item">
@@ -855,6 +868,13 @@
         <div class="menu-item-inner">
           <span class="menu-icon">☁️</span>
           <span class="menu-title">Cloud & Datacenter</span>
+        </div>
+      </a>
+
+      <a href="guia-ia-langchain.html" class="menu-item">
+        <div class="menu-item-inner">
+          <span class="menu-icon">🔗</span>
+          <span class="menu-title">LangChain</span>
         </div>
       </a>
     </div>
