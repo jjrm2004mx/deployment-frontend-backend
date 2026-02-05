@@ -241,6 +241,40 @@ h1 {
   border-color: rgba(245,158,11,0.4);
 }
 
+/* Callout para indicar "más profundidad disponible" - NARANJA distintivo */
+.callout-deep {
+  background: linear-gradient(135deg, rgba(249,115,22,0.15), rgba(234,88,12,0.08));
+  border: 2px solid rgba(249,115,22,0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.callout-deep::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #f97316, #ea580c);
+}
+
+.callout-deep strong {
+  color: #fb923c;
+}
+
+.callout-deep a {
+  color: #f97316;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.callout-deep a:hover {
+  color: #fb923c;
+  text-decoration: underline;
+}
+
 /* Section title */
 .section-title {
   font-size: 1rem;
@@ -568,10 +602,10 @@ strong {
   margin: 1rem 0;
 }
 
-/* Image card preview (para modal) */
+/* Image card preview (para modal) - NARANJA: indica contenido interactivo/profundidad */
 .image-card-preview {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-  border: 2px solid #667eea;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(234, 88, 12, 0.1) 100%);
+  border: 2px solid #f97316;
   border-radius: 12px;
   padding: 1.2rem;
   cursor: pointer;
@@ -580,9 +614,10 @@ strong {
 }
 
 .image-card-preview:hover {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(234, 88, 12, 0.2) 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.25);
+  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.35);
+  border-color: #fb923c;
 }
 
 .image-card-header {
@@ -594,7 +629,7 @@ strong {
 
 .image-card-header h4 {
   margin: 0;
-  color: #667eea;
+  color: #f97316;
   font-size: 1rem;
 }
 
@@ -605,7 +640,7 @@ strong {
 }
 
 .image-card-cta {
-  color: #667eea;
+  color: #fb923c;
   font-weight: 600;
   font-size: 0.9rem;
 }
