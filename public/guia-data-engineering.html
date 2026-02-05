@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Guía Completa: Data Engineering - Ingeniería de Datos (2026)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="img/IA_ALONE_ia.png" />
+  <link rel="stylesheet" href="css/guias-common.css" />
+</head>
+<body>
+  <!-- Botón flotante Home -->
+  <a href="index.html" class="home-btn" title="Volver al inicio">
+    <img src="img/IA_ALONE_ia.png" alt="Home" />
+  </a>
+
+  <main class="page">
+    <header>
+      <div class="pill">
+        <span class="pill-dot"><span class="pill-dot-inner"></span></span>
+        GUÍA DATA ENGINEERING · PIPELINES & ARQUITECTURA
+      </div>
+      <h1>Guía Completa: Data Engineering - Ingeniería de Datos (2026)</h1>
+      <p class="subtitle">
+        Guía profesional sobre ingeniería de datos, pipelines ETL/ELT, 
+        arquitecturas de datos modernas (Data Lakes, Warehouses, Lakehouses), 
+        herramientas y tecnologías esenciales para el ingeniero de datos.
+      </p>
+      <div class="meta-grid">
+        <div class="meta-pill">
+          <span class="meta-pill-dot"></span>
+          <strong>Scope:</strong> Data Pipelines + Storage + Processing
+        </div>
+        <div class="meta-pill">
+          <span class="meta-pill-dot"></span>
+          <strong>Nivel:</strong> Técnico-Arquitectónico
+        </div>
+        <div class="meta-pill">
+          <span class="meta-pill-dot"></span>
+          <strong>Año:</strong> 2026 - JJRM
+        </div>
+      </div>
+    </header>
+
+    <!-- ÍNDICE NAVEGABLE -->
+    <nav class="index-nav">
+      <h2 class="index-main-title">ÍNDICE DE CONTENIDOS</h2>
+      <div class="index-grid">
+        <a href="#seccion-01" class="index-link">
+          <span class="index-number">01</span>
+          <span class="index-title">¿Qué es la Ingeniería de Datos?</span>
+        </a>
+        <a href="#seccion-02" class="index-link">
+          <span class="index-number">02</span>
+          <span class="index-title">El Rol del Data Engineer</span>
+        </a>
+        <a href="#seccion-03" class="index-link">
+          <span class="index-number">03</span>
+          <span class="index-title">Ciclo de Vida de los Datos</span>
+        </a>
+        <a href="#seccion-04" class="index-link">
+          <span class="index-number">04</span>
+          <span class="index-title">Data Pipelines: ETL vs ELT</span>
+        </a>
+        <a href="#seccion-05" class="index-link">
+          <span class="index-number">05</span>
+          <span class="index-title">Arquitecturas de Almacenamiento</span>
+        </a>
+        <a href="#seccion-06" class="index-link">
+          <span class="index-number">06</span>
+          <span class="index-title">Data Warehouse</span>
+        </a>
+        <a href="#seccion-07" class="index-link">
+          <span class="index-number">07</span>
+          <span class="index-title">Data Lake</span>
+        </a>
+        <a href="#seccion-08" class="index-link">
+          <span class="index-number">08</span>
+          <span class="index-title">Data Lakehouse</span>
+        </a>
+        <a href="#seccion-09" class="index-link">
+          <span class="index-number">09</span>
+          <span class="index-title">Procesamiento Batch vs Streaming</span>
+        </a>
+        <a href="#seccion-10" class="index-link">
+          <span class="index-number">10</span>
+          <span class="index-title">Lenguajes de Programación</span>
+        </a>
+        <a href="#seccion-11" class="index-link">
+          <span class="index-number">11</span>
+          <span class="index-title">Herramientas y Tecnologías</span>
+        </a>
+        <a href="#seccion-12" class="index-link">
+          <span class="index-number">12</span>
+          <span class="index-title">Orquestación de Workflows</span>
+        </a>
+        <a href="#seccion-13" class="index-link">
+          <span class="index-number">13</span>
+          <span class="index-title">Data Quality y Observabilidad</span>
+        </a>
+        <a href="#seccion-14" class="index-link">
+          <span class="index-number">14</span>
+          <span class="index-title">Data Engineering para ML/AI</span>
+        </a>
+        <a href="#seccion-15" class="index-link">
+          <span class="index-number">15</span>
+          <span class="index-title">DataOps y Mejores Prácticas</span>
+        </a>
+        <a href="#seccion-16" class="index-link">
+          <span class="index-number">16</span>
+          <span class="index-title">Conclusión y Roadmap</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- SECCIÓN 1: QUÉ ES DATA ENGINEERING -->
+    <section id="seccion-01" class="card">
+      <h2><span>01 · Definición</span>¿Qué es la Ingeniería de Datos?</h2>
+      
+      <p>
+        La <strong>Ingeniería de Datos</strong> (Data Engineering) es la práctica de diseñar 
+        y construir sistemas para la <strong>agregación, almacenamiento y análisis de datos 
+        a escala</strong>. Los Data Engineers permiten a las organizaciones obtener insights 
+        en tiempo real de grandes conjuntos de datos.
+      </p>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">📊</div>
+        <div>
+          <strong>Definición IBM:</strong><br><br>
+          "Data Engineering transforma cantidades masivas de datos en hallazgos 
+          estratégicos valiosos, empoderando a los stakeholders con datos 
+          <strong>confiables, convenientes y seguros</strong>."
+        </div>
+      </div>
+
+      <h3>Misión del Data Engineer</h3>
+      <p>
+        Construir la <strong>infraestructura de datos</strong> que permite a científicos 
+        de datos, analistas y líderes de negocio acceder a los datos que necesitan 
+        cuando los necesitan.
+      </p>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #6366f1;">📥 FUENTES</strong>                <strong style="color: #22c55e;">⚙️ PROCESAMIENTO</strong>           <strong style="color: #fbbf24;">📊 CONSUMIDORES</strong>
+   │                               │                            │
+   ├─ Bases de datos              │                      ┌─────▶ Data Scientists
+   ├─ APIs                         ▼                      │      (ML/AI)
+   ├─ IoT / Sensores    ──► <strong style="color: #38bdf8;">DATA PIPELINES</strong> ──►    │
+   ├─ Logs                    │        │              ├─────▶ Analistas
+   ├─ Archivos               │        │              │      (BI/Reports)
+   └─ Streaming              │        │              │
+                              ▼        ▼              └─────▶ Aplicaciones
+                          <strong style="color: #a855f7;">STORAGE</strong>  <strong style="color: #a855f7;">TRANSFORM</strong>              (APIs/Apps)
+</pre>
+
+      <h3>¿Por Qué es Importante?</h3>
+      <ul>
+        <li><strong>Volumen:</strong> Las empresas generan más datos que nunca (petabytes)</li>
+        <li><strong>Velocidad:</strong> Necesidad de procesamiento en tiempo real</li>
+        <li><strong>Variedad:</strong> Datos estructurados, semi-estructurados y no estructurados</li>
+        <li><strong>Valor:</strong> Los datos son el nuevo petróleo, pero necesitan refinarse</li>
+      </ul>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>Analogía:</strong><br><br>
+          Si los datos son el petróleo crudo, el <strong>Data Engineer es la refinería</strong> 
+          que lo transforma en combustible utilizable (insights, modelos ML, reportes).
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: ROL DEL DATA ENGINEER -->
+    <section id="seccion-02" class="card">
+      <h2><span>02 · Perfil</span>El Rol del Data Engineer</h2>
+      
+      <h3>Responsabilidades Principales</h3>
+
+      <div class="phase-box">
+        <h4>🔧 1. Diseño y Construcción de Pipelines</h4>
+        <ul>
+          <li>Crear flujos automatizados de extracción de datos</li>
+          <li>Implementar transformaciones y limpiezas</li>
+          <li>Asegurar entregas confiables a destinos</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🏗️ 2. Arquitectura de Datos</h4>
+        <ul>
+          <li>Diseñar modelos de datos escalables</li>
+          <li>Seleccionar tecnologías de almacenamiento apropiadas</li>
+          <li>Optimizar rendimiento y costos</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>📊 3. Gestión de Calidad de Datos</h4>
+        <ul>
+          <li>Implementar validaciones y tests de datos</li>
+          <li>Monitorear la salud de los pipelines</li>
+          <li>Resolver problemas de calidad</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🔐 4. Seguridad y Compliance</h4>
+        <ul>
+          <li>Implementar controles de acceso</li>
+          <li>Cifrar datos sensibles</li>
+          <li>Cumplir con regulaciones (GDPR, etc.)</li>
+        </ul>
+      </div>
+
+      <h3>Data Engineer vs Roles Relacionados</h3>
+
+      <table style="width: 100%; border-collapse: collapse; margin: 1.2rem 0;">
+        <thead>
+          <tr style="background: rgba(99, 102, 241, 0.2);">
+            <th style="padding: 0.8rem; text-align: left; border: 1px solid rgba(99,102,241,0.3);">Rol</th>
+            <th style="padding: 0.8rem; text-align: left; border: 1px solid rgba(99,102,241,0.3);">Enfoque Principal</th>
+            <th style="padding: 0.8rem; text-align: left; border: 1px solid rgba(99,102,241,0.3);">Pregunta Clave</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Data Engineer</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Infraestructura y pipelines</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">¿Cómo mover y transformar datos?</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Data Scientist</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Modelos y predicciones</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">¿Qué pasará en el futuro?</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Data Analyst</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Insights y reportes</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">¿Qué pasó y por qué?</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>ML Engineer</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Modelos en producción</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">¿Cómo escalar el modelo?</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Data Architect</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Diseño de alto nivel</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">¿Cuál es la visión general?</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">💡</div>
+        <div>
+          <strong>Relación Clave:</strong><br><br>
+          Los Data Scientists dependen de Data Engineers para tener <strong>datos limpios 
+          y accesibles</strong>. Sin buenos pipelines, los modelos de ML son imposibles.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: CICLO DE VIDA -->
+    <section id="seccion-03" class="card">
+      <h2><span>03 · Lifecycle</span>Ciclo de Vida de los Datos</h2>
+      
+      <p>
+        El Data Engineer gestiona todas las etapas del ciclo de vida de los datos, 
+        desde su origen hasta su consumo final.
+      </p>
+
+      <h3>Las Tres Fases Principales</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #38bdf8;">┌─────────────────────────────────────────────────────────────┐</strong>
+<strong style="color: #38bdf8;">│                 CICLO DE VIDA DE DATOS                      │</strong>
+<strong style="color: #38bdf8;">└─────────────────────────────────────────────────────────────┘</strong>
+
+<strong style="color: #22c55e;">FASE 1: INGESTA (Data Ingestion)</strong>
+┌─────────────────────────────────────────────────────────────┐
+│ • Conectar a fuentes de datos (APIs, DBs, archivos, IoT)    │
+│ • Extraer datos en batch o streaming                        │
+│ • Manejar diferentes formatos (JSON, CSV, Parquet, Avro)    │
+│ • Validar schema y detectar anomalías en origen             │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+<strong style="color: #fbbf24;">FASE 2: TRANSFORMACIÓN (Data Transformation)</strong>
+┌─────────────────────────────────────────────────────────────┐
+│ • Limpiar datos (nulls, duplicados, formatos)               │
+│ • Normalizar y estandarizar valores                         │
+│ • Enriquecer con datos adicionales                          │
+│ • Agregar y calcular métricas                               │
+│ • Aplicar reglas de negocio                                 │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+<strong style="color: #a855f7;">FASE 3: SERVIR (Data Serving)</strong>
+┌─────────────────────────────────────────────────────────────┐
+│ • Cargar en sistemas de destino (DW, Lake, APIs)            │
+│ • Exponer vía interfaces de consulta (SQL, APIs)            │
+│ • Alimentar dashboards y reportes                           │
+│ • Proveer datasets para ML/AI                               │
+└─────────────────────────────────────────────────────────────┘
+</pre>
+
+      <h3>Detalle de Cada Fase</h3>
+
+      <div class="phase-box">
+        <h4>📥 1. Ingesta de Datos</h4>
+        <p><strong>Definición:</strong> Movimiento de datos desde fuentes diversas hacia 
+        un ecosistema unificado.</p>
+        <ul>
+          <li><strong>Fuentes comunes:</strong> Bases de datos (MySQL, PostgreSQL, MongoDB), 
+          APIs REST/GraphQL, Archivos (S3, SFTP), Logs, IoT, SaaS (Salesforce, HubSpot)</li>
+          <li><strong>Métodos:</strong> Pull (polling), Push (webhooks), CDC (Change Data Capture)</li>
+          <li><strong>Consideraciones:</strong> Schema evolution, latencia, volumen, idempotencia</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>⚙️ 2. Transformación de Datos</h4>
+        <p><strong>Definición:</strong> Proceso de limpieza, normalización y preparación 
+        de datos para su uso final.</p>
+        <ul>
+          <li><strong>Limpieza:</strong> Manejo de nulos, duplicados, outliers</li>
+          <li><strong>Normalización:</strong> Formatos de fecha, monedas, unidades</li>
+          <li><strong>Enriquecimiento:</strong> Joins con datos maestros, geocoding</li>
+          <li><strong>Agregación:</strong> Cálculo de métricas, KPIs, resúmenes</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>📤 3. Servicio de Datos</h4>
+        <p><strong>Definición:</strong> Entrega de datos procesados a consumidores finales.</p>
+        <ul>
+          <li><strong>Analytics:</strong> Data Warehouse para SQL/BI</li>
+          <li><strong>ML/AI:</strong> Feature stores y datasets de entrenamiento</li>
+          <li><strong>Aplicaciones:</strong> APIs, reverse ETL a sistemas operacionales</li>
+          <li><strong>Real-time:</strong> Streaming a dashboards y alertas</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: ETL vs ELT -->
+    <section id="seccion-04" class="card">
+      <h2><span>04 · Pipelines</span>Data Pipelines: ETL vs ELT</h2>
+      
+      <p>
+        Los <strong>Data Pipelines</strong> son flujos automatizados que mueven y transforman 
+        datos. Existen dos paradigmas principales: <strong>ETL</strong> y <strong>ELT</strong>.
+      </p>
+
+      <h3>ETL: Extract, Transform, Load</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #fbbf24;">ETL (Tradicional)</strong>
+
+┌──────────┐      ┌──────────────┐      ┌──────────┐
+│ <strong style="color: #38bdf8;">EXTRACT</strong>  │ ───► │  <strong style="color: #22c55e;">TRANSFORM</strong>  │ ───► │   <strong style="color: #a855f7;">LOAD</strong>   │
+│  Fuentes │      │   Servidor   │      │ Destino  │
+└──────────┘      │   de ETL     │      │  (DW)    │
+                  └──────────────┘      └──────────┘
+
+<span style="color: #9ca3af;">• Transformación ANTES de cargar al destino</span>
+<span style="color: #9ca3af;">• Datos ya limpios y estructurados llegan al DW</span>
+<span style="color: #9ca3af;">• Menor carga en el sistema de destino</span>
+</pre>
+
+      <div class="phase-box">
+        <h4>✅ Cuándo Usar ETL</h4>
+        <ul>
+          <li>Data Warehouses tradicionales (on-premise)</li>
+          <li>Cuando el destino tiene capacidad de cómputo limitada</li>
+          <li>Transformaciones complejas que requieren herramientas especializadas</li>
+          <li>Cumplimiento estricto que requiere filtrar datos sensibles antes de cargar</li>
+        </ul>
+      </div>
+
+      <h3>ELT: Extract, Load, Transform</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #22c55e;">ELT (Moderno)</strong>
+
+┌──────────┐      ┌──────────┐      ┌──────────────┐
+│ <strong style="color: #38bdf8;">EXTRACT</strong>  │ ───► │   <strong style="color: #a855f7;">LOAD</strong>   │ ───► │  <strong style="color: #22c55e;">TRANSFORM</strong>  │
+│  Fuentes │      │ Raw Layer │      │ Dentro del  │
+└──────────┘      │  (Lake)   │      │   destino   │
+                  └──────────┘      └──────────────┘
+
+<span style="color: #9ca3af;">• Datos crudos se cargan PRIMERO</span>
+<span style="color: #9ca3af;">• Transformación en el destino (usando su poder de cómputo)</span>
+<span style="color: #9ca3af;">• Flexibilidad para retransformar datos históricos</span>
+</pre>
+
+      <div class="phase-box">
+        <h4>✅ Cuándo Usar ELT</h4>
+        <ul>
+          <li>Cloud Data Warehouses (Snowflake, BigQuery, Databricks)</li>
+          <li>Cuando el destino tiene gran capacidad de cómputo (escalable)</li>
+          <li>Necesidad de acceso a datos crudos para diferentes casos de uso</li>
+          <li>Transformaciones que evolucionan frecuentemente</li>
+        </ul>
+      </div>
+
+      <h3>Comparación ETL vs ELT</h3>
+
+      <table style="width: 100%; border-collapse: collapse; margin: 1.2rem 0;">
+        <thead>
+          <tr style="background: rgba(99, 102, 241, 0.2);">
+            <th style="padding: 0.8rem; text-align: left; border: 1px solid rgba(99,102,241,0.3);">Aspecto</th>
+            <th style="padding: 0.8rem; text-align: left; border: 1px solid rgba(99,102,241,0.3);">ETL</th>
+            <th style="padding: 0.8rem; text-align: left; border: 1px solid rgba(99,102,241,0.3);">ELT</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Cómputo</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Servidor ETL separado</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">En el destino</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Flexibilidad</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Menor (schema definido)</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Mayor (schema on read)</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Datos crudos</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">No disponibles</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Siempre disponibles</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Escalabilidad</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Limitada por servidor</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Elástica en cloud</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Herramientas</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Informatica, Talend, SSIS</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">dbt, Spark, SQL nativo</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🚀</div>
+        <div>
+          <strong>Tendencia 2025-2026:</strong><br><br>
+          <strong>ELT</strong> domina en arquitecturas cloud modernas. La combinación de 
+          <strong>ingesta ligera + dbt para transformaciones</strong> es el stack más popular.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: ARQUITECTURAS DE ALMACENAMIENTO -->
+    <section id="seccion-05" class="card">
+      <h2><span>05 · Storage</span>Arquitecturas de Almacenamiento</h2>
+      
+      <p>
+        Elegir la arquitectura de almacenamiento correcta es una de las decisiones 
+        más importantes en data engineering.
+      </p>
+
+      <h3>Evolución de Arquitecturas</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #9ca3af;">2000s</strong>           <strong style="color: #9ca3af;">2010s</strong>           <strong style="color: #9ca3af;">2020s</strong>
+  │                 │                 │
+  ▼                 ▼                 ▼
+<strong style="color: #fbbf24;">DATA</strong>           <strong style="color: #22c55e;">DATA</strong>           <strong style="color: #6366f1;">DATA</strong>
+<strong style="color: #fbbf24;">WAREHOUSE</strong>      <strong style="color: #22c55e;">LAKE</strong>           <strong style="color: #6366f1;">LAKEHOUSE</strong>
+
+Estructurado    Cualquier       Lo mejor de
+SQL-first       formato         ambos mundos
+On-premise      Big Data        ACID + Scale
+                Hadoop          Open formats
+</pre>
+
+      <h3>Tipos de Bases de Datos</h3>
+
+      <div class="phase-box">
+        <h4>📊 Bases de Datos Relacionales (RDBMS)</h4>
+        <p>Datos organizados en tablas con relaciones definidas.</p>
+        <ul>
+          <li><strong>Ejemplos:</strong> PostgreSQL, MySQL, Oracle, SQL Server</li>
+          <li><strong>Uso:</strong> OLTP (transacciones), datos maestros</li>
+          <li><strong>Lenguaje:</strong> SQL</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🔷 Bases de Datos NoSQL</h4>
+        <p>Esquemas flexibles para datos no estructurados o semi-estructurados.</p>
+        <ul>
+          <li><strong>Documentos:</strong> MongoDB, CouchDB</li>
+          <li><strong>Key-Value:</strong> Redis, DynamoDB</li>
+          <li><strong>Columnar:</strong> Cassandra, HBase</li>
+          <li><strong>Grafos:</strong> Neo4j, Neptune</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>☁️ Cloud Storage</h4>
+        <p>Almacenamiento de objetos para datos a escala.</p>
+        <ul>
+          <li><strong>AWS:</strong> S3 (Simple Storage Service)</li>
+          <li><strong>Azure:</strong> Blob Storage, ADLS Gen2</li>
+          <li><strong>GCP:</strong> Cloud Storage</li>
+          <li><strong>Formatos:</strong> Parquet, ORC, Avro, Delta, Iceberg</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 6: DATA WAREHOUSE -->
+    <section id="seccion-06" class="card">
+      <h2><span>06 · Data Warehouse</span>Data Warehouse</h2>
+      
+      <div class="callout callout-info">
+        <div class="callout-icon">🏢</div>
+        <div>
+          <strong>Definición:</strong><br><br>
+          Un Data Warehouse es un repositorio centralizado que almacena datos 
+          <strong>estructurados</strong>, optimizado para consultas analíticas (OLAP) 
+          y reportes de Business Intelligence.
+        </div>
+      </div>
+
+      <h3>Características</h3>
+
+      <ul>
+        <li><strong>Schema on Write:</strong> Datos estructurados al cargar</li>
+        <li><strong>Orientado a Consultas:</strong> Optimizado para SELECT, no INSERT masivos</li>
+        <li><strong>Histórico:</strong> Mantiene datos a lo largo del tiempo</li>
+        <li><strong>Integrado:</strong> Unifica datos de múltiples fuentes</li>
+        <li><strong>No Volátil:</strong> Los datos no cambian una vez cargados</li>
+      </ul>
+
+      <h3>Arquitectura Típica (3 Capas)</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #6366f1;">┌─────────────────────────────────────────────────────────┐</strong>
+<strong style="color: #6366f1;">│              DATA WAREHOUSE ARCHITECTURE                │</strong>
+<strong style="color: #6366f1;">└─────────────────────────────────────────────────────────┘</strong>
+
+<strong style="color: #fbbf24;">📊 PRESENTATION LAYER (Marts)</strong>
+├─ Vistas de negocio por departamento
+├─ Cubos OLAP y agregaciones
+└─ Conectado a herramientas BI
+                    ▲
+                    │
+<strong style="color: #22c55e;">⚙️ INTEGRATION LAYER (Core DW)</strong>
+├─ Modelo dimensional (Star/Snowflake)
+├─ Tablas de hechos y dimensiones
+└─ SCD (Slowly Changing Dimensions)
+                    ▲
+                    │
+<strong style="color: #38bdf8;">📥 STAGING LAYER (Raw)</strong>
+├─ Datos crudos de fuentes
+├─ Limpieza básica
+└─ Staging temporal
+</pre>
+
+      <h3>Principales Cloud Data Warehouses</h3>
+
+      <table style="width: 100%; border-collapse: collapse; margin: 1.2rem 0;">
+        <thead>
+          <tr style="background: rgba(99, 102, 241, 0.2);">
+            <th style="padding: 0.8rem; text-align: left; border: 1px solid rgba(99,102,241,0.3);">Plataforma</th>
+            <th style="padding: 0.8rem; text-align: left; border: 1px solid rgba(99,102,241,0.3);">Proveedor</th>
+            <th style="padding: 0.8rem; text-align: left; border: 1px solid rgba(99,102,241,0.3);">Características</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Snowflake</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Multi-cloud</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Separación compute/storage, Time Travel</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>BigQuery</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Google Cloud</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Serverless, ML integrado, Streaming</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Redshift</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">AWS</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Integración AWS, Spectrum para S3</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Synapse</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Azure</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Integración Power BI, Spark pools</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Databricks SQL</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Multi-cloud</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Lakehouse nativo, Unity Catalog</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECCIÓN 7: DATA LAKE -->
+    <section id="seccion-07" class="card">
+      <h2><span>07 · Data Lake</span>Data Lake</h2>
+      
+      <div class="callout callout-info">
+        <div class="callout-icon">🌊</div>
+        <div>
+          <strong>Definición:</strong><br><br>
+          Un Data Lake es un repositorio que almacena grandes cantidades de datos 
+          en su <strong>formato nativo</strong> (estructurado, semi-estructurado y no 
+          estructurado) para procesamiento posterior.
+        </div>
+      </div>
+
+      <h3>Características</h3>
+
+      <ul>
+        <li><strong>Schema on Read:</strong> Estructura definida al consultar, no al cargar</li>
+        <li><strong>Almacenamiento barato:</strong> Object storage (S3, ADLS, GCS)</li>
+        <li><strong>Cualquier formato:</strong> JSON, CSV, Parquet, imágenes, logs</li>
+        <li><strong>Big Data ready:</strong> Escala a petabytes</li>
+        <li><strong>ML/AI friendly:</strong> Datos crudos para entrenamiento</li>
+      </ul>
+
+      <h3>Arquitectura de Zonas</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #6366f1;">DATA LAKE ZONES (Medallion Architecture)</strong>
+
+<strong style="color: #cd7f32;">🥉 BRONZE (Raw/Landing)</strong>
+   │  Datos exactamente como llegan de las fuentes
+   │  Sin transformaciones, máxima fidelidad
+   │  Formato: JSON, CSV, raw
+   ▼
+<strong style="color: #c0c0c0;">🥈 SILVER (Cleaned/Conformed)</strong>
+   │  Datos limpiados y validados
+   │  Deduplicación, tipos corregidos
+   │  Formato: Parquet/Delta optimizado
+   ▼
+<strong style="color: #ffd700;">🥇 GOLD (Curated/Business)</strong>
+      Datos agregados y listos para consumo
+      Modelado dimensional, métricas calculadas
+      Formato: Tablas optimizadas para BI/ML
+</pre>
+
+      <h3>Data Lake vs Data Swamp</h3>
+
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div>
+          <strong>Peligro: Data Swamp</strong><br><br>
+          Un Data Lake sin <strong>governance, catalogación y documentación</strong> 
+          se convierte en un "Data Swamp" (pantano de datos): datos inutilizables 
+          porque nadie sabe qué contienen ni cómo usarlos.
+        </div>
+      </div>
+
+      <p><strong>Cómo evitarlo:</strong></p>
+      <ul>
+        <li>Implementar catálogo de metadatos (AWS Glue, Dataplex)</li>
+        <li>Documentar linaje de datos</li>
+        <li>Definir políticas de retención y limpieza</li>
+        <li>Aplicar controles de calidad en cada zona</li>
+      </ul>
+    </section>
+
+    <!-- SECCIÓN 8: DATA LAKEHOUSE -->
+    <section id="seccion-08" class="card">
+      <h2><span>08 · Lakehouse</span>Data Lakehouse</h2>
+      
+      <div class="callout callout-success">
+        <div class="callout-icon">🏠</div>
+        <div>
+          <strong>Definición:</strong><br><br>
+          El Data Lakehouse combina lo mejor del Data Warehouse (ACID, SQL, 
+          performance) con la flexibilidad y economía del Data Lake 
+          (formatos abiertos, cualquier dato, ML-ready).
+        </div>
+      </div>
+
+      <h3>Lo Mejor de Ambos Mundos</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #fbbf24;">DATA WAREHOUSE</strong>              <strong style="color: #22c55e;">DATA LAKE</strong>
+     │                              │
+     ├─ ACID transactions           ├─ Formatos abiertos
+     ├─ SQL performance             ├─ Bajo costo
+     ├─ Gobernanza fuerte           ├─ Cualquier tipo de dato
+     ├─ Schema enforcement          ├─ ML/AI friendly
+     └─ BI optimizado               └─ Escalabilidad masiva
+              │                              │
+              └──────────────┬───────────────┘
+                             ▼
+                   <strong style="color: #6366f1;">┌───────────────────┐</strong>
+                   <strong style="color: #6366f1;">│   DATA LAKEHOUSE  │</strong>
+                   <strong style="color: #6366f1;">│                   │</strong>
+                   <strong style="color: #6366f1;">│  ✓ ACID           │</strong>
+                   <strong style="color: #6366f1;">│  ✓ Open Formats   │</strong>
+                   <strong style="color: #6366f1;">│  ✓ SQL + ML       │</strong>
+                   <strong style="color: #6366f1;">│  ✓ Low Cost       │</strong>
+                   <strong style="color: #6366f1;">│  ✓ Unified        │</strong>
+                   <strong style="color: #6366f1;">└───────────────────┘</strong>
+</pre>
+
+      <h3>Tecnologías de Table Format</h3>
+
+      <p>
+        Los formatos de tabla abiertos habilitan capacidades de Data Warehouse 
+        sobre almacenamiento de Data Lake:
+      </p>
+
+      <div class="phase-box">
+        <h4>🔷 Delta Lake (Databricks)</h4>
+        <ul>
+          <li>ACID transactions sobre Parquet</li>
+          <li>Time Travel (versionamiento)</li>
+          <li>Schema evolution</li>
+          <li>Merge (upserts) eficiente</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🧊 Apache Iceberg (Netflix)</h4>
+        <ul>
+          <li>Formato abierto y vendor-neutral</li>
+          <li>Hidden partitioning</li>
+          <li>Table evolution sin rewrite</li>
+          <li>Soporte multi-engine (Spark, Trino, Flink)</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🪶 Apache Hudi (Uber)</h4>
+        <ul>
+          <li>Optimizado para streaming incremental</li>
+          <li>Record-level updates eficientes</li>
+          <li>Change Data Capture nativo</li>
+        </ul>
+      </div>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">📈</div>
+        <div>
+          <strong>Tendencia 2025-2026:</strong><br><br>
+          <strong>Apache Iceberg</strong> está ganando como el estándar de facto por 
+          ser el más agnóstico de vendor. Snowflake, BigQuery y Databricks ahora 
+          soportan Iceberg nativamente.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 9: BATCH VS STREAMING -->
+    <section id="seccion-09" class="card">
+      <h2><span>09 · Processing</span>Procesamiento Batch vs Streaming</h2>
+      
+      <h3>Procesamiento Batch</h3>
+
+      <div class="phase-box">
+        <h4>📦 Batch Processing</h4>
+        <p>Procesa grandes volúmenes de datos en intervalos definidos.</p>
+        <ul>
+          <li><strong>Latencia:</strong> Minutos a horas</li>
+          <li><strong>Casos de uso:</strong> Reportes diarios, entrenamientos ML, ETL nocturno</li>
+          <li><strong>Herramientas:</strong> Apache Spark, Hadoop MapReduce, dbt</li>
+          <li><strong>Ventajas:</strong> Más simple, más barato, tolerante a fallos</li>
+        </ul>
+      </div>
+
+      <h3>Procesamiento Streaming</h3>
+
+      <div class="phase-box">
+        <h4>🌊 Stream Processing</h4>
+        <p>Procesa datos continuamente conforme llegan.</p>
+        <ul>
+          <li><strong>Latencia:</strong> Milisegundos a segundos</li>
+          <li><strong>Casos de uso:</strong> Detección de fraude, monitoreo IoT, dashboards real-time</li>
+          <li><strong>Herramientas:</strong> Apache Kafka, Apache Flink, Spark Streaming</li>
+          <li><strong>Ventajas:</strong> Insights inmediatos, reacción rápida</li>
+        </ul>
+      </div>
+
+      <h3>Comparación</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #fbbf24;">BATCH</strong>                          <strong style="color: #22c55e;">STREAMING</strong>
+
+Datos ──► [Acumular] ──► Procesar   Datos ──► Procesar ──► Resultado
+          (horas)        │                    (ms-seg)     inmediato
+                         ▼
+                    Resultado
+                    (después)
+
+<span style="color: #9ca3af;">Ejemplo:</span>                          <span style="color: #9ca3af;">Ejemplo:</span>
+"Ventas totales de ayer"          "Alertar si venta > $10K ahora"
+</pre>
+
+      <h3>Arquitectura Lambda vs Kappa</h3>
+
+      <div class="phase-box">
+        <h4>λ Lambda Architecture</h4>
+        <ul>
+          <li>Combina batch + streaming en paralelo</li>
+          <li><strong>Batch layer:</strong> Procesa datos históricos (completo, lento)</li>
+          <li><strong>Speed layer:</strong> Procesa datos recientes (rápido, aproximado)</li>
+          <li><strong>Serving layer:</strong> Combina ambas vistas</li>
+          <li><strong>Desventaja:</strong> Duplicación de lógica en dos sistemas</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>κ Kappa Architecture</h4>
+        <ul>
+          <li><strong>Solo streaming:</strong> Todo se procesa como stream</li>
+          <li>Reprocesar histórico reproduciendo eventos</li>
+          <li><strong>Herramienta típica:</strong> Apache Kafka + Flink</li>
+          <li><strong>Ventaja:</strong> Una sola codebase, arquitectura más simple</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 10: LENGUAJES -->
+    <section id="seccion-10" class="card">
+      <h2><span>10 · Languages</span>Lenguajes de Programación</h2>
+      
+      <h3>Lenguajes Esenciales para Data Engineering</h3>
+
+      <div class="phase-box">
+        <h4>🐍 Python</h4>
+        <p><strong>El lenguaje más importante</strong> para data engineering.</p>
+        <ul>
+          <li><strong>Uso:</strong> Pipelines, scripts, orquestación, APIs de datos</li>
+          <li><strong>Librerías clave:</strong>
+            <ul>
+              <li><code>pandas</code> - Manipulación de datos</li>
+              <li><code>polars</code> - pandas más rápido (Rust-based)</li>
+              <li><code>pyspark</code> - Procesamiento distribuido</li>
+              <li><code>apache-airflow</code> - Orquestación</li>
+              <li><code>great_expectations</code> - Data quality</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🔷 SQL</h4>
+        <p><strong>Imprescindible</strong> para cualquier data engineer.</p>
+        <ul>
+          <li><strong>Uso:</strong> Consultas, transformaciones, modelado dimensional</li>
+          <li><strong>Variantes:</strong> PostgreSQL, MySQL, Snowflake SQL, BigQuery SQL</li>
+          <li><strong>Herramientas:</strong> dbt (transformaciones SQL con mejores prácticas)</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>☕ Scala / Java</h4>
+        <p>Para procesamiento distribuido de alto rendimiento.</p>
+        <ul>
+          <li><strong>Uso:</strong> Apache Spark nativo, Kafka, sistemas críticos</li>
+          <li><strong>Ventaja:</strong> Mejor performance que PySpark para cargas pesadas</li>
+          <li><strong>Cuándo:</strong> Big Data a escala masiva, latencia crítica</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🦀 Rust (Emergente)</h4>
+        <p>Creciendo rápidamente en tooling de datos.</p>
+        <ul>
+          <li><strong>Herramientas:</strong> Polars, Delta-rs, DataFusion</li>
+          <li><strong>Ventaja:</strong> Performance extremo sin garbage collection</li>
+          <li><strong>Tendencia:</strong> Muchas herramientas Python están siendo reescritas en Rust</li>
+        </ul>
+      </div>
+
+      <h3>Skills Adicionales</h3>
+
+      <ul>
+        <li><strong>Bash/Shell:</strong> Scripting, automatización, DevOps</li>
+        <li><strong>YAML:</strong> Configuración (Airflow, dbt, Kubernetes)</li>
+        <li><strong>JSON:</strong> APIs, configuraciones, datos semi-estructurados</li>
+        <li><strong>Terraform/Pulumi:</strong> Infrastructure as Code</li>
+      </ul>
+    </section>
+
+    <!-- SECCIÓN 11: HERRAMIENTAS -->
+    <section id="seccion-11" class="card">
+      <h2><span>11 · Tools</span>Herramientas y Tecnologías</h2>
+      
+      <h3>Stack Moderno de Data Engineering</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #6366f1;">┌─────────────────────────────────────────────────────────────┐</strong>
+<strong style="color: #6366f1;">│            MODERN DATA STACK (MDS) 2025-2026               │</strong>
+<strong style="color: #6366f1;">└─────────────────────────────────────────────────────────────┘</strong>
+
+<strong style="color: #fbbf24;">📊 VISUALIZATION / BI</strong>
+   Looker │ Tableau │ Power BI │ Metabase │ Superset
+                              ▲
+<strong style="color: #22c55e;">⚙️ TRANSFORMATION</strong>         │
+   dbt │ Spark │ Flink ─────────┘
+                              ▲
+<strong style="color: #38bdf8;">🏢 STORAGE / COMPUTE</strong>      │
+   Snowflake │ BigQuery │ Databricks │ Redshift
+                              ▲
+<strong style="color: #a855f7;">📥 INGESTION</strong>              │
+   Fivetran │ Airbyte │ Meltano │ Stitch
+                              ▲
+<strong style="color: #f97316;">🎯 ORCHESTRATION</strong>          │
+   Airflow │ Dagster │ Prefect │ Mage
+                              ▲
+<strong style="color: #ef4444;">📋 OBSERVABILITY</strong>          │
+   Monte Carlo │ Great Expectations │ Elementary
+</pre>
+
+      <h3>Por Categoría</h3>
+
+      <div class="phase-box">
+        <h4>📥 Ingesta de Datos</h4>
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr>
+            <td style="padding: 0.5rem;"><strong>Fivetran</strong></td>
+            <td style="padding: 0.5rem;">SaaS, 300+ conectores, fully managed</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.5rem;"><strong>Airbyte</strong></td>
+            <td style="padding: 0.5rem;">Open source, 350+ conectores</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.5rem;"><strong>Meltano</strong></td>
+            <td style="padding: 0.5rem;">Open source, Singer-based</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.5rem;"><strong>Debezium</strong></td>
+            <td style="padding: 0.5rem;">CDC (Change Data Capture)</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="phase-box">
+        <h4>⚙️ Transformación</h4>
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr>
+            <td style="padding: 0.5rem;"><strong>dbt</strong></td>
+            <td style="padding: 0.5rem;">SQL transformations, testing, docs</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.5rem;"><strong>Apache Spark</strong></td>
+            <td style="padding: 0.5rem;">Big Data processing (batch + streaming)</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.5rem;"><strong>Apache Flink</strong></td>
+            <td style="padding: 0.5rem;">Stream processing (stateful)</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.5rem;"><strong>Pandas/Polars</strong></td>
+            <td style="padding: 0.5rem;">Python data manipulation</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="phase-box">
+        <h4>🌊 Streaming / Mensajería</h4>
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr>
+            <td style="padding: 0.5rem;"><strong>Apache Kafka</strong></td>
+            <td style="padding: 0.5rem;">Event streaming platform</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.5rem;"><strong>Confluent</strong></td>
+            <td style="padding: 0.5rem;">Kafka managed + ecosystem</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.5rem;"><strong>Amazon Kinesis</strong></td>
+            <td style="padding: 0.5rem;">AWS streaming service</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.5rem;"><strong>Pub/Sub</strong></td>
+            <td style="padding: 0.5rem;">GCP messaging service</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="phase-box">
+        <h4>📊 Query Engines</h4>
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr>
+            <td style="padding: 0.5rem;"><strong>Trino (Presto)</strong></td>
+            <td style="padding: 0.5rem;">SQL federado sobre múltiples fuentes</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.5rem;"><strong>Apache Druid</strong></td>
+            <td style="padding: 0.5rem;">OLAP real-time</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.5rem;"><strong>ClickHouse</strong></td>
+            <td style="padding: 0.5rem;">Analytics columnar muy rápido</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.5rem;"><strong>DuckDB</strong></td>
+            <td style="padding: 0.5rem;">Analytics embebido (SQLite para OLAP)</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 12: ORQUESTACIÓN -->
+    <section id="seccion-12" class="card">
+      <h2><span>12 · Orchestration</span>Orquestación de Workflows</h2>
+      
+      <p>
+        La <strong>orquestación</strong> coordina y programa la ejecución de pipelines de datos, 
+        manejando dependencias, reintentos y monitoreo.
+      </p>
+
+      <h3>Principales Orquestadores</h3>
+
+      <div class="phase-box">
+        <h4>🌬️ Apache Airflow</h4>
+        <p><strong>El estándar de la industria.</strong></p>
+        <ul>
+          <li>DAGs (Directed Acyclic Graphs) en Python</li>
+          <li>Enorme ecosistema de operadores</li>
+          <li>Managed: Astronomer, MWAA, Cloud Composer</li>
+          <li><strong>Ideal para:</strong> Equipos establecidos, workflows complejos</li>
+        </ul>
+        <pre style="background: rgba(15,23,42,0.6); padding: 0.8rem; border-radius: 6px; margin-top: 0.5rem;">
+<span style="color: #22c55e;">from</span> airflow <span style="color: #22c55e;">import</span> DAG
+<span style="color: #22c55e;">from</span> airflow.operators.python <span style="color: #22c55e;">import</span> PythonOperator
+
+<span style="color: #fbbf24;">@dag</span>(schedule=<span style="color: #38bdf8;">"@daily"</span>)
+<span style="color: #22c55e;">def</span> <span style="color: #38bdf8;">my_pipeline</span>():
+    extract >> transform >> load</pre>
+      </div>
+
+      <div class="phase-box">
+        <h4>🗡️ Dagster</h4>
+        <p><strong>Moderno, asset-centric.</strong></p>
+        <ul>
+          <li>Enfoque en "Software-defined assets"</li>
+          <li>Type system robusto</li>
+          <li>Testing integrado</li>
+          <li><strong>Ideal para:</strong> Equipos que quieren modern practices</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🔮 Prefect</h4>
+        <p><strong>Pythonic y flexible.</strong></p>
+        <ul>
+          <li>Decorators simples (@flow, @task)</li>
+          <li>Hybrid execution model</li>
+          <li>UI moderna</li>
+          <li><strong>Ideal para:</strong> Developers que prefieren simplicidad</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🧙 Mage</h4>
+        <p><strong>Notebook-style, visual.</strong></p>
+        <ul>
+          <li>UI interactiva tipo notebook</li>
+          <li>Blocks reutilizables</li>
+          <li>Fácil para principiantes</li>
+          <li><strong>Ideal para:</strong> Prototipado rápido, equipos pequeños</li>
+        </ul>
+      </div>
+
+      <h3>Conceptos de Orquestación</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #6366f1;">DAG (Directed Acyclic Graph)</strong>
+              ┌──► Task B ──┐
+Task A ──────┤              ├──► Task D
+              └──► Task C ──┘
+
+<strong style="color: #fbbf24;">Conceptos clave:</strong>
+• <strong>Schedule:</strong> Cuándo ejecutar (cron, eventos)
+• <strong>Dependency:</strong> Qué tareas dependen de otras
+• <strong>Retry:</strong> Reintentos en caso de fallo
+• <strong>Backfill:</strong> Ejecutar para fechas pasadas
+• <strong>SLA:</strong> Alertas si no completa a tiempo
+</pre>
+    </section>
+
+    <!-- SECCIÓN 13: DATA QUALITY -->
+    <section id="seccion-13" class="card">
+      <h2><span>13 · Observability</span>Data Quality y Observabilidad</h2>
+      
+      <p>
+        La <strong>observabilidad de datos</strong> permite detectar, diagnosticar y 
+        resolver problemas de calidad antes de que impacten al negocio.
+      </p>
+
+      <h3>Pilares de Data Observability</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #6366f1;">Los 5 Pilares (según Monte Carlo)</strong>
+
+<strong style="color: #38bdf8;">1. FRESHNESS</strong>  ─ ¿Los datos están actualizados?
+<strong style="color: #22c55e;">2. VOLUME</strong>     ─ ¿Llegó la cantidad esperada de registros?
+<strong style="color: #fbbf24;">3. SCHEMA</strong>     ─ ¿Cambió la estructura de los datos?
+<strong style="color: #a855f7;">4. DISTRIBUTION</strong> ─ ¿Los valores están en rangos normales?
+<strong style="color: #f97316;">5. LINEAGE</strong>    ─ ¿De dónde vienen y a dónde van los datos?
+</pre>
+
+      <h3>Herramientas de Data Quality</h3>
+
+      <div class="phase-box">
+        <h4>✅ Great Expectations</h4>
+        <ul>
+          <li>Open source, Python-based</li>
+          <li>"Expectations" como tests de datos</li>
+          <li>Documentación automática</li>
+          <li>Integra con Airflow, Spark, pandas</li>
+        </ul>
+        <pre style="background: rgba(15,23,42,0.6); padding: 0.8rem; border-radius: 6px; margin-top: 0.5rem;">
+<span style="color: #9ca3af;"># Ejemplo de expectation</span>
+validator.expect_column_values_to_not_be_null(<span style="color: #38bdf8;">"customer_id"</span>)
+validator.expect_column_values_to_be_between(<span style="color: #38bdf8;">"age"</span>, <span style="color: #fbbf24;">18</span>, <span style="color: #fbbf24;">120</span>)</pre>
+      </div>
+
+      <div class="phase-box">
+        <h4>🔷 dbt Tests</h4>
+        <ul>
+          <li>Tests integrados en transformaciones</li>
+          <li>Tests de schema: unique, not_null, accepted_values</li>
+          <li>Tests custom con SQL</li>
+        </ul>
+        <pre style="background: rgba(15,23,42,0.6); padding: 0.8rem; border-radius: 6px; margin-top: 0.5rem;">
+<span style="color: #9ca3af;"># schema.yml</span>
+<span style="color: #38bdf8;">models:</span>
+  - <span style="color: #fbbf24;">name:</span> customers
+    <span style="color: #fbbf24;">columns:</span>
+      - <span style="color: #fbbf24;">name:</span> customer_id
+        <span style="color: #fbbf24;">tests:</span>
+          - unique
+          - not_null</pre>
+      </div>
+
+      <div class="phase-box">
+        <h4>🔭 Monte Carlo</h4>
+        <ul>
+          <li>Data observability platform (commercial)</li>
+          <li>Detección automática de anomalías con ML</li>
+          <li>Linaje end-to-end</li>
+          <li>Alertas proactivas</li>
+        </ul>
+      </div>
+
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div>
+          <strong>Data Downtime:</strong><br><br>
+          Según Monte Carlo, las organizaciones experimentan un promedio de 
+          <strong>15 horas de data downtime</strong> por semana debido a problemas de calidad.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 14: DATA ENGINEERING PARA ML -->
+    <section id="seccion-14" class="card">
+      <h2><span>14 · ML Engineering</span>Data Engineering para ML/AI</h2>
+      
+      <p>
+        Los Data Engineers son fundamentales para el éxito de proyectos de 
+        Machine Learning, proveyendo los datos que alimentan los modelos.
+      </p>
+
+      <h3>MLOps Data Pipeline</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #6366f1;">┌─────────────────────────────────────────────────────────────┐</strong>
+<strong style="color: #6366f1;">│               DATA ENGINEERING PARA ML                      │</strong>
+<strong style="color: #6366f1;">└─────────────────────────────────────────────────────────────┘</strong>
+
+<strong style="color: #38bdf8;">RAW DATA</strong>
+    │
+    ▼
+<strong style="color: #22c55e;">DATA PIPELINES</strong> (DE responsibility)
+    │
+    ├──► Limpieza, validación
+    ├──► Feature engineering
+    └──► Versionamiento de datos
+    │
+    ▼
+<strong style="color: #fbbf24;">FEATURE STORE</strong>
+    │
+    ├──► Training features (batch)
+    └──► Serving features (real-time)
+    │
+    ▼
+<strong style="color: #a855f7;">ML MODELS</strong> ──► Predictions ──► <strong style="color: #f97316;">BUSINESS VALUE</strong>
+</pre>
+
+      <h3>Conceptos Clave</h3>
+
+      <div class="phase-box">
+        <h4>🏪 Feature Store</h4>
+        <p>Repositorio centralizado de features para ML.</p>
+        <ul>
+          <li><strong>Herramientas:</strong> Feast, Tecton, Databricks Feature Store</li>
+          <li><strong>Beneficios:</strong> Reutilización, consistencia train/serve, versionamiento</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>📊 Training Datasets</h4>
+        <ul>
+          <li>Datos históricos etiquetados</li>
+          <li>Splits reproducibles (train/val/test)</li>
+          <li>Versionamiento con DVC, LakeFS, Delta</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>⚡ Inference Data</h4>
+        <ul>
+          <li><strong>Batch inference:</strong> Scores periódicos</li>
+          <li><strong>Real-time inference:</strong> Features on-demand</li>
+          <li>Consistency entre training y serving</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🔄 Data Drift Detection</h4>
+        <ul>
+          <li>Monitorear cambios en distribución de datos</li>
+          <li>Alertar cuando el modelo puede degradarse</li>
+          <li><strong>Herramientas:</strong> Evidently, WhyLabs, Arize</li>
+        </ul>
+      </div>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>Regla del 80/20 en ML:</strong><br><br>
+          El 80% del esfuerzo en proyectos de ML es <strong>data engineering</strong> 
+          (obtener, limpiar, preparar datos). Solo el 20% es modelado.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 15: DATAOPS -->
+    <section id="seccion-15" class="card">
+      <h2><span>15 · DataOps</span>DataOps y Mejores Prácticas</h2>
+      
+      <div class="callout callout-info">
+        <div class="callout-icon">🔄</div>
+        <div>
+          <strong>Definición:</strong><br><br>
+          <strong>DataOps</strong> es la aplicación de prácticas de DevOps a data engineering: 
+          automatización, CI/CD, testing, monitoreo y colaboración.
+        </div>
+      </div>
+
+      <h3>Prácticas de DataOps</h3>
+
+      <div class="phase-box">
+        <h4>🔄 1. Version Control para Datos</h4>
+        <ul>
+          <li>Código de pipelines en Git</li>
+          <li>Configuraciones y schemas versionados</li>
+          <li>Data versioning con DVC, LakeFS, Delta Time Travel</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🧪 2. Testing</h4>
+        <ul>
+          <li><strong>Unit tests:</strong> Funciones de transformación</li>
+          <li><strong>Integration tests:</strong> Pipelines end-to-end</li>
+          <li><strong>Data tests:</strong> Validaciones de calidad</li>
+          <li><strong>Contract tests:</strong> Schema compatibility</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🚀 3. CI/CD para Pipelines</h4>
+        <ul>
+          <li>PR reviews para cambios en pipelines</li>
+          <li>Tests automáticos en cada commit</li>
+          <li>Deployment automatizado a staging/prod</li>
+          <li><strong>Herramientas:</strong> GitHub Actions, GitLab CI, dbt Cloud</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>📊 4. Monitoreo y Alertas</h4>
+        <ul>
+          <li>Dashboards de salud de pipelines</li>
+          <li>Alertas por fallos o anomalías</li>
+          <li>SLAs de freshness y calidad</li>
+          <li><strong>Herramientas:</strong> Datadog, Monte Carlo, Elementary</li>
+        </ul>
+      </div>
+
+      <h3>Mejores Prácticas Generales</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #22c55e;">✓</strong> Diseñar pipelines <strong>idempotentes</strong> (re-ejecutables sin efectos secundarios)
+<strong style="color: #22c55e;">✓</strong> Documentar todo (schemas, pipelines, decisiones)
+<strong style="color: #22c55e;">✓</strong> Implementar <strong>backfilling</strong> desde el inicio
+<strong style="color: #22c55e;">✓</strong> Usar formatos <strong>columnar</strong> (Parquet, ORC) para analytics
+<strong style="color: #22c55e;">✓</strong> Particionar datos por fecha/región para performance
+<strong style="color: #22c55e;">✓</strong> Separar <strong>compute de storage</strong> en cloud
+<strong style="color: #22c55e;">✓</strong> Implementar <strong>schema evolution</strong> desde el diseño
+<strong style="color: #22c55e;">✓</strong> Usar <strong>staging environments</strong> para probar cambios
+<strong style="color: #22c55e;">✓</strong> Automatizar todo lo que se pueda automatizar
+<strong style="color: #22c55e;">✓</strong> Medir y optimizar <strong>costos</strong> continuamente
+</pre>
+    </section>
+
+    <!-- SECCIÓN 16: CONCLUSIÓN -->
+    <section id="seccion-16" class="card">
+      <h2><span>16 · Roadmap</span>Conclusión y Roadmap</h2>
+      
+      <h3>Roadmap del Data Engineer 2025-2026</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #6366f1;">NIVEL JUNIOR (0-2 años)</strong>
+├─ SQL avanzado
+├─ Python (pandas, básicos de Spark)
+├─ Un cloud provider (AWS/GCP/Azure)
+├─ ETL básico con Airflow
+└─ Git y línea de comandos
+
+<strong style="color: #22c55e;">NIVEL MID (2-4 años)</strong>
+├─ Spark / procesamiento distribuido
+├─ Streaming (Kafka básico)
+├─ dbt para transformaciones
+├─ Data modeling (dimensional, Data Vault)
+├─ Data quality (Great Expectations)
+└─ Docker y Kubernetes básico
+
+<strong style="color: #fbbf24;">NIVEL SENIOR (4+ años)</strong>
+├─ Arquitectura de datos (Lake/Warehouse/Lakehouse)
+├─ Streaming avanzado (Flink)
+├─ Table formats (Iceberg, Delta)
+├─ Performance optimization
+├─ Cost optimization
+├─ ML pipelines y Feature Stores
+└─ Liderazgo técnico
+</pre>
+
+      <h3>Tendencias 2025-2026</h3>
+
+      <div class="phase-box">
+        <h4>🔮 Hacia Dónde Va Data Engineering</h4>
+        <ul>
+          <li><strong>Data Mesh:</strong> Descentralización con productos de datos</li>
+          <li><strong>Lakehouse:</strong> Convergencia lake + warehouse</li>
+          <li><strong>Real-time:</strong> Streaming-first architectures</li>
+          <li><strong>AI/ML-ready:</strong> Pipelines diseñados para ML desde el inicio</li>
+          <li><strong>Cost Engineering:</strong> FinOps para datos</li>
+          <li><strong>Data Contracts:</strong> APIs formales entre equipos</li>
+          <li><strong>Semantic Layer:</strong> Métricas como código</li>
+        </ul>
+      </div>
+
+      <h3>Resumen Ejecutivo</h3>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>Puntos Clave:</strong><br><br>
+          <ol style="margin: 0; padding-left: 1.2rem;">
+            <li>Data Engineering es la <strong>infraestructura</strong> que habilita analytics y ML</li>
+            <li>El stack moderno es <strong>ELT + dbt + Cloud Warehouse + Orquestador</strong></li>
+            <li>Los <strong>Lakehouses</strong> están unificando arquitecturas</li>
+            <li><strong>Data Quality</strong> no es opcional, es crítico</li>
+            <li><strong>DataOps</strong> aplica DevOps a pipelines de datos</li>
+            <li>El futuro es <strong>streaming-first y ML-ready</strong></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="callout callout-deep">
+        <div class="callout-icon">📚</div>
+        <div>
+          <strong>Recursos Adicionales:</strong><br><br>
+          <ul style="margin: 0; padding-left: 1.2rem;">
+            <li><a href="https://www.ibm.com/topics/data-engineering" target="_blank" rel="noopener noreferrer">IBM - What is Data Engineering?</a></li>
+            <li><a href="https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/" target="_blank" rel="noopener noreferrer">Fundamentals of Data Engineering (O'Reilly)</a></li>
+            <li><a href="https://www.getdbt.com/analytics-engineering/" target="_blank" rel="noopener noreferrer">Analytics Engineering Guide (dbt)</a></li>
+            <li><a href="guia-ciencia-datos.html">Guía: Ciencia de Datos y Roles</a></li>
+            <li><a href="guia-gobierno-datos.html">Guía: Gobierno de Datos</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-simple">
+      <p>Creado por <strong>JJRM</strong> · 2026</p>
+      <div>
+        <a href="index.html" class="btn-back">← Volver al inicio</a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Scripts para scroll suave -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>

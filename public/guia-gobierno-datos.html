@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Guía Completa: Gobierno de Datos - Data Governance (2026)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="img/IA_ALONE_ia.png" />
+  <link rel="stylesheet" href="css/guias-common.css" />
+</head>
+<body>
+  <!-- Botón flotante Home -->
+  <a href="index.html" class="home-btn" title="Volver al inicio">
+    <img src="img/IA_ALONE_ia.png" alt="Home" />
+  </a>
+
+  <main class="page">
+    <header>
+      <div class="pill">
+        <span class="pill-dot"><span class="pill-dot-inner"></span></span>
+        GUÍA DATA GOVERNANCE · CALIDAD & CUMPLIMIENTO
+      </div>
+      <h1>Guía Completa: Gobierno de Datos - Data Governance (2026)</h1>
+      <p class="subtitle">
+        Guía profesional sobre marcos de gobierno de datos, roles organizacionales, 
+        políticas de calidad y seguridad, cumplimiento regulatorio y mejores prácticas 
+        para gestionar los datos como activo estratégico.
+      </p>
+      <div class="meta-grid">
+        <div class="meta-pill">
+          <span class="meta-pill-dot"></span>
+          <strong>Scope:</strong> Data Governance + Quality + Compliance
+        </div>
+        <div class="meta-pill">
+          <span class="meta-pill-dot"></span>
+          <strong>Nivel:</strong> Estratégico-Organizacional
+        </div>
+        <div class="meta-pill">
+          <span class="meta-pill-dot"></span>
+          <strong>Año:</strong> 2026 - JJRM
+        </div>
+      </div>
+    </header>
+
+    <!-- ÍNDICE NAVEGABLE -->
+    <nav class="index-nav">
+      <h2 class="index-main-title">ÍNDICE DE CONTENIDOS</h2>
+      <div class="index-grid">
+        <a href="#seccion-01" class="index-link">
+          <span class="index-number">01</span>
+          <span class="index-title">¿Qué es el Gobierno de Datos?</span>
+        </a>
+        <a href="#seccion-02" class="index-link">
+          <span class="index-number">02</span>
+          <span class="index-title">Pilares del Data Governance</span>
+        </a>
+        <a href="#seccion-03" class="index-link">
+          <span class="index-number">03</span>
+          <span class="index-title">Marco de Gobierno de Datos</span>
+        </a>
+        <a href="#seccion-04" class="index-link">
+          <span class="index-number">04</span>
+          <span class="index-title">Roles y Responsabilidades</span>
+        </a>
+        <a href="#seccion-05" class="index-link">
+          <span class="index-number">05</span>
+          <span class="index-title">Estilos de Gobernanza</span>
+        </a>
+        <a href="#seccion-06" class="index-link">
+          <span class="index-number">06</span>
+          <span class="index-title">Calidad de Datos</span>
+        </a>
+        <a href="#seccion-07" class="index-link">
+          <span class="index-number">07</span>
+          <span class="index-title">Seguridad y Privacidad</span>
+        </a>
+        <a href="#seccion-08" class="index-link">
+          <span class="index-number">08</span>
+          <span class="index-title">Cumplimiento Regulatorio</span>
+        </a>
+        <a href="#seccion-09" class="index-link">
+          <span class="index-number">09</span>
+          <span class="index-title">Beneficios del Data Governance</span>
+        </a>
+        <a href="#seccion-10" class="index-link">
+          <span class="index-number">10</span>
+          <span class="index-title">Desafíos Comunes</span>
+        </a>
+        <a href="#seccion-11" class="index-link">
+          <span class="index-number">11</span>
+          <span class="index-title">Gobernanza de Datos para IA</span>
+        </a>
+        <a href="#seccion-12" class="index-link">
+          <span class="index-number">12</span>
+          <span class="index-title">Herramientas y Tecnologías</span>
+        </a>
+        <a href="#seccion-13" class="index-link">
+          <span class="index-number">13</span>
+          <span class="index-title">Mejores Prácticas</span>
+        </a>
+        <a href="#seccion-14" class="index-link">
+          <span class="index-number">14</span>
+          <span class="index-title">Modelo de Madurez</span>
+        </a>
+        <a href="#seccion-15" class="index-link">
+          <span class="index-number">15</span>
+          <span class="index-title">Conclusión y Visión Futura</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- SECCIÓN 1: QUÉ ES EL GOBIERNO DE DATOS -->
+    <section id="seccion-01" class="card">
+      <h2><span>01 · Definición</span>¿Qué es el Gobierno de Datos?</h2>
+      
+      <p>
+        El <strong>Gobierno de Datos</strong> (Data Governance) es el conjunto de 
+        <strong>políticas, procesos, estándares y métricas</strong> que aseguran que 
+        los datos de una organización sean gestionados de forma efectiva para cumplir 
+        sus objetivos de negocio.
+      </p>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">📊</div>
+        <div>
+          <strong>Definición IBM:</strong><br><br>
+          "Data Governance se enfoca en la <strong>calidad, seguridad y disponibilidad</strong> 
+          de los datos para satisfacer las necesidades organizacionales."
+        </div>
+      </div>
+
+      <h3>Objetivo Principal</h3>
+      <p>
+        El objetivo central del gobierno de datos es tratar los <strong>datos como un activo 
+        estratégico de negocio</strong>, asegurando que sean:
+      </p>
+
+      <ul>
+        <li><strong>Precisos y confiables</strong> - Datos de alta calidad</li>
+        <li><strong>Seguros y protegidos</strong> - Contra accesos no autorizados</li>
+        <li><strong>Accesibles</strong> - Para quienes los necesitan</li>
+        <li><strong>Consistentes</strong> - A través de toda la organización</li>
+        <li><strong>Auditables</strong> - Con trazabilidad completa</li>
+      </ul>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>Ecuación del Gobierno de Datos:</strong><br><br>
+          <code>Datos Gobernados = Personas + Procesos + Políticas + Tecnología</code>
+        </div>
+      </div>
+
+      <h3>Data Governance vs Data Management</h3>
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #6366f1;">📋 DATA GOVERNANCE (Gobierno)</strong>
+    • Define las <span style="color: #fbbf24;">políticas</span> y <span style="color: #fbbf24;">estándares</span>
+    • Establece <span style="color: #fbbf24;">roles</span> y <span style="color: #fbbf24;">responsabilidades</span>
+    • Determina <span style="color: #fbbf24;">qué</span> debe hacerse
+    ↓ <span style="color: #9ca3af;">(guía y supervisa)</span>
+
+<strong style="color: #22c55e;">⚙️ DATA MANAGEMENT (Gestión)</strong>
+    • <span style="color: #22c55e;">Ejecuta</span> las políticas
+    • <span style="color: #22c55e;">Implementa</span> procesos técnicos
+    • Determina <span style="color: #22c55e;">cómo</span> hacerlo
+</pre>
+    </section>
+
+    <!-- SECCIÓN 2: PILARES DEL DATA GOVERNANCE -->
+    <section id="seccion-02" class="card">
+      <h2><span>02 · Fundamentos</span>Pilares del Data Governance</h2>
+      
+      <div class="phase-box">
+        <h4>📊 1. Calidad de Datos (Data Quality)</h4>
+        <ul>
+          <li>Asegura que los datos sean <strong>precisos, completos y consistentes</strong></li>
+          <li>Define métricas y KPIs de calidad</li>
+          <li>Implementa procesos de limpieza y validación</li>
+          <li>Monitorea la salud de los datos en tiempo real</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🔐 2. Seguridad de Datos (Data Security)</h4>
+        <ul>
+          <li>Protege los datos contra <strong>accesos no autorizados</strong></li>
+          <li>Implementa controles de acceso basados en roles (RBAC)</li>
+          <li>Cifrado de datos en reposo y en tránsito</li>
+          <li>Prevención de pérdida de datos (DLP)</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🛡️ 3. Privacidad de Datos (Data Privacy)</h4>
+        <ul>
+          <li>Gestiona el <strong>consentimiento</strong> de los titulares</li>
+          <li>Implementa anonimización y pseudonimización</li>
+          <li>Responde a derechos ARCO (Acceso, Rectificación, Cancelación, Oposición)</li>
+          <li>Cumple con regulaciones como GDPR, CCPA, LFPDPPP</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>📋 4. Cumplimiento (Compliance)</h4>
+        <ul>
+          <li>Asegura adherencia a <strong>regulaciones y normativas</strong></li>
+          <li>Mantiene registros de auditoría</li>
+          <li>Gestiona riesgos de datos</li>
+          <li>Prepara reportes regulatorios</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>📚 5. Gestión de Metadatos (Metadata Management)</h4>
+        <ul>
+          <li>Documenta el <strong>linaje de datos</strong> (data lineage)</li>
+          <li>Mantiene diccionarios y catálogos de datos</li>
+          <li>Define significados empresariales (glosario)</li>
+          <li>Habilita el descubrimiento de datos</li>
+        </ul>
+      </div>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>Sinergia de Pilares:</strong><br><br>
+          Todos los pilares trabajan juntos: sin <strong>calidad</strong> no hay confianza, 
+          sin <strong>seguridad</strong> hay riesgos, sin <strong>privacidad</strong> hay 
+          incumplimiento, y sin <strong>metadatos</strong> hay caos.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: MARCO DE GOBIERNO -->
+    <section id="seccion-03" class="card">
+      <h2><span>03 · Framework</span>Marco de Gobierno de Datos</h2>
+      
+      <p>
+        Un <strong>marco de gobierno de datos</strong> es la estructura organizacional 
+        que define cómo se implementará y operará el programa de data governance.
+      </p>
+
+      <h3>Componentes del Framework</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #6366f1;">┌─────────────────────────────────────────────────────────┐</strong>
+<strong style="color: #6366f1;">│            MARCO DE GOBIERNO DE DATOS                   │</strong>
+<strong style="color: #6366f1;">└─────────────────────────────────────────────────────────┘</strong>
+
+<strong style="color: #fbbf24;">1. METAS Y OBJETIVOS DEL PROGRAMA</strong>
+   • Alineación con objetivos de negocio
+   • KPIs y métricas de éxito
+   • ROI esperado
+
+<strong style="color: #22c55e;">2. ESTÁNDARES Y POLÍTICAS DE DATOS</strong>
+   • Política de clasificación de datos
+   • Estándares de calidad
+   • Reglas de retención y eliminación
+   • Guías de uso aceptable
+
+<strong style="color: #38bdf8;">3. ORGANIZACIÓN Y ROLES</strong>
+   • Comité de gobierno (Steering Committee)
+   • Data Owners, Stewards, Custodians
+   • Estructura de escalamiento
+
+<strong style="color: #a855f7;">4. PROCESOS Y PROCEDIMIENTOS</strong>
+   • Ciclo de vida de datos
+   • Gestión de cambios
+   • Resolución de incidentes
+   • Auditoría y monitoreo
+
+<strong style="color: #f97316;">5. TECNOLOGÍA Y HERRAMIENTAS</strong>
+   • Catálogo de datos
+   • Herramientas de calidad
+   • Plataformas de linaje
+   • Sistemas de acceso
+</pre>
+
+      <h3>Frameworks de Referencia</h3>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">📘</div>
+        <div>
+          <strong>DAMA-DMBOK (Data Management Body of Knowledge):</strong><br><br>
+          El estándar más reconocido en la industria. Define 11 áreas de conocimiento 
+          para la gestión de datos, con Data Governance como la función central que 
+          guía todas las demás.
+        </div>
+      </div>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">📗</div>
+        <div>
+          <strong>DCAM (Data Management Capability Assessment Model):</strong><br><br>
+          Modelo de EDM Council enfocado en servicios financieros. Permite evaluar 
+          la madurez de las capacidades de gestión de datos.
+        </div>
+      </div>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">📙</div>
+        <div>
+          <strong>COBIT para Data Governance:</strong><br><br>
+          Framework de ISACA que proporciona controles de TI que incluyen aspectos 
+          de gobierno de datos alineados con gobierno corporativo.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: ROLES Y RESPONSABILIDADES -->
+    <section id="seccion-04" class="card">
+      <h2><span>04 · Organización</span>Roles y Responsabilidades</h2>
+      
+      <h3>Estructura Organizacional de Data Governance</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #fbbf24;">                     ┌──────────────────────┐</strong>
+<strong style="color: #fbbf24;">                     │   COMITÉ EJECUTIVO   │</strong>
+<strong style="color: #fbbf24;">                     │   (Steering Board)   │</strong>
+<strong style="color: #fbbf24;">                     └──────────┬───────────┘</strong>
+                               │
+              <strong style="color: #6366f1;">┌────────────────┼────────────────┐</strong>
+              │                │                │
+<strong style="color: #22c55e;">┌─────────────▼──────┐</strong>  <strong style="color: #38bdf8;">┌───────▼───────┐</strong>  <strong style="color: #a855f7;">┌────────▼─────────┐</strong>
+<strong style="color: #22c55e;">│   CDO / DGO        │</strong>  <strong style="color: #38bdf8;">│ DATA OWNERS   │</strong>  <strong style="color: #a855f7;">│  STAKEHOLDERS    │</strong>
+<strong style="color: #22c55e;">│  (Líder de DG)     │</strong>  <strong style="color: #38bdf8;">│ (Por dominio) │</strong>  <strong style="color: #a855f7;">│  (Negocio/TI)    │</strong>
+<strong style="color: #22c55e;">└─────────┬──────────┘</strong>  <strong style="color: #38bdf8;">└───────┬───────┘</strong>  <strong style="color: #a855f7;">└──────────────────┘</strong>
+          │                    │
+          │     <strong style="color: #f97316;">┌──────────────▼──────────────┐</strong>
+          └────►<strong style="color: #f97316;">│        DATA STEWARDS        │</strong>
+                <strong style="color: #f97316;">│    (Custodios operativos)   │</strong>
+                <strong style="color: #f97316;">└─────────────────────────────┘</strong>
+</pre>
+
+      <div class="phase-box">
+        <h4>👔 Comité Ejecutivo de Gobierno (Steering Committee)</h4>
+        <ul>
+          <li><strong>Rol:</strong> Patrocinadores ejecutivos del programa</li>
+          <li><strong>Nivel:</strong> C-Suite y VP</li>
+          <li><strong>Responsabilidades:</strong>
+            <ul>
+              <li>Aprobar políticas y estándares de datos</li>
+              <li>Asignar presupuesto y recursos</li>
+              <li>Resolver conflictos entre dominios</li>
+              <li>Establecer prioridades estratégicas</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🎖️ Chief Data Officer (CDO) / Data Governance Officer</h4>
+        <ul>
+          <li><strong>Rol:</strong> Líder del programa de gobierno de datos</li>
+          <li><strong>Nivel:</strong> Ejecutivo senior</li>
+          <li><strong>Responsabilidades:</strong>
+            <ul>
+              <li>Definir la estrategia de datos</li>
+              <li>Supervisar la implementación del programa</li>
+              <li>Reportar al comité ejecutivo</li>
+              <li>Evangelizar la cultura de datos</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>👤 Data Owners (Propietarios de Datos)</h4>
+        <ul>
+          <li><strong>Rol:</strong> Responsables de dominios de datos específicos</li>
+          <li><strong>Nivel:</strong> Directores o gerentes de negocio</li>
+          <li><strong>Responsabilidades:</strong>
+            <ul>
+              <li>Definir reglas de negocio para sus datos</li>
+              <li>Aprobar accesos a datos de su dominio</li>
+              <li>Asegurar calidad de datos</li>
+              <li>Designar data stewards</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🛡️ Data Stewards (Custodios de Datos)</h4>
+        <ul>
+          <li><strong>Rol:</strong> Guardianes operativos de la calidad y uso</li>
+          <li><strong>Nivel:</strong> Especialistas de negocio o analistas</li>
+          <li><strong>Responsabilidades:</strong>
+            <ul>
+              <li>Documentar metadatos y definiciones</li>
+              <li>Monitorear calidad de datos día a día</li>
+              <li>Investigar y resolver problemas de datos</li>
+              <li>Implementar políticas a nivel operativo</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>👥 Stakeholders (Partes Interesadas)</h4>
+        <ul>
+          <li><strong>Incluye:</strong> Usuarios finales, analistas, científicos de datos</li>
+          <li><strong>Responsabilidades:</strong>
+            <ul>
+              <li>Seguir políticas y estándares</li>
+              <li>Reportar problemas de calidad</li>
+              <li>Proveer retroalimentación</li>
+              <li>Participar en capacitaciones</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: ESTILOS DE GOBERNANZA -->
+    <section id="seccion-05" class="card">
+      <h2><span>05 · Modelos</span>Estilos de Gobernanza</h2>
+      
+      <p>
+        Las organizaciones pueden adoptar diferentes estilos de gobierno de datos 
+        según su cultura, tamaño y necesidades.
+      </p>
+
+      <div class="phase-box">
+        <h4>🏛️ Modelo Centralizado</h4>
+        <p><strong>Descripción:</strong> Un equipo central de data governance controla 
+        todas las políticas, estándares y decisiones de datos.</p>
+        <ul>
+          <li><strong>Ventajas:</strong>
+            <ul>
+              <li>Consistencia total en políticas</li>
+              <li>Visión unificada de los datos</li>
+              <li>Economías de escala</li>
+            </ul>
+          </li>
+          <li><strong>Desventajas:</strong>
+            <ul>
+              <li>Puede ser lento y burocrático</li>
+              <li>Menor agilidad para el negocio</li>
+              <li>Desconexión con necesidades locales</li>
+            </ul>
+          </li>
+          <li><strong>Ideal para:</strong> Industrias altamente reguladas (banca, salud)</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🌐 Modelo Federado</h4>
+        <p><strong>Descripción:</strong> El equipo central define estándares globales, 
+        pero cada unidad de negocio tiene autonomía para implementarlos.</p>
+        <ul>
+          <li><strong>Ventajas:</strong>
+            <ul>
+              <li>Balance entre control y flexibilidad</li>
+              <li>Mayor adopción por el negocio</li>
+              <li>Responde a necesidades locales</li>
+            </ul>
+          </li>
+          <li><strong>Desventajas:</strong>
+            <ul>
+              <li>Posible inconsistencia entre unidades</li>
+              <li>Requiere coordinación constante</li>
+              <li>Más difícil de auditar</li>
+            </ul>
+          </li>
+          <li><strong>Ideal para:</strong> Organizaciones grandes y diversificadas</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🔄 Modelo Descentralizado / Self-Service</h4>
+        <p><strong>Descripción:</strong> Las unidades de negocio son responsables de 
+        gobernar sus propios datos con guías mínimas centrales.</p>
+        <ul>
+          <li><strong>Ventajas:</strong>
+            <ul>
+              <li>Máxima agilidad</li>
+              <li>Empoderamiento del negocio</li>
+              <li>Innovación más rápida</li>
+            </ul>
+          </li>
+          <li><strong>Desventajas:</strong>
+            <ul>
+              <li>Silos de datos</li>
+              <li>Inconsistencia en definiciones</li>
+              <li>Difícil cumplimiento regulatorio</li>
+            </ul>
+          </li>
+          <li><strong>Ideal para:</strong> Startups o áreas de innovación</li>
+        </ul>
+      </div>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">💡</div>
+        <div>
+          <strong>Tendencia 2025-2026:</strong><br><br>
+          El <strong>Data Mesh</strong> está popularizando un modelo híbrido donde los 
+          "productos de datos" son gobernados por equipos de dominio con estándares 
+          federados de interoperabilidad.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 6: CALIDAD DE DATOS -->
+    <section id="seccion-06" class="card">
+      <h2><span>06 · Data Quality</span>Calidad de Datos</h2>
+      
+      <p>
+        La <strong>calidad de datos</strong> es el componente más visible del gobierno 
+        de datos. Datos de baja calidad generan decisiones erróneas y pérdidas económicas.
+      </p>
+
+      <h3>Dimensiones de la Calidad de Datos</h3>
+
+      <table style="width: 100%; border-collapse: collapse; margin: 1.2rem 0;">
+        <thead>
+          <tr style="background: rgba(99, 102, 241, 0.2);">
+            <th style="padding: 0.8rem; text-align: left; border: 1px solid rgba(99,102,241,0.3);">Dimensión</th>
+            <th style="padding: 0.8rem; text-align: left; border: 1px solid rgba(99,102,241,0.3);">Descripción</th>
+            <th style="padding: 0.8rem; text-align: left; border: 1px solid rgba(99,102,241,0.3);">Ejemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Exactitud</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Grado de conformidad con la realidad</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Email correcto del cliente</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Completitud</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Presencia de todos los valores requeridos</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Sin campos nulos en registros obligatorios</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Consistencia</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Uniformidad a través de sistemas</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Mismo ID de cliente en CRM y ERP</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Oportunidad</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Disponibilidad en el momento necesario</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Datos de ventas actualizados diariamente</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Unicidad</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Sin duplicados</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Un solo registro por cliente</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>Validez</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Conformidad con reglas de formato</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Fechas en formato ISO 8601</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Ciclo de Gestión de Calidad</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #38bdf8;">1. PERFILAR</strong> ──► <strong style="color: #22c55e;">2. MEDIR</strong> ──► <strong style="color: #fbbf24;">3. MEJORAR</strong> ──► <strong style="color: #a855f7;">4. MONITOREAR</strong>
+     │                  │                 │                   │
+     ▼                  ▼                 ▼                   ▼
+ Descubrir         Evaluar vs        Limpiar y           Dashboards
+ patrones          umbrales          enriquecer          y alertas
+     │                  │                 │                   │
+     └──────────────────┴─────────────────┴───────────────────┘
+                               ↻ <span style="color: #9ca3af;">Ciclo continuo</span>
+</pre>
+
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div>
+          <strong>Costo de la Mala Calidad:</strong><br><br>
+          Según Gartner, las organizaciones estiman que la mala calidad de datos 
+          cuesta en promedio <strong>$12.9 millones de dólares al año</strong>.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 7: SEGURIDAD Y PRIVACIDAD -->
+    <section id="seccion-07" class="card">
+      <h2><span>07 · Protección</span>Seguridad y Privacidad</h2>
+      
+      <h3>Clasificación de Datos</h3>
+      <p>
+        El primer paso para proteger los datos es clasificarlos según su 
+        <strong>sensibilidad</strong>:
+      </p>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #ef4444;">🔴 CONFIDENCIAL / RESTRINGIDO</strong>
+   Datos financieros, PII sensible, secretos comerciales
+   → Acceso: Muy limitado, cifrado obligatorio
+
+<strong style="color: #f97316;">🟠 INTERNO / PRIVADO</strong>
+   Datos de empleados, información de negocio
+   → Acceso: Solo personal autorizado
+
+<strong style="color: #fbbf24;">🟡 SENSIBLE</strong>
+   Datos de clientes, información operativa
+   → Acceso: Necesidad de conocer
+
+<strong style="color: #22c55e;">🟢 PÚBLICO</strong>
+   Información de marketing, datos abiertos
+   → Acceso: Sin restricciones
+</pre>
+
+      <h3>Controles de Seguridad</h3>
+
+      <div class="phase-box">
+        <h4>🔐 Control de Acceso</h4>
+        <ul>
+          <li><strong>RBAC</strong> (Role-Based Access Control) - Acceso basado en roles</li>
+          <li><strong>ABAC</strong> (Attribute-Based Access Control) - Acceso basado en atributos</li>
+          <li><strong>Principio de mínimo privilegio</strong></li>
+          <li><strong>Segregación de funciones</strong></li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🔒 Cifrado</h4>
+        <ul>
+          <li><strong>En reposo:</strong> AES-256 para bases de datos y archivos</li>
+          <li><strong>En tránsito:</strong> TLS 1.3 para comunicaciones</li>
+          <li><strong>En uso:</strong> Computación confidencial (TEE)</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🕵️ Técnicas de Privacidad</h4>
+        <ul>
+          <li><strong>Anonimización:</strong> Eliminación irreversible de identificadores</li>
+          <li><strong>Pseudonimización:</strong> Reemplazo reversible de identificadores</li>
+          <li><strong>Tokenización:</strong> Sustitución por tokens sin valor</li>
+          <li><strong>Enmascaramiento:</strong> Ocultamiento parcial (****1234)</li>
+          <li><strong>Privacidad diferencial:</strong> Ruido estadístico para proteger individuos</li>
+        </ul>
+      </div>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">🛡️</div>
+        <div>
+          <strong>Privacy by Design:</strong><br><br>
+          La privacidad debe diseñarse desde el inicio de cualquier sistema o proceso, 
+          no añadirse como un parche después.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 8: CUMPLIMIENTO REGULATORIO -->
+    <section id="seccion-08" class="card">
+      <h2><span>08 · Compliance</span>Cumplimiento Regulatorio</h2>
+      
+      <p>
+        Las regulaciones de protección de datos han proliferado globalmente. 
+        El gobierno de datos debe asegurar el cumplimiento de todas las aplicables.
+      </p>
+
+      <h3>Principales Regulaciones</h3>
+
+      <table style="width: 100%; border-collapse: collapse; margin: 1.2rem 0;">
+        <thead>
+          <tr style="background: rgba(99, 102, 241, 0.2);">
+            <th style="padding: 0.8rem; text-align: left; border: 1px solid rgba(99,102,241,0.3);">Regulación</th>
+            <th style="padding: 0.8rem; text-align: left; border: 1px solid rgba(99,102,241,0.3);">Jurisdicción</th>
+            <th style="padding: 0.8rem; text-align: left; border: 1px solid rgba(99,102,241,0.3);">Enfoque Principal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>GDPR</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Unión Europea</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Privacidad y derechos del titular</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>CCPA/CPRA</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">California, USA</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Derechos del consumidor</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>LFPDPPP</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">México</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Protección de datos personales</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>LGPD</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Brasil</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Protección de datos personales</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>HIPAA</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">USA (Salud)</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Información médica protegida</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>PCI-DSS</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Global (Pagos)</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Datos de tarjetas de crédito</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);"><strong>SOX</strong></td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">USA (Bursátil)</td>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Integridad financiera</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Derechos ARCO+P (Bajo GDPR)</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #38bdf8;">A</strong>cceso        → Derecho a saber qué datos se procesan
+<strong style="color: #22c55e;">R</strong>ectificación → Derecho a corregir datos inexactos
+<strong style="color: #fbbf24;">C</strong>ancelación   → Derecho al olvido (eliminación)
+<strong style="color: #a855f7;">O</strong>posición     → Derecho a objetar el procesamiento
+<strong style="color: #f97316;">P</strong>ortabilidad  → Derecho a recibir datos en formato estándar
+</pre>
+
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚖️</div>
+        <div>
+          <strong>Sanciones GDPR:</strong><br><br>
+          Hasta <strong>€20 millones</strong> o <strong>4% de la facturación global anual</strong>, 
+          lo que sea mayor. Meta fue multada con €1.2 mil millones en 2023.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 9: BENEFICIOS -->
+    <section id="seccion-09" class="card">
+      <h2><span>09 · Valor</span>Beneficios del Data Governance</h2>
+      
+      <div class="phase-box">
+        <h4>📈 1. Mejores Decisiones de Negocio</h4>
+        <p>
+          Con datos confiables y de calidad, los líderes pueden tomar decisiones 
+          informadas basadas en una <strong>única fuente de verdad</strong>.
+        </p>
+      </div>
+
+      <div class="phase-box">
+        <h4>💰 2. Reducción de Costos</h4>
+        <ul>
+          <li>Menos retrabajo por datos incorrectos</li>
+          <li>Eliminación de datos duplicados y almacenamiento innecesario</li>
+          <li>Automatización de procesos de datos</li>
+          <li>Evitar multas regulatorias</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>⚖️ 3. Cumplimiento Regulatorio</h4>
+        <p>
+          Un programa de gobierno maduro facilita auditorías, genera reportes 
+          de cumplimiento y reduce el riesgo de sanciones.
+        </p>
+      </div>
+
+      <div class="phase-box">
+        <h4>🤖 4. Habilitación de IA y Analytics</h4>
+        <p>
+          Los modelos de Machine Learning y las iniciativas de analytics 
+          requieren <strong>datos de alta calidad</strong> para producir resultados confiables.
+        </p>
+      </div>
+
+      <div class="phase-box">
+        <h4>🤝 5. Confianza y Transparencia</h4>
+        <ul>
+          <li>Mayor confianza de clientes y socios</li>
+          <li>Mejor reputación corporativa</li>
+          <li>Colaboración más efectiva entre equipos</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🚀 6. Agilidad Operacional</h4>
+        <p>
+          Procesos de datos bien definidos permiten responder más rápido a 
+          cambios de negocio y nuevas oportunidades.
+        </p>
+      </div>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">📊</div>
+        <div>
+          <strong>ROI del Data Governance:</strong><br><br>
+          Según un estudio de Forrester, las organizaciones con programas maduros de 
+          gobierno de datos ven un ROI de <strong>324%</strong> en tres años.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 10: DESAFÍOS COMUNES -->
+    <section id="seccion-10" class="card">
+      <h2><span>10 · Retos</span>Desafíos Comunes</h2>
+      
+      <div class="phase-box">
+        <h4>❌ 1. Falta de Patrocinio Ejecutivo</h4>
+        <p>
+          Sin apoyo de la alta dirección, los programas de gobierno carecen de 
+          recursos y autoridad para implementar cambios.
+        </p>
+        <p><strong>Solución:</strong> Demostrar ROI con casos de uso específicos y 
+        vincular data governance a objetivos estratégicos.</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>❌ 2. Arquitectura de Datos Inconsistente</h4>
+        <p>
+          Sistemas legacy, silos de datos y falta de integración dificultan una 
+          visión unificada de los datos.
+        </p>
+        <p><strong>Solución:</strong> Implementar un catálogo de datos y priorizar 
+        dominios de datos críticos para el negocio.</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>❌ 3. Resistencia al Cambio</h4>
+        <p>
+          Los usuarios pueden ver el gobierno como burocracia que frena su trabajo.
+        </p>
+        <p><strong>Solución:</strong> Enfatizar los beneficios para el usuario 
+        (datos más confiables, menos problemas) y co-crear políticas.</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>❌ 4. Falta de Visibilidad de Datos</h4>
+        <p>
+          Las organizaciones frecuentemente no saben qué datos tienen, dónde 
+          están o quién los usa.
+        </p>
+        <p><strong>Solución:</strong> Implementar descubrimiento de datos 
+        automatizado y catálogo de metadatos.</p>
+      </div>
+
+      <div class="phase-box">
+        <h4>❌ 5. Escasez de Talento</h4>
+        <p>
+          Encontrar profesionales con experiencia en data governance es difícil.
+        </p>
+        <p><strong>Solución:</strong> Desarrollar talento interno con 
+        certificaciones (CDMP, DGSP) y capacitación continua.</p>
+      </div>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">💡</div>
+        <div>
+          <strong>Consejo:</strong><br><br>
+          Comienza pequeño con un <strong>dominio de datos piloto</strong> que 
+          tenga alto impacto de negocio. Demuestra valor rápido y escala desde ahí.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 11: GOBERNANZA PARA IA -->
+    <section id="seccion-11" class="card">
+      <h2><span>11 · AI Governance</span>Gobernanza de Datos para IA</h2>
+      
+      <p>
+        La explosión de la <strong>Inteligencia Artificial Generativa</strong> (GenAI) 
+        ha elevado la importancia del gobierno de datos a nuevos niveles.
+      </p>
+
+      <h3>Por Qué la IA Necesita Gobierno de Datos</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #38bdf8;">🤖 MODELO DE IA</strong>
+       │
+       ▼
+<strong style="color: #ef4444;">Datos de mala calidad</strong> ─────► <span style="color: #ef4444;">Resultados sesgados o incorrectos</span>
+<strong style="color: #22c55e;">Datos gobernados</strong>      ─────► <span style="color: #22c55e;">Resultados confiables y éticos</span>
+
+<span style="color: #fbbf24;">"Garbage In, Garbage Out"</span> aplica más que nunca en IA
+</pre>
+
+      <h3>Aspectos Clave de AI Governance</h3>
+
+      <div class="phase-box">
+        <h4>📊 Calidad de Datos de Entrenamiento</h4>
+        <ul>
+          <li>Datos precisos, completos y representativos</li>
+          <li>Libre de sesgos demográficos o históricos</li>
+          <li>Etiquetado correcto y consistente</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>📜 Linaje y Trazabilidad</h4>
+        <ul>
+          <li>Documentar el origen de datos de entrenamiento</li>
+          <li>Registrar versiones de datasets</li>
+          <li>Rastrear transformaciones aplicadas</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🛡️ Privacidad y Consentimiento</h4>
+        <ul>
+          <li>Verificar derechos de uso de datos</li>
+          <li>Implementar técnicas de privacidad diferencial</li>
+          <li>Cumplir con regulaciones de IA (EU AI Act)</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>⚖️ IA Responsable</h4>
+        <ul>
+          <li>Transparencia en decisiones del modelo</li>
+          <li>Explicabilidad de resultados</li>
+          <li>Auditoría de sesgos algorítmicos</li>
+          <li>Gobernanza de modelos (Model Governance)</li>
+        </ul>
+      </div>
+
+      <div class="callout callout-warning">
+        <div class="callout-icon">🇪🇺</div>
+        <div>
+          <strong>EU AI Act (2024-2026):</strong><br><br>
+          La primera regulación integral de IA del mundo. Clasifica sistemas de IA por 
+          riesgo y requiere documentación de datos, evaluaciones de impacto y 
+          supervisión humana para aplicaciones de alto riesgo.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 12: HERRAMIENTAS -->
+    <section id="seccion-12" class="card">
+      <h2><span>12 · Tools</span>Herramientas y Tecnologías</h2>
+      
+      <h3>Categorías de Herramientas</h3>
+
+      <div class="phase-box">
+        <h4>📚 Catálogos de Datos</h4>
+        <p>Permiten descubrir, documentar y entender los activos de datos.</p>
+        <ul>
+          <li><strong>Alation</strong> - Líder en catálogos empresariales</li>
+          <li><strong>Collibra</strong> - Plataforma de inteligencia de datos</li>
+          <li><strong>Microsoft Purview</strong> - Integrado con ecosistema Azure</li>
+          <li><strong>AWS Glue Data Catalog</strong> - Para entornos AWS</li>
+          <li><strong>Google Dataplex</strong> - Gestión de data lakes</li>
+          <li><strong>Apache Atlas</strong> - Open source para Hadoop</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>📊 Calidad de Datos</h4>
+        <p>Herramientas para perfilar, limpiar y monitorear calidad.</p>
+        <ul>
+          <li><strong>Informatica Data Quality</strong> - Suite empresarial completa</li>
+          <li><strong>Talend Data Quality</strong> - Código abierto y comercial</li>
+          <li><strong>Great Expectations</strong> - Open source, Python</li>
+          <li><strong>Monte Carlo</strong> - Observabilidad de datos</li>
+          <li><strong>dbt (data build tool)</strong> - Transformaciones con testing</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>🔐 Seguridad y Acceso</h4>
+        <p>Control de acceso y protección de datos sensibles.</p>
+        <ul>
+          <li><strong>Immuta</strong> - Control de acceso dinámico</li>
+          <li><strong>Privacera</strong> - Gobernanza de acceso unificado</li>
+          <li><strong>Apache Ranger</strong> - Autorización para Hadoop</li>
+          <li><strong>HashiCorp Vault</strong> - Gestión de secretos</li>
+          <li><strong>AWS Lake Formation</strong> - Permisos para data lakes</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>📈 Linaje de Datos</h4>
+        <p>Visualización del flujo y transformaciones de datos.</p>
+        <ul>
+          <li><strong>OpenLineage</strong> - Estándar abierto de linaje</li>
+          <li><strong>Marquez</strong> - Servidor de metadatos (LinkedIn)</li>
+          <li><strong>Atlan</strong> - Data workspace con linaje</li>
+          <li><strong>Spline</strong> - Linaje para Apache Spark</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>📋 Gestión de Políticas</h4>
+        <p>Definición y enforcement de reglas de datos.</p>
+        <ul>
+          <li><strong>OPA (Open Policy Agent)</strong> - Políticas como código</li>
+          <li><strong>IBM Data Governance</strong> - Suite integrada IBM</li>
+          <li><strong>SAP Data Intelligence</strong> - Para entornos SAP</li>
+        </ul>
+      </div>
+
+      <h3>Stack de Referencia Moderno</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #6366f1;">┌─────────────────────────────────────────────────────────┐</strong>
+<strong style="color: #6366f1;">│           MODERN DATA GOVERNANCE STACK                  │</strong>
+<strong style="color: #6366f1;">└─────────────────────────────────────────────────────────┘</strong>
+
+<strong style="color: #fbbf24;">Capa de Presentación:</strong>
+  ├─ Collibra / Alation (Catálogo y Glosario)
+  └─ Dashboards de calidad y cumplimiento
+
+<strong style="color: #22c55e;">Capa de Gobernanza:</strong>
+  ├─ Políticas centralizadas (OPA)
+  ├─ Control de acceso (Immuta / Privacera)
+  └─ Calidad de datos (Great Expectations / dbt tests)
+
+<strong style="color: #38bdf8;">Capa de Datos:</strong>
+  ├─ Data Lake: S3 / ADLS / GCS
+  ├─ Data Warehouse: Snowflake / BigQuery / Databricks
+  └─ Lakehouse: Delta Lake / Iceberg
+
+<strong style="color: #a855f7;">Capa de Metadatos:</strong>
+  ├─ OpenLineage (linaje)
+  ├─ DataHub / Amundsen (descubrimiento)
+  └─ Apache Atlas (metadatos técnicos)
+</pre>
+    </section>
+
+    <!-- SECCIÓN 13: MEJORES PRÁCTICAS -->
+    <section id="seccion-13" class="card">
+      <h2><span>13 · Best Practices</span>Mejores Prácticas</h2>
+      
+      <div class="phase-box">
+        <h4>✅ 1. Empezar con Casos de Uso de Negocio</h4>
+        <p>
+          No implementes gobierno por el gobierno mismo. Identifica problemas de 
+          negocio específicos que el data governance resolverá.
+        </p>
+        <ul>
+          <li>¿Qué decisiones se están tomando con datos incorrectos?</li>
+          <li>¿Dónde hay riesgos regulatorios?</li>
+          <li>¿Qué iniciativas de IA están bloqueadas por falta de datos confiables?</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>✅ 2. Automatizar Donde Sea Posible</h4>
+        <p>
+          La gobernanza manual no escala. Usa herramientas para:
+        </p>
+        <ul>
+          <li>Descubrimiento automático de datos sensibles</li>
+          <li>Aplicación de políticas en tiempo real</li>
+          <li>Monitoreo continuo de calidad</li>
+          <li>Clasificación automática de datos</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>✅ 3. Balancear Acceso y Seguridad</h4>
+        <p>
+          Un programa demasiado restrictivo mata la productividad. Demasiado 
+          permisivo genera riesgos.
+        </p>
+        <ul>
+          <li>Implementar acceso "just-in-time"</li>
+          <li>Usar enmascaramiento dinámico en lugar de restricción total</li>
+          <li>Crear "zonas seguras" para analytics con datos anonimizados</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>✅ 4. Construir un Catálogo de Datos</h4>
+        <p>
+          El catálogo es la "interfaz de usuario" del gobierno de datos.
+        </p>
+        <ul>
+          <li>Documentar todos los activos de datos</li>
+          <li>Incluir definiciones de negocio y técnicas</li>
+          <li>Mostrar linaje y calidad</li>
+          <li>Habilitar búsqueda y descubrimiento</li>
+        </ul>
+      </div>
+
+      <div class="phase-box">
+        <h4>✅ 5. Usar Modelos de Madurez</h4>
+        <p>
+          Evalúa regularmente tu posición y planifica mejoras incrementales.
+        </p>
+      </div>
+
+      <div class="phase-box">
+        <h4>✅ 6. Fomentar una Cultura de Datos</h4>
+        <ul>
+          <li>Capacitación continua en data literacy</li>
+          <li>Comunicar victorias y métricas de éxito</li>
+          <li>Reconocer a data stewards y champions</li>
+          <li>Integrar gobierno en procesos diarios, no como tarea adicional</li>
+        </ul>
+      </div>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>Regla de Oro:</strong><br><br>
+          El mejor programa de gobierno de datos es aquel que los usuarios 
+          <strong>apenas notan</strong> porque está integrado naturalmente en su flujo de trabajo.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 14: MODELO DE MADUREZ -->
+    <section id="seccion-14" class="card">
+      <h2><span>14 · Maturity</span>Modelo de Madurez</h2>
+      
+      <p>
+        Los modelos de madurez permiten evaluar el estado actual y planificar 
+        la evolución del programa de gobierno de datos.
+      </p>
+
+      <h3>Niveles de Madurez en Data Governance</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #ef4444;">NIVEL 1 - INICIAL (Ad Hoc)</strong>
+├─ No hay procesos formales
+├─ Gobernanza reactiva a incidentes
+├─ Sin roles definidos
+└─ Datos en silos
+
+<strong style="color: #f97316;">NIVEL 2 - DESARROLLADO (Consciente)</strong>
+├─ Reconocimiento de la necesidad
+├─ Iniciativas piloto aisladas
+├─ Algunos estándares básicos
+└─ Roles informales
+
+<strong style="color: #fbbf24;">NIVEL 3 - DEFINIDO (Proactivo)</strong>
+├─ Programa formal establecido
+├─ Políticas y estándares documentados
+├─ Roles y responsabilidades claros
+└─ Herramientas básicas implementadas
+
+<strong style="color: #22c55e;">NIVEL 4 - GESTIONADO (Medido)</strong>
+├─ KPIs y métricas establecidas
+├─ Monitoreo continuo de calidad
+├─ Automatización de procesos
+└─ Integración con procesos de negocio
+
+<strong style="color: #6366f1;">NIVEL 5 - OPTIMIZADO (Estratégico)</strong>
+├─ Datos como activo estratégico
+├─ Mejora continua basada en datos
+├─ Innovación habilitada por gobernanza
+└─ Cultura de datos en toda la org
+</pre>
+
+      <h3>Evaluación Rápida</h3>
+
+      <table style="width: 100%; border-collapse: collapse; margin: 1.2rem 0;">
+        <thead>
+          <tr style="background: rgba(99, 102, 241, 0.2);">
+            <th style="padding: 0.8rem; text-align: left; border: 1px solid rgba(99,102,241,0.3);">Área</th>
+            <th style="padding: 0.8rem; text-align: center; border: 1px solid rgba(99,102,241,0.3);">1</th>
+            <th style="padding: 0.8rem; text-align: center; border: 1px solid rgba(99,102,241,0.3);">2</th>
+            <th style="padding: 0.8rem; text-align: center; border: 1px solid rgba(99,102,241,0.3);">3</th>
+            <th style="padding: 0.8rem; text-align: center; border: 1px solid rgba(99,102,241,0.3);">4</th>
+            <th style="padding: 0.8rem; text-align: center; border: 1px solid rgba(99,102,241,0.3);">5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Políticas de datos</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">❌</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">📝</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">📋</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">⚙️</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">🚀</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Roles definidos</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">❌</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">👤</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">👥</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">🏢</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">🌐</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Calidad de datos</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">❓</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">🔍</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">📊</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">📈</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">✨</td>
+          </tr>
+          <tr style="background: rgba(15,23,42,0.5);">
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Catálogo de datos</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">❌</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">📁</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">📚</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">🔗</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">🤖</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border: 1px solid rgba(255,255,255,0.1);">Automatización</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">🔧</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">⚙️</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">🔄</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">🤖</td>
+            <td style="padding: 0.8rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">🧠</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-info">
+        <div class="callout-icon">📈</div>
+        <div>
+          <strong>Progresión Típica:</strong><br><br>
+          La mayoría de organizaciones están entre nivel 2 y 3. Alcanzar nivel 4 
+          típicamente toma <strong>2-3 años</strong> de esfuerzo sostenido.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 15: CONCLUSIÓN -->
+    <section id="seccion-15" class="card">
+      <h2><span>15 · Visión</span>Conclusión y Visión Futura</h2>
+      
+      <h3>El Gobierno de Datos en 2025-2026</h3>
+
+      <p>
+        El gobierno de datos está evolucionando de ser una función de "policía de datos" 
+        a ser un <strong>habilitador estratégico</strong> de la transformación digital.
+      </p>
+
+      <div class="phase-box">
+        <h4>🔮 Tendencias Emergentes</h4>
+        <ul>
+          <li><strong>AI-Powered Governance:</strong> IA para automatizar clasificación, 
+          descubrimiento y cumplimiento</li>
+          <li><strong>Data Mesh:</strong> Descentralización con gobernanza federada</li>
+          <li><strong>Data Contracts:</strong> APIs formales entre productores y consumidores</li>
+          <li><strong>DataOps:</strong> Integración de gobernanza en pipelines CI/CD</li>
+          <li><strong>Privacy Engineering:</strong> Privacidad embebida en arquitectura</li>
+        </ul>
+      </div>
+
+      <h3>Resumen Ejecutivo</h3>
+
+      <div class="callout callout-success">
+        <div class="callout-icon">🎯</div>
+        <div>
+          <strong>Puntos Clave:</strong><br><br>
+          <ol style="margin: 0; padding-left: 1.2rem;">
+            <li>El gobierno de datos trata los <strong>datos como activo estratégico</strong></li>
+            <li>Requiere un <strong>balance entre control y agilidad</strong></li>
+            <li>Los <strong>roles claros</strong> son fundamentales para el éxito</li>
+            <li>La <strong>automatización</strong> es esencial para escalar</li>
+            <li>El <strong>ROI</strong> se demuestra con casos de uso específicos</li>
+            <li>La <strong>cultura de datos</strong> es tan importante como la tecnología</li>
+          </ol>
+        </div>
+      </div>
+
+      <h3>Próximos Pasos Recomendados</h3>
+
+      <pre style="background: rgba(15,23,42,0.8); padding: 1.2rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; color: #e5e7eb;">
+<strong style="color: #38bdf8;">1.</strong> Evaluar el nivel de madurez actual
+<strong style="color: #38bdf8;">2.</strong> Identificar 2-3 casos de uso prioritarios
+<strong style="color: #38bdf8;">3.</strong> Asegurar patrocinio ejecutivo
+<strong style="color: #38bdf8;">4.</strong> Definir roles y responsabilidades iniciales
+<strong style="color: #38bdf8;">5.</strong> Implementar un catálogo de datos básico
+<strong style="color: #38bdf8;">6.</strong> Establecer métricas de calidad
+<strong style="color: #38bdf8;">7.</strong> Iterar y escalar basándose en resultados
+</pre>
+
+      <div class="callout callout-deep">
+        <div class="callout-icon">📚</div>
+        <div>
+          <strong>Recursos Adicionales:</strong><br><br>
+          <ul style="margin: 0; padding-left: 1.2rem;">
+            <li><a href="https://www.dama.org/cpages/body-of-knowledge" target="_blank" rel="noopener noreferrer">DAMA-DMBOK 2nd Edition</a></li>
+            <li><a href="https://edmcouncil.org/frameworks/dcam/" target="_blank" rel="noopener noreferrer">DCAM Framework (EDM Council)</a></li>
+            <li><a href="https://www.ibm.com/topics/data-governance" target="_blank" rel="noopener noreferrer">IBM Data Governance Guide</a></li>
+            <li><a href="guia-ciencia-datos.html">Guía: Ciencia de Datos y Roles</a></li>
+            <li><a href="guia-data-engineering.html">Guía: Data Engineering</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-simple">
+      <p>Creado por <strong>JJRM</strong> · 2026</p>
+      <div>
+        <a href="index.html" class="btn-back">← Volver al inicio</a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Scripts para scroll suave -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
